@@ -8,12 +8,12 @@
  * file that was distributed with this source code.
  *
  */
-namespace GenPhp;
+namespace GenPHP;
 
 /* GenPHP base class for every genphp components.
  *
  */
-class GenPhp
+class GenPHP
 {
     /* return resources dir path from an object.
      */
