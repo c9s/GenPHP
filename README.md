@@ -1,8 +1,9 @@
 GenPHP
 ======
-GenPHP is a PHP project generator.
+GenPHP is a PHP (project/code/library/unit test) generator, which helps you to
+avoid do repeating jobs.
 
-To generate a generic php project structure, GenPHP provides a built-in template for this:
+To generate a generic PHP project structure, GenPHP provides a built-in template for this:
 
     $ genphp new project Foo
 
@@ -23,5 +24,14 @@ To generate a generic php class with PHPUnit
         create tests
         create tests/Foo/BarTest.php
 
+Customizable
+------------
+You can easily define your template with GenPHP baseclass.
 
+    <?php
+    use GenPHP\GenPHP;
+    class Foo extends GenPHP 
+    {
+        // ...
+    }
 
