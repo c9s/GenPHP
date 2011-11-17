@@ -7,13 +7,14 @@ To generate a generic PHP project structure, GenPHP provides a built-in template
 
     $ genphp new project Foo
 
-        create lib
-        create lib/Foo.php
-        create lib/Foo
-        create build.xml
+        create
+        create  lib
+        create  lib/Foo.php
+        create  lib/Foo
+        create  build.xml
         dependency phpunit
-            create phpunit.xml.dist
-            create tests
+        create      phpunit.xml.dist
+        create      tests
 
 To generate a generic php class with PHPUnit 
 
@@ -23,6 +24,11 @@ To generate a generic php class with PHPUnit
         create lib/Foo/Bar.php
         create tests
         create tests/Foo/BarTest.php
+
+To list schemas
+
+    $ genphp list
+
 
 Customizable
 ------------
