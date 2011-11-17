@@ -41,3 +41,9 @@ You can easily define your template with GenPHP baseclass.
         // ...
     }
 
+
+
+Reference
+---------
+* newgem: http://newgem.rubyforge.org/
+* Rails: http://guides.rubyonrails.org/command\_line.html
