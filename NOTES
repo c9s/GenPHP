@@ -1,0 +1,19 @@
+-class GenPHP
+-{
+-    /* return resources dir path from an object.
+-     */
+-    function getResourcesDir()
+-    {
+-        $ref = new ReflectionClass($this);
+-        $filename = $ref->getFileName();
+-        return dirname($filename);
+-    }
+-
+-    /* Use relative file path to get the absolute path of resource file
+-     * from an GenPhp object.
+-     */
+-    function getResourceFile( $filepath )
+-    {
+-        return $this->getResourcesDir() . DIRECTORY_SEPARATOR . $filepath;
+-    }
+-}
