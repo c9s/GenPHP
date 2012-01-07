@@ -11,7 +11,7 @@ class InitCommand extends \CLIFramework\Command
         // $opts->add('s|string:','description ....');
     }
 
-    function execute($args)
+    function execute()
     {
         $logger = $this->getLogger();
         $path = Path::get_home_flavor_path();

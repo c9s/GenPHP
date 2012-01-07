@@ -17,14 +17,9 @@ class NewCommand extends Command
     }
 
 
-    function execute($args)
+    function execute($flavorName)
     {
         $logger = $this->getLogger();
-
-        $flavorName = array_shift($args);
-        if( ! $flavorName )
-            die('flavor name is required.');
-
         $specs = new OptionSpecCollection;
 
         /* load flavor generator */

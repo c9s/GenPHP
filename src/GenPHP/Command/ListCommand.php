@@ -12,7 +12,7 @@ class ListCommand extends \CLIFramework\Command
         // $opts->add('s|string:','description ....');
     }
 
-    function execute($args)
+    function execute()
     {
         $logger = $this->getLogger();
 
