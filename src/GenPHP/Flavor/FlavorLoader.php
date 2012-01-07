@@ -1,6 +1,7 @@
 <?php 
 namespace GenPHP\Flavor;
 use GenPHP\Flavor\GenericGenerator;
+use GenPHP\Path;
 
 class FlavorLoader 
 {
@@ -9,13 +10,10 @@ class FlavorLoader
      */
     private $dirs;
 
-    function __construct()
+    function __construct($dirs = null)
     {
-        $this->dirs = array( 
-            'flavors',
-            '.flavors',
-            getenv('HOME') . DIRECTORY_SEPARATOR . '.genphp' . DIRECTORY_SEPARATOR . 'flavors'
-        );
+        /* get default flavor paths */
+        $this->dirs = $dirs ? (array) $dirs : Path::get_flavor_paths();
     }
 
     function loadGeneratorClass($name) 

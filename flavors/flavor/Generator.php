@@ -10,6 +10,6 @@ class Generator extends BaseGenerator
 
     public function generate($name)
     {
-        $this->createDir("flavors/$name/resources");
+        $this->createDir("flavors/$name/Resources");
     }
 }
