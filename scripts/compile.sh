@@ -6,3 +6,4 @@ onion.phar -d compile \
     --bootstrap scripts/genphp.embed \
     --executable \
     --output genphp.phar
+mv -v genphp.phar genphp
