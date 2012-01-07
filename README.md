@@ -8,7 +8,7 @@ Installation
 ------------
 Download the genphp binary, and put it into your path.
 
-    $ curl https://github.com/c9s/GenPHP/raw/master/genphp > genphp
+    $ curl -O https://raw.github.com/c9s/GenPHP/master/genphp
     $ chmod +x genphp
 
 Or install it from PEAR channel
