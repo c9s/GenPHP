@@ -17,6 +17,7 @@ use GenPHP\Operation\OperationMixin;
  *      $this->delete( 'old/file.php' );
  *      $this->writeYaml( 'yaml' , array( .... ) );
  *      $this->writeJson( 'json' , array( .... ) );
+ *      $this->create( 'file.php' , $content );
  * }
  *
  */
