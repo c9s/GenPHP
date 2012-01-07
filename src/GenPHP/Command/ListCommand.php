@@ -27,7 +27,7 @@ class ListCommand extends \CLIFramework\Command
                 while (false !== ($entry = readdir($handle))) {
                     if( $entry == '.' || $entry == '..' ) 
                         continue;
-                    $logger->info( sprintf("%-10s  ./%s",$entry, $path), 1 );
+                    $logger->info( sprintf("%-10s  %s",$entry, $path), 1 );
                 }
                 closedir($handle);
             }
