@@ -11,14 +11,14 @@
     <active>yes</active>
   </lead>
   <date>2012-01-08</date>
-  <time>01:51:37</time>
+  <time>02:07:46</time>
   <version>
-    <release>0.0.1</release>
-    <api>0.0.1</api>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
   </version>
   <stability>
-    <release>alpha</release>
-    <api>alpha</api>
+    <release>beta</release>
+    <api>beta</api>
   </stability>
   <license>PHP</license>
   <notes>-</notes>
@@ -41,9 +41,11 @@
       <file name="src/GenPHP/Operation/Operation.php" role="php" md5sum="2dba683dfbacf9890e7cd65228c2ce7c"/>
       <file name="src/GenPHP/Operation/OperationMixin.php" role="php" md5sum="e8a599414c252f5c680925078772c8d2"/>
       <file name="src/GenPHP/Operation/RenderOperation.php" role="php" md5sum="9806da64cb345030f18f55aace4cc2fc"/>
+      <file name="src/GenPHP/Operation/TouchOperation.php" role="php" md5sum="b93ad4df62df68ec6a85f36b5ed6e338"/>
       <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="82bff056fddc08c0858b74064559bd03"/>
       <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="650e68bb53d8a1b81b4ae1816219ac13"/>
       <file name="src/GenPHP/Path.php" role="php" md5sum="75fca0c103542d3d6ffae6b16e39d12a"/>
+      <file name="genphp" role="script" md5sum="ddbfd427d719ce84d19c3e20b2e199e3"/>
     </dir>
   </contents>
   <dependencies>
@@ -90,9 +92,11 @@
       <install name="src/GenPHP/Operation/Operation.php" as="GenPHP/Operation/Operation.php"/>
       <install name="src/GenPHP/Operation/OperationMixin.php" as="GenPHP/Operation/OperationMixin.php"/>
       <install name="src/GenPHP/Operation/RenderOperation.php" as="GenPHP/Operation/RenderOperation.php"/>
+      <install name="src/GenPHP/Operation/TouchOperation.php" as="GenPHP/Operation/TouchOperation.php"/>
       <install name="src/GenPHP/Operation/WriteJsonOperation.php" as="GenPHP/Operation/WriteJsonOperation.php"/>
       <install name="src/GenPHP/Operation/WriteYamlOperation.php" as="GenPHP/Operation/WriteYamlOperation.php"/>
       <install name="src/GenPHP/Path.php" as="GenPHP/Path.php"/>
+      <install name="genphp" as="genphp"/>
     </filelist>
   </phprelease>
 </package>
