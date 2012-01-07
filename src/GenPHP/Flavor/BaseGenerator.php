@@ -25,10 +25,12 @@ use ReflectionObject;
  */
 abstract class BaseGenerator 
 {
+    private $resourceDir;
+
     public $options;
     public $logger;
-
     public $mixins = array();
+
 
     public function __construct()
     {
@@ -97,8 +99,15 @@ abstract class BaseGenerator
     // abstract function generate();
 
 
+    public function setResourceDir($dir)
+    {
+        $this->resourceDir;
+    }
+
     public function getResourceDir()
     {
+        if( $this->resourceDir )
+            return $this->resourceDir;
         $refl = new ReflectionObject($this);
         return $refl->getFilename() . DIRECTORY_SEPARATOR . 'Resources';
     }
