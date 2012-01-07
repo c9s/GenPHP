@@ -1,8 +1,14 @@
 GenPHP
 ======
-GenPHP is a powerful, flexible PHP (project/code/library/unit test) generator,
+GenPHP is a powerful, flexible PHP code/project generator,
 which helps you to avoid do repeating jobs.
 
+GenPHP can generate anything you defined in the flavor, 
+In generator class, you can use the simple generator API to generate your code.
+
+By using GenPHP, you can also seperate your global generator, project-scope generator.
+
+GenPHP is using Twig template engine from Symfony.
 
 Installation
 ------------
@@ -52,6 +58,10 @@ $ genphp list
 
 please check `./flavors` directory of this repository
 for more details.
+
+Flavors
+--------
+
 
 Operations
 ----------
