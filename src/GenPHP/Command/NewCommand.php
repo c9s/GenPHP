@@ -25,6 +25,7 @@ class NewCommand extends Command
 
         $logger->info("Inializing option specs...");
         $generator->options( $specs );
+        $generator->setLogger( $this->getLogger() );
 
         $deps = $generator->dependency();
         foreach( $deps as $dep => $options ) {

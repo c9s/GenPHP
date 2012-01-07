@@ -1,6 +1,8 @@
 <?php 
 namespace GenPHP\Flavor;
 use GenPHP\Operation\OperationMixin;
+use Exception;
+use ReflectionObject;
 
 
 /**
@@ -65,9 +67,10 @@ abstract class BaseGenerator
     {
         /* call mixins */
         foreach( $this->mixins as $mixin ) {
-            if( method_exists( array($mixin, $method) ) ) {
-                return call_user_func_array( array($mixin,$method),$args);
-            }
+            return call_user_func_array( array($mixin,$method),$args);
+#              if( method_exists( $mixin, $method ) ) {
+#                  return call_user_func_array( array($mixin,$method),$args);
+#              }
         }
     }
 
@@ -91,11 +94,14 @@ abstract class BaseGenerator
         return $this->options;
     }
 
-    public function generate()
+    // abstract function generate();
+
+
+    public function getResourceDir()
     {
-
+        $refl = new ReflectionObject($this);
+        return $refl->getFilename() . DIRECTORY_SEPARATOR . 'Resources';
     }
-
 
 }
 

@@ -11,10 +11,14 @@ abstract class Operation
         $this->generator = $generator;
     }
 
+    public function getLogger()
+    {
+        return $this->generator->getLogger();
+    }
+
     public function getResourceDir()
     {
-        $refl = new ReflectionObject( $this->generator );
-        return $refl->getFilename() . DIRECTORY_SEPARATOR . 'resources';
+        return $this->generator->getResourceDir();
     }
 }
 
