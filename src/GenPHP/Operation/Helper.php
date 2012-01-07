@@ -13,4 +13,9 @@ class Helper
         self::mktree( $dir );
     }
 
+    static function putFile($path,$content) {
+        self::mkdirForFile( $path );
+        file_put_contents( $path , $content );
+    }
+
 }

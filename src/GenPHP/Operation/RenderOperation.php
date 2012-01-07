@@ -1,5 +1,6 @@
 <?php
 namespace GenPHP\Operation;
+use GenPHP\Operation\Helper;
 
 class RenderOperation extends Operation
 {
@@ -15,12 +16,11 @@ class RenderOperation extends Operation
         $loader = new Twig_Loader_Filesystem(array($rsDir));
         $twig = new Twig_Environment($loader, array(  ));
 
-
         $template = $twig->loadTemplate($templateFile);
         $output = $template->render($args);
 
-        Helper::mkdirForFile( $target );
-        file_put_contents( $target , $output );
+        $this->logAction('render',$target);
+        Helper::putFile( $target, $output );
     }
 
 }
