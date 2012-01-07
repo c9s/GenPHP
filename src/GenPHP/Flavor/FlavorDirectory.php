@@ -52,6 +52,15 @@ class FlavorDirectory extends SplFileInfo
     }
 
 
+    public function getGenerator()
+    {
+        if( $this->hasGeneratorClassFile() ) {
+            $class = $this->requireGeneratorClassFile();
+            return new $class;
+        } elseif( $this->hasResourceDir() ) {
+            return $this->createGenericGenerator();
+        }
+    }
 
 
 }

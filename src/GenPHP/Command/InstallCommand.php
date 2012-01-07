@@ -26,6 +26,7 @@ class InstallCommand extends \CLIFramework\Command
                     $logger->info( "Installing " . $target,1);
             });
         }
+
         $logger->info("Done");
     }
 }

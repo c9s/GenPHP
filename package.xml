@@ -11,7 +11,7 @@
     <active>yes</active>
   </lead>
   <date>2012-01-08</date>
-  <time>04:15:30</time>
+  <time>04:39:43</time>
   <version>
     <release>0.1.2</release>
     <api>0.1.2</api>
@@ -28,20 +28,20 @@
       <file name="tests/GenPHP/Operation/OperationMixinTest.php" role="test" md5sum="d1a0311d4a7b926fce03bb0be82a7840"/>
       <file name="tests/bootstrap.php" role="test" md5sum="bca4c6cc10a138d0e22e365098c174d0"/>
       <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
-      <file name="src/GenPHP/Application.php" role="php" md5sum="831c7ba95f5cf2cb9aa861334c7d0392"/>
+      <file name="src/GenPHP/Application.php" role="php" md5sum="a990544eaafff7408ce947e536704525"/>
       <file name="src/GenPHP/Command/InitCommand.php" role="php" md5sum="438d84598db3388664167b3415a40622"/>
-      <file name="src/GenPHP/Command/InstallCommand.php" role="php" md5sum="23ae4b3bdaaf8f0b12387c967f87113b"/>
+      <file name="src/GenPHP/Command/InstallCommand.php" role="php" md5sum="d3911a92deb428560aa8002ce81a6959"/>
       <file name="src/GenPHP/Command/ListCommand.php" role="php" md5sum="16cbab86b6224f3b5e38dc762ee56c43"/>
       <file name="src/GenPHP/Command/NewCommand.php" role="php" md5sum="ef57bf405caa04514ac91bc5873024c2"/>
       <file name="src/GenPHP/Flavor/BaseGenerator.php" role="php" md5sum="6c9ede05cce00472e1a1543002fa1f8e"/>
-      <file name="src/GenPHP/Flavor/FlavorDirectory.php" role="php" md5sum="408670be406f44e50163faf748d5cb89"/>
-      <file name="src/GenPHP/Flavor/FlavorLoader.php" role="php" md5sum="e4b44a9ec31a31dea7c97979cc740c11"/>
+      <file name="src/GenPHP/Flavor/FlavorDirectory.php" role="php" md5sum="38b296fa5c142224a5a480301f3239db"/>
+      <file name="src/GenPHP/Flavor/FlavorLoader.php" role="php" md5sum="71f900373ff6dad805be75dd066819d0"/>
       <file name="src/GenPHP/Flavor/GenericGenerator.php" role="php" md5sum="cf946053e65be00d1e137a3997dfeda7"/>
       <file name="src/GenPHP/Operation/CopyDirOperation.php" role="php" md5sum="9c80caed74ab0966a69d6bd5f901520c"/>
       <file name="src/GenPHP/Operation/CopyOperation.php" role="php" md5sum="92e027145ffbeebd3355546af12fad8f"/>
       <file name="src/GenPHP/Operation/CreateDirOperation.php" role="php" md5sum="97fa80d5b43b611f918df4be6435886c"/>
       <file name="src/GenPHP/Operation/CreateOperation.php" role="php" md5sum="0d0523b1ad93423f4ba147407dd604be"/>
-      <file name="src/GenPHP/Operation/Helper.php" role="php" md5sum="a814713ff42b1d31ad64c48ec692dbd4"/>
+      <file name="src/GenPHP/Operation/Helper.php" role="php" md5sum="d712ee5f589d9f127c88b07678318aaf"/>
       <file name="src/GenPHP/Operation/Operation.php" role="php" md5sum="c8d5a50e9d56bca3a89f8662fd0fa0d2"/>
       <file name="src/GenPHP/Operation/OperationMixin.php" role="php" md5sum="e8a599414c252f5c680925078772c8d2"/>
       <file name="src/GenPHP/Operation/RenderOperation.php" role="php" md5sum="9806da64cb345030f18f55aace4cc2fc"/>
@@ -49,7 +49,7 @@
       <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="82bff056fddc08c0858b74064559bd03"/>
       <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="650e68bb53d8a1b81b4ae1816219ac13"/>
       <file name="src/GenPHP/Path.php" role="php" md5sum="3f540b80eed5bc46ed5930deea58838e"/>
-      <file name="genphp" role="script" md5sum="c6602c1ac715e98282504f6d5086a2fb"/>
+      <file name="genphp" role="script" md5sum="e1cacd68a4aad02be20e8c5a7145c0a7"/>
     </dir>
   </contents>
   <dependencies>

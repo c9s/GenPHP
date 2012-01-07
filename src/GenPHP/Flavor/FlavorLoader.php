@@ -23,12 +23,7 @@ class FlavorLoader
         foreach( $this->dirs as $dir ) {
             $flavorDir = new FlavorDirectory($dir . DIRECTORY_SEPARATOR . $name);
             if( $flavorDir->exists() ) {
-                if( $flavorDir->hasGeneratorClassFile() ) {
-                    $class = $flavorDir->requireGeneratorClassFile();
-                    return new $class;
-                } elseif( $flavorDir->hasResourceDir() ) {
-                    return $flavorDir->createGenericGenerator();
-                }
+                return $flavorDir->getGenerator();
             } else {
                 throw new Exception("Flavor $name not found.");
             }
