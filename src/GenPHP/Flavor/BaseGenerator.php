@@ -64,7 +64,6 @@ abstract class BaseGenerator
 
     }
 
-
     public function __call($method,$args)
     {
         /* call mixins */
@@ -98,18 +97,26 @@ abstract class BaseGenerator
 
     // abstract function generate();
 
-
+    /**
+     * set resource directory
+     *
+     * @param string $dir 
+     */
     public function setResourceDir($dir)
     {
         $this->resourceDir = $dir;
     }
 
+    /**
+     * get Flavor Directory from Generator class
+     */
     public function getResourceDir()
     {
         if( $this->resourceDir )
             return $this->resourceDir;
         $refl = new ReflectionObject($this);
-        return dirname($refl->getFilename()) . DIRECTORY_SEPARATOR . 'Resource';
+        $flavor = new FlavorDirectory( dirname($refl->getFilename()) );
+        return $flavor->getResourceDir();
     }
 
 }
