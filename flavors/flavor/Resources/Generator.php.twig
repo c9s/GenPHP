@@ -10,6 +10,18 @@ class Generator extends BaseGenerator
         return 'brief for your generator';
     }
 
+    function dependency()
+    {
+        /* describe dependency here */
+        return array( 
+            'flavor2' => array( 
+                'options' => array( 'path' => '....' ),
+                'arguments' => array( 'arg1' , 'arg2' ),
+            ),
+        );
+    }
+
+
     function generate(/* $arg1, $arg2,  */) 
     {
         /* 
