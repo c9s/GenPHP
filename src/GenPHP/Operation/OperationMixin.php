@@ -1,6 +1,6 @@
 <?php 
-
 namespace GenPHP\Operation;
+use Exception;
 
 
 /**
