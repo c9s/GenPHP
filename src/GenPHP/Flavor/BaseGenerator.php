@@ -14,8 +14,8 @@ abstract class BaseGenerator
         $this->mixins[] = new OperationMixin( $this );
     }
 
+    /* subclass must implements this */
     abstract function brief();
-
 
     /**
      * return flavor dependencies
