@@ -11,7 +11,7 @@ abstract class BaseGenerator
 
     public function __construct()
     {
-        $this->mixins[] = new OperationMixin;
+        $this->mixins[] = new OperationMixin( $this );
     }
 
     abstract function brief();
