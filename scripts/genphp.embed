@@ -1,0 +1,7 @@
+<?php
+try {
+    $app = new GenPHP\Application;
+    $app->run( $argv );
+} catch( Exception $e ) {
+    die( $e->getMessage() );
+}
