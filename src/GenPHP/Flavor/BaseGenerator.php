@@ -1,10 +1,39 @@
 <?php 
 namespace GenPHP\Flavor;
 
-class BaseGenerator 
+abstract class BaseGenerator 
 {
     public $options;
     public $logger;
+
+    abstract function brief();
+
+
+    /**
+     * return flavor dependencies
+     */
+    public function dependency()
+    {
+        return array(
+            /**
+             * flavor name => array( ... default options ) 
+             *
+             * 'name' => array( 'options' => array(  .... ), 'arguments' => ... ),
+             * 'name',
+             */
+        );
+    }
+
+
+    /**
+     * initialize options
+     */
+    public function options($opts)  
+    {
+    }
+
+
+
 
     public function setOptionResult($result) 
     {
@@ -26,18 +55,8 @@ class BaseGenerator
         return $this->options;
     }
 
-    public function options($opts)  
-    {
-        // init option specs
-    
-    }
-
     public function generate()
     {
-        // do generation
-
-
-
     }
 }
 
