@@ -1,12 +1,12 @@
 <?php 
 namespace GenPHP\Flavor;
 
-class Generator 
+class BaseGenerator 
 {
     public $options;
     public $logger;
 
-    function setOptionResult($result) 
+    public function setOptionResult($result) 
     {
         $this->options = $result;
     }
