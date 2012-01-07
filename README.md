@@ -50,6 +50,12 @@ to generate a new flavor:
 $ genphp new flavor flavorName
 ```
 
+To generate a new flavor from current existing code base:
+
+```bash
+$ genphp new flavor ProjectA ~/path/to/OneProject
+```
+
 To list schemas
 
 ```bash
