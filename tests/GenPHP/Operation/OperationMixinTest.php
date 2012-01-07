@@ -7,7 +7,9 @@ class OperationMixinTest extends PHPUnit_Framework_TestCase
 {
     function testFunc()
     {
+        // XXX: use testing flavors to test
         return;
+
         $mixin = new OperationMixin($this);
         ok( $mixin );
         if( ! file_exists('/var/tmp') )
