@@ -28,6 +28,7 @@ Operations
 By using built-in operations, you can create your code generator very easily,
 for example, the built-in flavor code generator from GenPHP:
 
+```php
     <?php 
     namespace flavor;
     use GenPHP\Flavor\BaseGenerator;
@@ -54,10 +55,12 @@ for example, the built-in flavor code generator from GenPHP:
             
         }
     }
+```
 
 Operation name magic:
 
 ```php
+<?php
 $this->copyDir('from/path','to/path');  // executes CopyDirOperation
 $this->touch('path/to/touch');          // executes TouchOperation
 $this->create('path/to/file', 'file content' );          // executes TouchOperation
