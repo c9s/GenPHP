@@ -22,5 +22,4 @@ class RenderOperation extends Operation
         $this->logAction('render',$target);
         Helper::putFile( $target, $output );
     }
-
 }

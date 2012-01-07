@@ -18,4 +18,9 @@ class Helper
         file_put_contents( $path , $content );
     }
 
+    static function copyFile($from,$to) {
+        Helper::mkdirForFile($to);
+        copy($from,$to);
+    }
+
 }

@@ -12,12 +12,12 @@ class CopyOperation extends Operation
 
     function run($from,$to)
     {
-        Helper::mkdirForFile($to);
 
-        $this->getLogger()->info("copy $to",1);
+        $this->logAction('copy',$to);
+        $rsDir = $this->getResourceDir();
 
         // do copy
-        copy($from,$to);
+        Helper::copy($rsDir . DIRECTORY_SEPARATOR . $from,$to);
     }
 
 }
