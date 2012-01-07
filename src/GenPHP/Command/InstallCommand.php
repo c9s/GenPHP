@@ -7,8 +7,10 @@ class InstallCommand extends \CLIFramework\Command
         return 'install flavor to your global flavor path';
     }
 
-    function execute()
+    function execute($nameOrPath)
     {
+
+
 
     }
 }

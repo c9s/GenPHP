@@ -1,6 +1,7 @@
 <?php 
 namespace GenPHP\Flavor;
 use GenPHP\Flavor\GenericGenerator;
+use GenPHP\Flavor\FlavorDirectory;
 use GenPHP\Path;
 use Exception;
 
