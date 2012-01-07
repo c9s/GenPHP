@@ -86,7 +86,7 @@ class Generator extends BaseGenerator
         foreach( $paths as $path ) {
             if( file_exists($path) ) {
                 $base = $path . DIRECTORY_SEPARATOR . $name;
-                $this->createDir( $base . DIRECTORY_SEPARATOR . "Resources");
+                $this->createDir( $base . DIRECTORY_SEPARATOR . "Resource");
                 $this->render( 'Generator.php.twig',  
                     $base . DIRECTORY_SEPARATOR . 'Generator.php', 
                     array( 'name' => $name ) );

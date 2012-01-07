@@ -21,7 +21,7 @@ class FlavorLoader
     {
         foreach( $this->dirs as $dir ) {
             $flavorDir = $dir . DIRECTORY_SEPARATOR . $name;
-            $resourceDir = $flavorDir . DIRECTORY_SEPARATOR . 'Resources';
+            $resourceDir = $flavorDir . DIRECTORY_SEPARATOR . 'Resource';
             $generatorFile = $flavorDir . DIRECTORY_SEPARATOR . 'Generator.php';
             if( file_exists($generatorFile) ) {
                 require $generatorFile;
@@ -31,7 +31,7 @@ class FlavorLoader
             elseif( file_exists($flavorDir) && file_exists($resourceDir) ) {
                 // use GenericGenerator
                 return $generator = new GenericGenerator( 
-                    $flavorDir . DIRECTORY_SEPARATOR . 'Resources' );
+                    $flavorDir . DIRECTORY_SEPARATOR . 'Resource' );
             }
             else {
                 throw new Exception("Flavor $name not found.");
