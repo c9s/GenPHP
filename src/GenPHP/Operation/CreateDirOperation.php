@@ -4,11 +4,16 @@ use GenPHP\Operation\Helper;
 
 class CreateDirOperation extends Operation
 {
-
-    function run($dir)
+    /**
+     * create directories
+     *
+     * @param array|string directory path
+     */
+    function run($dirs)
     {
-        $this->logAction('create', $dir);
-        Helper::mktree($dir);
+        foreach( (array) $dirs as $dir ) {
+            $this->logAction('create', $dir);
+            Helper::mktree($dir);
+        }
     }
-
 }

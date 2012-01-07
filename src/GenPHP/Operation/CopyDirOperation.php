@@ -7,6 +7,12 @@ use GenPHP\Operation\Helper;
 class CopyDirOperation
 {
 
+    /**
+     * recursive directory copy operation
+     *
+     * @param string $from
+     * @param string $to
+     */
     public function run($from,$to) 
     {
         $from = realpath($from);
