@@ -1,6 +1,7 @@
 <?php
 namespace GenPHP\Flavor;
 use SplFileInfo;
+use GenPHP\Flavor\GenericGenerator;
 
 class FlavorDirectory extends SplFileInfo
 {
@@ -14,20 +15,44 @@ class FlavorDirectory extends SplFileInfo
         return file_exists($this->getResourceDir());
     }
 
-    public function getGeneratorClassPath()
+    public function getGeneratorClassFile()
     {
         return $this->getPathname() . DIRECTORY_SEPARATOR . 'Generator.php';
     }
 
-    public function hasGeneratorClass()
+    public function hasGeneratorClassFile()
     {
-        return file_exists($this->getGeneratorClassPath());
+        return file_exists($this->getGeneratorClassFile());
     }
 
     public function exists()
     {
         return file_exists($this->getPathname());
     }
+
+    public function requireGeneratorClassFile()
+    {
+        require $this->getGeneratorClassFile();
+        return $this->getGeneratorClass();
+    }
+
+    public function getName()
+    {
+        return $this->getBasename();
+    }
+
+    public function getGeneratorClass()
+    {
+        return "\\{$this->getName()}\\Generator";
+    }
+
+    public function createGenericGenerator()
+    {
+        return new GenericGenerator( $this->getResourceDir() );
+    }
+
+
+
 
 }
 
