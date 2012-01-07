@@ -1,16 +1,38 @@
 <?php 
 namespace GenPHP\Operation;
-use GenPHP\Operation\Helper;
+use ReflectionObject;
 
-class Operation extends Operation
+abstract class Operation 
 {
+    protected $generator;
 
-    function run( /* arguments */ )
+    public function __construct($generator)
     {
-        // $this->logAction('copy',$to);
-        // $rsDir = $this->getResourceDir();
-
-        // do something 
+        $this->generator = $generator;
     }
+
+    public function logAction($action,$path,$indent = 1)
+    {
+        $logger = $this->getLogger();
+        if( ! $logger )
+            return;
+        $formatter = $logger->getFormatter();
+        $msg = sprintf( "%-10s %s" , 
+            $formatter->format( $action , 'strong_white' ),
+            $formatter->format( $path,   'white' )
+        );
+        $logger->info( $msg, $indent );
+    }
+
+    public function getLogger()
+    {
+        return $this->generator->getLogger();
+    }
+
+    public function getResourceDir()
+    {
+        return $this->generator->getResourceDir();
+    }
+
 }
 
