@@ -5,9 +5,4 @@ $loader = new Universal\ClassLoader\BasePathClassLoader(array( 'vendor/pear' , '
 $loader->register();
 
 $app = new GenPHP\Application;
-try {
-    $app->run( $argv );
-
-} catch( Exception $e ) {
-    $app->getLogger()->error( $e->getMessage() );
-}
+$app->run( $argv );

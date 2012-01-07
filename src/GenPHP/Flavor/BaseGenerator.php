@@ -101,7 +101,7 @@ abstract class BaseGenerator
 
     public function setResourceDir($dir)
     {
-        $this->resourceDir;
+        $this->resourceDir = $dir;
     }
 
     public function getResourceDir()

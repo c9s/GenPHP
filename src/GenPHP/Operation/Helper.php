@@ -34,7 +34,7 @@ class Helper
 
     static function short_path($path) {
         $curpath = getcwd();
-        return substr($path,strlen($curpath));
+        return substr($path,strlen($curpath) + 1);
     }
 
 }

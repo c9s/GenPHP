@@ -4,7 +4,7 @@ use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 use GenPHP\Operation\Helper;
 
-class CopyDirOperation
+class CopyDirOperation extends Operation
 {
 
     /**

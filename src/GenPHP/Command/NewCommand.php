@@ -32,6 +32,7 @@ class NewCommand extends Command
         $loader = new Flavor\FlavorLoader;
         $generator = $loader->load( $flavorName );
 
+
         $logger->info("Inializing option specs...");
         $generator->options( $specs );
         $generator->setLogger( $this->getLogger() );
@@ -55,6 +56,7 @@ class NewCommand extends Command
         /* pass rest arguments for generation */
         $generator->setOptionResult( $result );
 
+        $logger->info("Running generator...");
         $this->runGenerator( $generator , $result->getArguments() );
         $logger->info("Done");
     }
