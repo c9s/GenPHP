@@ -10,6 +10,16 @@ class Generator extends BaseGenerator
 
     public function generate($name)
     {
-        $this->createDir("flavors/$name/Resources");
+        $paths = GenPHP\Path::get_flavor_paths();
+        foreach( $paths as $path ) {
+            if( file_exists($path) ) {
+                $base = $path . DIRECTORY_SEPARATOR . $name;
+                $this->createDir( $base . DIRECTORY_SEPARATOR . "Resources");
+                $this->render( 'Generator.php.twig',  
+                    $base . DIRECTORY_SEPARATOR . 'Generator.php', 
+                    array( 'name' => $name ) );
+            }
+        }
+        
     }
 }
