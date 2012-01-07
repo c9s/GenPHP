@@ -17,7 +17,7 @@ abstract class Operation
         if( ! $logger )
             return;
         $formatter = $logger->getFormatter();
-        $msg = sprintf( "%-30s %s" , 
+        $msg = sprintf( "%-24s %s" , 
             $formatter->format( $action , 'strong_white' ),
             $formatter->format( $path,   'white' )
         );
