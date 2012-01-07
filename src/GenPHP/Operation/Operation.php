@@ -34,6 +34,5 @@ abstract class Operation
         return $this->generator->getResourceDir();
     }
 
-
 }
 

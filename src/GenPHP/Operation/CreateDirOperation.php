@@ -5,7 +5,7 @@ use GenPHP\Operation\Helper;
 class CreateDirOperation extends Operation
 {
     /**
-     * create directories
+     * create directories operation
      *
      * @param array|string directory path
      */
