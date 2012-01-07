@@ -11,6 +11,17 @@ abstract class Operation
         $this->generator = $generator;
     }
 
+    public function logAction($action,$path,$indent = 1)
+    {
+        $logger = $this->getLogger();
+        $formatter = $logger->getFormatter();
+        $msg = sprintf( "%-10s %s" , 
+            $formatter->format( $action , 'strong_white' ),
+            $formatter->format( $path,   'white' )
+        );
+        $logger->info( $msg, $indent );
+    }
+
     public function getLogger()
     {
         return $this->generator->getLogger();
@@ -20,5 +31,7 @@ abstract class Operation
     {
         return $this->generator->getResourceDir();
     }
+
+
 }
 
