@@ -1,5 +1,7 @@
 <?php 
 namespace GenPHP\Flavor;
+use GenPHP\Flavor\GenericGenerator;
+
 class FlavorLoader 
 {
     /**
@@ -19,11 +21,17 @@ class FlavorLoader
     function loadGeneratorClass($name) 
     {
         foreach( $this->dirs as $dir ) {
-            $p = $dir . DIRECTORY_SEPARATOR . $name . DIRECTORY_SEPARATOR . 'Generator.php';
-            if( file_exists($p) ) {
-                require $p;
+            $flavorDir = $dir . DIRECTORY_SEPARATOR . $name;
+            $generatorFile = $flavorDir . DIRECTORY_SEPARATOR . 'Generator.php';
+            if( file_exists($generatorFile) ) {
+                require $generatorFile;
                 $class = "\\$name\\Generator";
                 return new $class;
+            }
+            else {
+                // use GenericGenerator
+                return $generator = new GenericGenerator( 
+                    $flavorDir . DIRECTORY_SEPARATOR . 'Resources' );
             }
         }
     }

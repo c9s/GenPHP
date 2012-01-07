@@ -5,11 +5,6 @@ use GenPHP\Operation\Helper;
 class CopyOperation extends Operation
 {
 
-    function getLogger()
-    {
-        return $this->generator->getLogger();
-    }
-
     function run($from,$to)
     {
 

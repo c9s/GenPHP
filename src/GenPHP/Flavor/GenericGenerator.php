@@ -1,9 +1,9 @@
 <?php
 namespace GenPHP\Flavor;
 
-class GenericGenerator
+class GenericGenerator extends BaseGenerator
 {
-    function __construct()
+    public function __construct()
     {
     
     }
