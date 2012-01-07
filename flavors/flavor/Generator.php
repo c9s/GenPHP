@@ -5,11 +5,19 @@ use GenPHP\Path;
 
 class Generator extends BaseGenerator
 {
+
     public function brief() { 
-        return "Default Flavor";
+        return "GenPHP flavor generator";
     }
 
-    public function generate($name)
+
+    /**
+     * generate new flavor 
+     *
+     * @param string $name flavor name, lower case, alphabets
+     * @param string $path your code base path
+     */
+    public function generate($name,$path = null)
     {
         $paths = Path::get_flavor_paths();
         foreach( $paths as $path ) {
