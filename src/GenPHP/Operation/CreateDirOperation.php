@@ -7,7 +7,7 @@ class CreateDirOperation extends Operation
 
     function run($dir)
     {
-        $this->getLogger()->info("create $dir",1);
+        $this->logAction('create', $dir);
         Helper::mktree($dir);
     }
 
