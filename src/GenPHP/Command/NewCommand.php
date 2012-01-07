@@ -23,24 +23,20 @@ class NewCommand extends Command
         $loader = new Flavor\FlavorLoader;
         $generator = $loader->load( $flavorName );
 
+        $logger->info("Inializing option specs...");
+        $generator->options( $specs );
+
         $deps = $generator->dependency();
         foreach( $deps as $dep => $options ) {
             /* swap for short dependency name */
-            if( is_integer($dep) )
+            if( is_integer($dep) ) {
                 $dep = $options;
-
+                $options = array();
+            }
             $info->info2( "dependency $dep", 1 );
-            $depGenerator = $loader->load( $dep );
-            $depSpecs   = new OptionSpecCollection;
-            $depOptions = $depGenerator->options( $depSpecs );
-            $depOptionResult = OptionResult::create( 
-                        $depOptions, @$options['options'] , @$options['arguments'] );
-            $depGenerator->setOptionResult( $depOptionResult );
-            $this->runGenerator( $depGenerator , $depOptionResult->getArguments() );
+            $depGenerator = $loader->load( $name );
+            $this->runDepGenerator( $depGenerator , $options );
         }
-
-        $logger->info("Inializing option specs...");
-        $generator->options( $specs );
 
         /* use GetOptionKit to parse options from $args */
         $parser = new OptionParser( $specs );
@@ -53,10 +49,20 @@ class NewCommand extends Command
         $logger->info("Done");
     }
 
+    public function runDepGenerator($depGenerator,$options)
+    {
+        $depSpecs   = new OptionSpecCollection;
+        $depOptions = $depGenerator->options( $depSpecs );
+        $depOptionResult = OptionResult::create( 
+                    $depOptions, @$options['options'] , @$options['arguments'] );
+        $depGenerator->setOptionResult( $depOptionResult );
+        $depGenerator->setLogger( $this->getLogger() );
+        $this->runGenerator( $depGenerator , $depOptionResult->getArguments() );
+    }
+
     public function runGenerator($generator,$args = array()) 
     {
         return call_user_func_array( array($generator,'generate'),$args);
     }
-
 
 }
