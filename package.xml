@@ -11,7 +11,7 @@
     <active>yes</active>
   </lead>
   <date>2012-01-08</date>
-  <time>03:10:34</time>
+  <time>03:12:31</time>
   <version>
     <release>0.1.2</release>
     <api>0.1.2</api>
@@ -47,7 +47,7 @@
       <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="82bff056fddc08c0858b74064559bd03"/>
       <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="650e68bb53d8a1b81b4ae1816219ac13"/>
       <file name="src/GenPHP/Path.php" role="php" md5sum="3f540b80eed5bc46ed5930deea58838e"/>
-      <file name="genphp" role="script" md5sum="cf156e926613ab250240b4b61878a5a0"/>
+      <file name="genphp" role="script" md5sum="ba565d26fa541f258402e8b94361d703"/>
     </dir>
   </contents>
   <dependencies>
