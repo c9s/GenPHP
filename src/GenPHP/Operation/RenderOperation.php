@@ -1,6 +1,8 @@
 <?php
 namespace GenPHP\Operation;
 use GenPHP\Operation\Helper;
+use Twig_Loader_Filesystem;
+use Twig_Environment;
 
 class RenderOperation extends Operation
 {

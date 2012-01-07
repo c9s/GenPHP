@@ -2,7 +2,13 @@
 namespace {{name}};
 use GenPHP\Flavor\BaseGenerator;
 
-class Generator extends BaseGenerator {
+class Generator extends BaseGenerator 
+{
+
+    function brief()
+    {
+        return 'brief for your generator';
+    }
 
     function generate(/* $arg1, $arg2,  */) 
     {

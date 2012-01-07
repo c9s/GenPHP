@@ -1,6 +1,7 @@
 <?php 
 namespace flavor;
 use GenPHP\Flavor\BaseGenerator;
+use GenPHP\Path;
 
 class Generator extends BaseGenerator
 {
@@ -10,7 +11,7 @@ class Generator extends BaseGenerator
 
     public function generate($name)
     {
-        $paths = GenPHP\Path::get_flavor_paths();
+        $paths = Path::get_flavor_paths();
         foreach( $paths as $path ) {
             if( file_exists($path) ) {
                 $base = $path . DIRECTORY_SEPARATOR . $name;

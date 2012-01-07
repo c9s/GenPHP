@@ -109,7 +109,7 @@ abstract class BaseGenerator
         if( $this->resourceDir )
             return $this->resourceDir;
         $refl = new ReflectionObject($this);
-        return $refl->getFilename() . DIRECTORY_SEPARATOR . 'Resources';
+        return dirname($refl->getFilename()) . DIRECTORY_SEPARATOR . 'Resources';
     }
 
 }
