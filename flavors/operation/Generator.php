@@ -1,6 +1,7 @@
 <?php
 namespace operation;
 use GenPHP\Flavor\BaseGenerator;
+use Exception;
 
 class Generator extends BaseGenerator 
 {
@@ -12,6 +13,9 @@ class Generator extends BaseGenerator
 
     function generate($name) 
     {
+        if( ! $name )
+            throw new Exception( "operation name is required." );
+
         /* 
             do generate here:
 

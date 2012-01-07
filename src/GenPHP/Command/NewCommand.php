@@ -5,6 +5,8 @@ use GetOptionKit\GetOptionKit;
 use GetOptionKit\OptionParser;
 use GetOptionKit\OptionSpecCollection;
 use GenPHP\Flavor;
+use Exception;
+use ReflectionObject;
 
 class NewCommand extends Command
 {
@@ -57,6 +59,16 @@ class NewCommand extends Command
         $logger->info("Done");
     }
 
+    public function checkGeneratorParameters($generator,$args)
+    {
+        $refl = new ReflectionObject($generator,$this);
+        $reflMethod = $refl->getMethod('generate');
+        $requiredNumber = $reflMethod->getNumberOfRequiredParameters();
+        if( count($args) < $requiredNumber ) {
+            throw new Exception("Generator requires $requiredNumber arguments.");
+        }
+    }
+
     public function runDepGenerator($depGenerator,$options)
     {
         $depSpecs   = new OptionSpecCollection;
@@ -70,6 +82,7 @@ class NewCommand extends Command
 
     public function runGenerator($generator,$args = array()) 
     {
+        $this->checkGeneratorParameters($generator,$args);
         return call_user_func_array( array($generator,'generate'),$args);
     }
 

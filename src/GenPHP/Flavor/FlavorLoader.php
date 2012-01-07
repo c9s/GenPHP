@@ -2,6 +2,7 @@
 namespace GenPHP\Flavor;
 use GenPHP\Flavor\GenericGenerator;
 use GenPHP\Path;
+use Exception;
 
 class FlavorLoader 
 {
@@ -20,16 +21,20 @@ class FlavorLoader
     {
         foreach( $this->dirs as $dir ) {
             $flavorDir = $dir . DIRECTORY_SEPARATOR . $name;
+            $resourceDir = $flavorDir . DIRECTORY_SEPARATOR . 'Resources';
             $generatorFile = $flavorDir . DIRECTORY_SEPARATOR . 'Generator.php';
             if( file_exists($generatorFile) ) {
                 require $generatorFile;
                 $class = "\\$name\\Generator";
                 return new $class;
             }
-            else {
+            elseif( file_exists($flavorDir) && file_exists($resourceDir) ) {
                 // use GenericGenerator
                 return $generator = new GenericGenerator( 
                     $flavorDir . DIRECTORY_SEPARATOR . 'Resources' );
+            }
+            else {
+                throw new Exception("Flavor $name not found.");
             }
         }
     }
