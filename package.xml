@@ -11,7 +11,7 @@
     <active>yes</active>
   </lead>
   <date>2012-01-08</date>
-  <time>01:29:12</time>
+  <time>01:49:28</time>
   <version>
     <release>0.0.1</release>
     <api>0.0.1</api>
@@ -44,7 +44,6 @@
       <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="82bff056fddc08c0858b74064559bd03"/>
       <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="650e68bb53d8a1b81b4ae1816219ac13"/>
       <file name="src/GenPHP/Path.php" role="php" md5sum="75fca0c103542d3d6ffae6b16e39d12a"/>
-      <file name="genphp.phar" role="script" md5sum="76ae261bd233123396add7a1545d1553"/>
     </dir>
   </contents>
   <dependencies>
@@ -94,7 +93,6 @@
       <install name="src/GenPHP/Operation/WriteJsonOperation.php" as="GenPHP/Operation/WriteJsonOperation.php"/>
       <install name="src/GenPHP/Operation/WriteYamlOperation.php" as="GenPHP/Operation/WriteYamlOperation.php"/>
       <install name="src/GenPHP/Path.php" as="GenPHP/Path.php"/>
-      <install name="genphp.phar" as="genphp.phar"/>
     </filelist>
   </phprelease>
 </package>
