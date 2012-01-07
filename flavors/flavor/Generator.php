@@ -9,6 +9,4 @@ class Generator extends BaseGenerator
         return "Default Flavor";
     }
 
-
-
 }

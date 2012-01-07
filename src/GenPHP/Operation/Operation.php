@@ -1,5 +1,6 @@
 <?php 
 namespace GenPHP\Operation;
+use ReflectionObject;
 
 abstract class Operation 
 {
@@ -10,5 +11,10 @@ abstract class Operation
         $this->generator = $generator;
     }
 
+    public function getResourceDir()
+    {
+        $refl = new ReflectionObject( $this->generator );
+        return $refl->getFilename() . DIRECTORY_SEPARATOR . 'resources';
+    }
 }
 
