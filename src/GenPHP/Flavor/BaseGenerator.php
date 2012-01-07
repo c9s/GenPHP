@@ -1,10 +1,18 @@
 <?php 
 namespace GenPHP\Flavor;
+use GenPHP\Operation\OperationMixin;
 
 abstract class BaseGenerator 
 {
     public $options;
     public $logger;
+
+    public $mixins = array();
+
+    public function __construct()
+    {
+        $this->mixins[] = new OperationMixin;
+    }
 
     abstract function brief();
 
@@ -25,17 +33,24 @@ abstract class BaseGenerator
     }
 
 
-
-
     /**
      * initialize options
      */
     public function options($opts)  
     {
+
     }
 
 
-
+    public function __call($method,$args)
+    {
+        /* call mixins */
+        foreach( $this->mixins as $mixin ) {
+            if( method_exists( array($mixin, $method) ) ) {
+                return call_user_func_array( array($mixin,$method),$args);
+            }
+        }
+    }
 
     public function setOptionResult($result) 
     {
@@ -59,6 +74,9 @@ abstract class BaseGenerator
 
     public function generate()
     {
+
     }
+
+
 }
 
