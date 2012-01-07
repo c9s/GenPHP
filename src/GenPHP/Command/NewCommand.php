@@ -8,6 +8,13 @@ use GenPHP\Flavor;
 
 class NewCommand extends Command
 {
+
+    function brief()
+    {
+        return 'generate from flavor';
+    }
+
+
     function execute($args)
     {
         $logger = $this->getLogger();

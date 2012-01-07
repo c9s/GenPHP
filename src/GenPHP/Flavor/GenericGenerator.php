@@ -8,7 +8,6 @@ class GenericGenerator extends BaseGenerator
         $this->setResourceDir( $resourceDir );
     }
 
-
     public function generate()
     {
         // just recursively copy directory into current working directory.
