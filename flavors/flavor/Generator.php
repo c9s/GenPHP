@@ -2,6 +2,7 @@
 namespace flavor;
 use GenPHP\Flavor\BaseGenerator;
 use GenPHP\Path;
+use Exception;
 
 class Generator extends BaseGenerator
 {
@@ -27,6 +28,8 @@ class Generator extends BaseGenerator
                 $this->createDir($resourceDir);
 
                 if( $codeBasePath ) {
+                    if( ! file_exists($codeBasePath) )
+                        throw new Exception("$codeBasePath doesn't exist.");
                     $this->copyDir( $codeBasePath , $resourceDir );
                 }
 
