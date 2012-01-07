@@ -8,19 +8,24 @@ class Helper
             mkdir( $path , 0755 , true );
     }
 
-    static function mkdirForFile($path) {
+    static function mkdir_for_file($path) {
         $dir = dirname($path);
         self::mktree( $dir );
     }
 
-    static function putFile($path,$content) {
-        self::mkdirForFile( $path );
+    static function put($path,$content) {
+        self::mkdir_for_file( $path );
         file_put_contents( $path , $content );
     }
 
-    static function copyFile($from,$to) {
-        Helper::mkdirForFile($to);
+    static function copy($from,$to) {
+        Helper::mkdir_for_file($to);
         copy($from,$to);
+    }
+
+    static function short_path($path) {
+        $curpath = getcwd();
+        return substr($path,strlen($curpath));
     }
 
 }

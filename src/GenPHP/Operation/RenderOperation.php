@@ -20,6 +20,6 @@ class RenderOperation extends Operation
         $output = $template->render($args);
 
         $this->logAction('render',$target);
-        Helper::putFile( $target, $output );
+        Helper::put( $target, $output );
     }
 }
