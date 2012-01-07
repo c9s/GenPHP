@@ -32,7 +32,7 @@ class Generator extends BaseGenerator
          */
         $className = ucfirst($name) . 'Operation';
         $this->render( 'Operation.php.twig' , "src/GenPHP/Operation/$className.php" , array( 
-            'class' => $className,
+            'className' => $className,
         ));
     }
 
