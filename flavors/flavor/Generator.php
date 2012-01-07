@@ -17,18 +17,23 @@ class Generator extends BaseGenerator
      * @param string $name flavor name, lower case, alphabets
      * @param string $path your code base path
      */
-    public function generate($name,$path = null)
+    public function generate($name,$codeBasePath = null)
     {
         $paths = Path::get_flavor_paths();
         foreach( $paths as $path ) {
             if( file_exists($path) ) {
                 $base = $path . DIRECTORY_SEPARATOR . $name;
-                $this->createDir( $base . DIRECTORY_SEPARATOR . "Resource");
+                $resourceDir = $base . DIRECTORY_SEPARATOR . "Resource";
+                $this->createDir($resourceDir);
+
+                if( $codeBasePath ) {
+                    $this->copyDir( $codeBasePath , $resourceDir );
+                }
+
                 $this->render( 'Generator.php.twig',  
                     $base . DIRECTORY_SEPARATOR . 'Generator.php', 
                     array( 'name' => $name ) );
             }
         }
-        
     }
 }

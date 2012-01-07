@@ -6,7 +6,7 @@ which helps you to avoid do repeating jobs.
 GenPHP can generate anything you defined in the flavor, 
 In generator class, you can use the simple generator API to generate your code.
 
-By using GenPHP, you can also seperate your global generator, project-scope generator.
+By using GenPHP, you can also seperate your global generator (`~/.genphp/flavors`), project-scope generator (`./flavors`).
 
 GenPHP is using Twig template engine from Symfony.
 
