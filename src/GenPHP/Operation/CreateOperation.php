@@ -7,8 +7,8 @@ class CreateOperation extends Operation
 
     function run($file,$content)
     {
-        Helper::mkdirForFile( $file );
-        file_put_contents( $file , $content );
+        $this->logAction('create',$file);
+        Helper::putFile( $file, $content );
     }
 
 }
