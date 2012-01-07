@@ -1,5 +1,6 @@
 <?php
 namespace GenPHP\Operation;
+use Exception;
 
 class Helper 
 {
@@ -14,11 +15,19 @@ class Helper
     }
 
     static function put($path,$content) {
+        if( file_exists($path) ) {
+            throw new Exception( "$path is already there" );
+        }
+
         self::mkdir_for_file( $path );
         file_put_contents( $path , $content );
     }
 
     static function copy($from,$to) {
+        if( file_exists($to) ) {
+            throw new Exception( "$to is already there" );
+        }
+
         Helper::mkdir_for_file($to);
         copy($from,$to);
     }
