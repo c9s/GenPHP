@@ -17,6 +17,7 @@ class OperationMixinTest extends PHPUnit_Framework_TestCase
         ok( file_exists('/var/tmp/copy_2') );
         unlink( '/var/tmp/copy_1' );
         unlink( '/var/tmp/copy_2' );
+        unlink( '/var/tmp/copy_1' );
     }
 }
 

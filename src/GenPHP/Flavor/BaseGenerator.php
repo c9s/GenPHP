@@ -2,6 +2,24 @@
 namespace GenPHP\Flavor;
 use GenPHP\Operation\OperationMixin;
 
+
+/**
+ * Generator base class
+ *
+ * in generator, you can do this:
+ *
+ *
+ * function generate() 
+ * {
+ *      $this->renderTo( 'from_file.php' , 'path/to/file.php' );
+ *      $this->copy( 'from_file.php' , 'path/to/file.php' );
+ *      $this->rename( 'from_file.php' , 'new_name.php' );
+ *      $this->delete( 'old/file.php' );
+ *      $this->writeYaml( 'yaml' , array( .... ) );
+ *      $this->writeJson( 'json' , array( .... ) );
+ * }
+ *
+ */
 abstract class BaseGenerator 
 {
     public $options;
