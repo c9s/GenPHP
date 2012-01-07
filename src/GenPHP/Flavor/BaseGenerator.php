@@ -25,6 +25,8 @@ abstract class BaseGenerator
     }
 
 
+
+
     /**
      * initialize options
      */

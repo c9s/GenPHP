@@ -4,5 +4,9 @@ require 'vendor/pear/Universal/ClassLoader/BasePathClassLoader.php';
 $loader = new Universal\ClassLoader\BasePathClassLoader(array( 'vendor/pear' , 'src' ));
 $loader->register();
 
-$app = new GenPHP\Application;
-$app->run( $argv );
+try {
+    $app = new GenPHP\Application;
+    $app->run( $argv );
+} catch( Exception $e ) {
+
+}
