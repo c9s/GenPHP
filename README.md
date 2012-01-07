@@ -1,7 +1,7 @@
 GenPHP
 ======
 GenPHP is a powerful, flexible PHP code/project generator,
-which helps you to avoid do repeating jobs.
+which helps you to avoid repeating jobs.
 
 GenPHP can generate anything you defined in the flavor, 
 In generator class, you can use the simple generator API to generate your code.
