@@ -7,3 +7,4 @@ onion.phar -d compile \
     --executable \
     --output genphp.phar
 mv -v genphp.phar genphp
+chmod +x genphp
