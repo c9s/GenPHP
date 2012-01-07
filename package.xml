@@ -11,7 +11,7 @@
     <active>yes</active>
   </lead>
   <date>2012-01-08</date>
-  <time>02:26:42</time>
+  <time>02:44:10</time>
   <version>
     <release>0.1.0</release>
     <api>0.1.0</api>
@@ -27,25 +27,26 @@
       <file name="tests/GenPHP/Operation/OperationMixinTest.php" role="test" md5sum="d1a0311d4a7b926fce03bb0be82a7840"/>
       <file name="tests/bootstrap.php" role="test" md5sum="bca4c6cc10a138d0e22e365098c174d0"/>
       <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
-      <file name="src/GenPHP/Application.php" role="php" md5sum="b5b1dfa3541e6e8144d14f21c19c40f0"/>
+      <file name="src/GenPHP/Application.php" role="php" md5sum="831c7ba95f5cf2cb9aa861334c7d0392"/>
+      <file name="src/GenPHP/Command/InitCommand.php" role="php" md5sum="1ed6e504356e607c31c197851ea93e7d"/>
       <file name="src/GenPHP/Command/ListCommand.php" role="php" md5sum="bd61bc2d330c29a20fa28aec8c275025"/>
-      <file name="src/GenPHP/Command/NewCommand.php" role="php" md5sum="8288818b0946a3c6a733b38d30f6e88f"/>
-      <file name="src/GenPHP/Flavor/BaseGenerator.php" role="php" md5sum="d852bb7f22eb32525a6ddb997e0fdc9c"/>
+      <file name="src/GenPHP/Command/NewCommand.php" role="php" md5sum="6896be7cac959a3737b8bcf91fac94ec"/>
+      <file name="src/GenPHP/Flavor/BaseGenerator.php" role="php" md5sum="0a6646590fa6c3489a59f244dbe6dfef"/>
       <file name="src/GenPHP/Flavor/FlavorLoader.php" role="php" md5sum="97160c99fcae6c91ee5435ec26ad2eca"/>
-      <file name="src/GenPHP/Flavor/GenericGenerator.php" role="php" md5sum="3c83bd53ce9d29705714089cbc417d21"/>
-      <file name="src/GenPHP/Operation/CopyDirOperation.php" role="php" md5sum="42b70851f555c1b43df5d8f76abe3958"/>
+      <file name="src/GenPHP/Flavor/GenericGenerator.php" role="php" md5sum="cf946053e65be00d1e137a3997dfeda7"/>
+      <file name="src/GenPHP/Operation/CopyDirOperation.php" role="php" md5sum="9c80caed74ab0966a69d6bd5f901520c"/>
       <file name="src/GenPHP/Operation/CopyOperation.php" role="php" md5sum="92e027145ffbeebd3355546af12fad8f"/>
       <file name="src/GenPHP/Operation/CreateDirOperation.php" role="php" md5sum="97fa80d5b43b611f918df4be6435886c"/>
       <file name="src/GenPHP/Operation/CreateOperation.php" role="php" md5sum="0d0523b1ad93423f4ba147407dd604be"/>
-      <file name="src/GenPHP/Operation/Helper.php" role="php" md5sum="6d1c8c690830870821d09df5397de429"/>
-      <file name="src/GenPHP/Operation/Operation.php" role="php" md5sum="2dba683dfbacf9890e7cd65228c2ce7c"/>
+      <file name="src/GenPHP/Operation/Helper.php" role="php" md5sum="a814713ff42b1d31ad64c48ec692dbd4"/>
+      <file name="src/GenPHP/Operation/Operation.php" role="php" md5sum="c8d5a50e9d56bca3a89f8662fd0fa0d2"/>
       <file name="src/GenPHP/Operation/OperationMixin.php" role="php" md5sum="e8a599414c252f5c680925078772c8d2"/>
       <file name="src/GenPHP/Operation/RenderOperation.php" role="php" md5sum="9806da64cb345030f18f55aace4cc2fc"/>
       <file name="src/GenPHP/Operation/TouchOperation.php" role="php" md5sum="b93ad4df62df68ec6a85f36b5ed6e338"/>
       <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="82bff056fddc08c0858b74064559bd03"/>
       <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="650e68bb53d8a1b81b4ae1816219ac13"/>
-      <file name="src/GenPHP/Path.php" role="php" md5sum="75fca0c103542d3d6ffae6b16e39d12a"/>
-      <file name="genphp" role="script" md5sum="dfd90a312060e7dba9ab6ab1112cf0ac"/>
+      <file name="src/GenPHP/Path.php" role="php" md5sum="3f540b80eed5bc46ed5930deea58838e"/>
+      <file name="genphp" role="script" md5sum="d9f4e9f56412e64e0fbbc55abee7a691"/>
     </dir>
   </contents>
   <dependencies>
@@ -79,6 +80,7 @@
       <install name="tests/bootstrap.php" as="bootstrap.php"/>
       <install name="tests/helpers.php" as="helpers.php"/>
       <install name="src/GenPHP/Application.php" as="GenPHP/Application.php"/>
+      <install name="src/GenPHP/Command/InitCommand.php" as="GenPHP/Command/InitCommand.php"/>
       <install name="src/GenPHP/Command/ListCommand.php" as="GenPHP/Command/ListCommand.php"/>
       <install name="src/GenPHP/Command/NewCommand.php" as="GenPHP/Command/NewCommand.php"/>
       <install name="src/GenPHP/Flavor/BaseGenerator.php" as="GenPHP/Flavor/BaseGenerator.php"/>

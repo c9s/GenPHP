@@ -13,12 +13,17 @@ class Path
         }
     }
 
+    static function get_home_flavor_path()
+    {
+        return getenv('HOME') . DIRECTORY_SEPARATOR . '.genphp' . DIRECTORY_SEPARATOR . 'flavors';
+    }
+
     static function get_flavor_paths()
     {
         return array( 
             'flavors',
             '.flavors',
-            getenv('HOME') . DIRECTORY_SEPARATOR . '.genphp' . DIRECTORY_SEPARATOR . 'flavors'
+            self::get_home_flavor_path(),
         );
     }
 }

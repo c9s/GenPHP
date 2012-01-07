@@ -13,6 +13,7 @@ class Application extends CLIApp
     {
         $this->registerCommand('new');
         $this->registerCommand('list');
+        $this->registerCommand('init');
         parent::init();
     }
 
