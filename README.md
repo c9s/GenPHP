@@ -1,13 +1,28 @@
 GenPHP
 ======
-GenPHP is a powerful, flexible PHP (project/code/library/unit test) generator, which helps you to
-avoid do repeating jobs.
+GenPHP is a powerful, flexible PHP (project/code/library/unit test) generator,
+which helps you to avoid do repeating jobs.
 
-To generate a generic PHP project structure, GenPHP provides a built-in template for this:
 
+Installation
+------------
+Download the genphp binary, and put it into your path.
+
+    $ curl https://github.com/c9s/GenPHP/raw/master/genphp > genphp
+    $ chmod +x genphp
+
+Or install it from PEAR channel
+
+    $ pear install pear.corneltek.com/GenPHP
+
+Usage
+-----
+
+To generate a generic PHP project structure, GenPHP provides a built-in
+template for this:
 
 ```bash
-$ genphp.phar new project Foo
+$ genphp new project Foo
 
     create
     create      src
@@ -20,11 +35,23 @@ $ genphp.phar new project Foo
     create      tests
 ```
 
+genphp will look for flavor in `./flavors`, `./.flavors`, `~/.genphp/flavors`, you 
+can define your generator in those paths.
+
+to generate a new flavor:
+
+```bash
+$ genphp new flavor flavorName
+```
+
 To list schemas
 
 ```bash
 $ genphp list
 ```
+
+please check `./flavors` directory of this repository
+for more details.
 
 Operations
 ----------
