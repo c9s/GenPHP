@@ -14,8 +14,8 @@ class Helper
         self::mktree( $dir );
     }
 
-    static function put($path,$content) {
-        if( file_exists($path) ) {
+    static function put($path,$content,$force = false) {
+        if( ! $force && file_exists($path) ) {
             throw new Exception( "$path is already there" );
         }
 
@@ -23,8 +23,8 @@ class Helper
         file_put_contents( $path , $content );
     }
 
-    static function copy($from,$to) {
-        if( file_exists($to) ) {
+    static function copy($from,$to,$force = false) {
+        if( ! $force && file_exists($to) ) {
             throw new Exception( "$to is already there" );
         }
 
