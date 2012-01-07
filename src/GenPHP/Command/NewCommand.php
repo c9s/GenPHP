@@ -61,11 +61,17 @@ class NewCommand extends Command
 
     public function checkGeneratorParameters($generator,$args)
     {
-        $refl = new ReflectionObject($generator,$this);
+        $refl = new ReflectionObject($generator);
         $reflMethod = $refl->getMethod('generate');
         $requiredNumber = $reflMethod->getNumberOfRequiredParameters();
         if( count($args) < $requiredNumber ) {
-            throw new Exception("Generator requires $requiredNumber arguments.");
+            $this->getLogger()->error( "Generator requires $requiredNumber arguments." );
+            $params = $reflMethod->getParameters();
+            foreach( $params as $param ) {
+                $this->getLogger()->error( 
+                    $param->getPosition() . ' => $' . $param->getName() , 1 );
+            }
+            throw new Exception;
         }
     }
 
