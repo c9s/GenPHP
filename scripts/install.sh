@@ -8,10 +8,10 @@ mkdir ~/bin
 mkdir -p ~/.genphp/flavors
 cp -v genphp ~/bin
 if [[ -e ~/.zshrc ]] ; then
-    echo "PATH=\$PATH:~/bin" >> ~/.zshrc
+    echo "export PATH=\$PATH:~/bin" >> ~/.zshrc
     source ~/.zshrc
 elif [[ -e ~/.bashrc ]] ; then
-    echo "PATH=\$PATH:~/bin" >> ~/.bashrc
+    echo "export PATH=\$PATH:~/bin" >> ~/.bashrc
     source ~/.bashrc
 fi
 echo "Done"
