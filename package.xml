@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
+  <name>GenPHP</name>
+  <channel>pear.corneltek.com</channel>
+  <summary>PHP Code generator</summary>
+  <description>PHP Code Generator</description>
+  <lead>
+    <name>Yo-An Lin</name>
+    <user/>
+    <email>cornelius.howl@gmail.com</email>
+    <active>yes</active>
+  </lead>
+  <date>2012-01-08</date>
+  <time>13:29:30</time>
+  <version>
+    <release>0.1.2</release>
+    <api>0.1.2</api>
+  </version>
+  <stability>
+    <release>beta</release>
+    <api>beta</api>
+  </stability>
+  <license>PHP</license>
+  <notes>-</notes>
+  <contents>
+    <dir name="/">
+      <file name="tests/GenPHP/Flavor/FlavorDirectoryTest.php" role="test" md5sum="8f1fe41daddd3e6a929a621a59273432"/>
+      <file name="tests/GenPHP/Operation/OperationMixinTest.php" role="test" md5sum="d1a0311d4a7b926fce03bb0be82a7840"/>
+      <file name="tests/bootstrap.php" role="test" md5sum="bca4c6cc10a138d0e22e365098c174d0"/>
+      <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
+      <file name="src/GenPHP/Application.php" role="php" md5sum="a990544eaafff7408ce947e536704525"/>
+      <file name="src/GenPHP/Command/InitCommand.php" role="php" md5sum="aa86b85b754b48519f6ae79f67057f91"/>
+      <file name="src/GenPHP/Command/InstallCommand.php" role="php" md5sum="f6a21e49e283b323e079c312d3c2aad1"/>
+      <file name="src/GenPHP/Command/ListCommand.php" role="php" md5sum="f4ee750d111d9d5a9090832d720da477"/>
+      <file name="src/GenPHP/Command/NewCommand.php" role="php" md5sum="7e75e65f73f4123658c4b279fb3c1858"/>
+      <file name="src/GenPHP/Flavor/BaseGenerator.php" role="php" md5sum="6c9ede05cce00472e1a1543002fa1f8e"/>
+      <file name="src/GenPHP/Flavor/FlavorDirectory.php" role="php" md5sum="38b296fa5c142224a5a480301f3239db"/>
+      <file name="src/GenPHP/Flavor/FlavorLoader.php" role="php" md5sum="0dfff0244fca8196390e167abc36fdf2"/>
+      <file name="src/GenPHP/Flavor/GenericGenerator.php" role="php" md5sum="cf946053e65be00d1e137a3997dfeda7"/>
+      <file name="src/GenPHP/Operation/CopyDirOperation.php" role="php" md5sum="6682bc7115db6f96e81a2c10193e0dce"/>
+      <file name="src/GenPHP/Operation/CopyOperation.php" role="php" md5sum="92e027145ffbeebd3355546af12fad8f"/>
+      <file name="src/GenPHP/Operation/CreateDirOperation.php" role="php" md5sum="97fa80d5b43b611f918df4be6435886c"/>
+      <file name="src/GenPHP/Operation/CreateOperation.php" role="php" md5sum="0d0523b1ad93423f4ba147407dd604be"/>
+      <file name="src/GenPHP/Operation/Helper.php" role="php" md5sum="296def3ca0b5f6a18fdfb1e590e217ea"/>
+      <file name="src/GenPHP/Operation/Operation.php" role="php" md5sum="c8d5a50e9d56bca3a89f8662fd0fa0d2"/>
+      <file name="src/GenPHP/Operation/OperationMixin.php" role="php" md5sum="182bc4ff0a43d196563a8950c2339e8c"/>
+      <file name="src/GenPHP/Operation/RenderOperation.php" role="php" md5sum="9806da64cb345030f18f55aace4cc2fc"/>
+      <file name="src/GenPHP/Operation/TouchOperation.php" role="php" md5sum="b93ad4df62df68ec6a85f36b5ed6e338"/>
+      <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="82bff056fddc08c0858b74064559bd03"/>
+      <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="650e68bb53d8a1b81b4ae1816219ac13"/>
+      <file name="src/GenPHP/Path.php" role="php" md5sum="3f540b80eed5bc46ed5930deea58838e"/>
+      <file name="genphp" role="script" md5sum="cb0cbe121a30d99dfa1d1c19ea69e3eb"/>
+    </dir>
+  </contents>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3</min>
+      </php>
+      <pearinstaller>
+        <min>1.4.1</min>
+      </pearinstaller>
+      <package>
+        <name>Twig</name>
+        <channel>pear.twig-project.org</channel>
+        <min>0.0.0</min>
+      </package>
+      <package>
+        <name>Universal</name>
+        <channel>pear.corneltek.com</channel>
+        <min>0.0.0</min>
+      </package>
+      <package>
+        <name>CLIFramework</name>
+        <channel>pear.corneltek.com</channel>
+        <min>0.0.0</min>
+      </package>
+    </required>
+  </dependencies>
+  <phprelease>
+    <filelist>
+      <install name="tests/GenPHP/Flavor/FlavorDirectoryTest.php" as="GenPHP/Flavor/FlavorDirectoryTest.php"/>
+      <install name="tests/GenPHP/Operation/OperationMixinTest.php" as="GenPHP/Operation/OperationMixinTest.php"/>
+      <install name="tests/bootstrap.php" as="bootstrap.php"/>
+      <install name="tests/helpers.php" as="helpers.php"/>
+      <install name="src/GenPHP/Application.php" as="GenPHP/Application.php"/>
+      <install name="src/GenPHP/Command/InitCommand.php" as="GenPHP/Command/InitCommand.php"/>
+      <install name="src/GenPHP/Command/InstallCommand.php" as="GenPHP/Command/InstallCommand.php"/>
+      <install name="src/GenPHP/Command/ListCommand.php" as="GenPHP/Command/ListCommand.php"/>
+      <install name="src/GenPHP/Command/NewCommand.php" as="GenPHP/Command/NewCommand.php"/>
+      <install name="src/GenPHP/Flavor/BaseGenerator.php" as="GenPHP/Flavor/BaseGenerator.php"/>
+      <install name="src/GenPHP/Flavor/FlavorDirectory.php" as="GenPHP/Flavor/FlavorDirectory.php"/>
+      <install name="src/GenPHP/Flavor/FlavorLoader.php" as="GenPHP/Flavor/FlavorLoader.php"/>
+      <install name="src/GenPHP/Flavor/GenericGenerator.php" as="GenPHP/Flavor/GenericGenerator.php"/>
+      <install name="src/GenPHP/Operation/CopyDirOperation.php" as="GenPHP/Operation/CopyDirOperation.php"/>
+      <install name="src/GenPHP/Operation/CopyOperation.php" as="GenPHP/Operation/CopyOperation.php"/>
+      <install name="src/GenPHP/Operation/CreateDirOperation.php" as="GenPHP/Operation/CreateDirOperation.php"/>
+      <install name="src/GenPHP/Operation/CreateOperation.php" as="GenPHP/Operation/CreateOperation.php"/>
+      <install name="src/GenPHP/Operation/Helper.php" as="GenPHP/Operation/Helper.php"/>
+      <install name="src/GenPHP/Operation/Operation.php" as="GenPHP/Operation/Operation.php"/>
+      <install name="src/GenPHP/Operation/OperationMixin.php" as="GenPHP/Operation/OperationMixin.php"/>
+      <install name="src/GenPHP/Operation/RenderOperation.php" as="GenPHP/Operation/RenderOperation.php"/>
+      <install name="src/GenPHP/Operation/TouchOperation.php" as="GenPHP/Operation/TouchOperation.php"/>
+      <install name="src/GenPHP/Operation/WriteJsonOperation.php" as="GenPHP/Operation/WriteJsonOperation.php"/>
+      <install name="src/GenPHP/Operation/WriteYamlOperation.php" as="GenPHP/Operation/WriteYamlOperation.php"/>
+      <install name="src/GenPHP/Path.php" as="GenPHP/Path.php"/>
+      <install name="genphp" as="genphp"/>
+    </filelist>
+  </phprelease>
+</package>
