@@ -22,8 +22,95 @@ After installation, you can run `list` command to list your flavors,
 You can put your flavor (generator) in global flavor path (`~/.genphp/flavors`) or 
 your current project flavor path (`./flavors` or `./.flavors`).
 
-    $ genphp list
+    ~GenPHP $ genphp list
 
+    Available flavors:
+        command     flavors
+        flavor      flavors
+        operation   flavors
+        phpunit     flavors
+        project     flavors
+        flavor      /Users/c9s/.genphp/flavors
+        phpunit     /Users/c9s/.genphp/flavors
+
+To create your flavor from your codebase in your project, type:
+
+    $ mkdir flavors
+    $ genphp new flavor foo ~/path/to/codebase
+
+    Loading flavor...
+    Inializing option specs...
+    Running generator...
+        create        flavors/foo/Resource
+        create        flavors/foo/Resource/file1
+        create        flavors/foo/Resource/file2
+        create        flavors/foo/Resource/file3
+    Done
+
+Then you can see those created files files, it's using GenericGenerator to copy
+`flavors/foo/Resource` to current directory.
+
+For more complex usage, to create your own generator, just run:
+
+    $ genphp new flavor foo
+
+    Loading flavor...
+    Inializing option specs...
+    Running generator...
+        create        flavors/foo/Resource
+        render        flavors/foo/Generator.php
+    Done
+
+Create new flavor without codebase path, then open the `Generator.php` file, write your
+generator actions in the `generate` function.
+
+```php
+<?php
+class Generator {
+    public function generate($argument1,$argument2) {
+
+    }
+}
+```
+
+Put your favorite files into `flavors/foo/Resource`, then you can write operation code in PHP.
+
+To copy directory recursively from flavors/foo/Resource/from/path to to/path
+
+    $this->copyDir('from/path','to/path');  
+
+To touch a file
+
+    $this->touch('path/to/touch');          
+
+To create a new file with content
+
+    $this->create('path/to/file', 'file content' );         
+
+To copy a file, copy path/file1 from Resource dir to file2
+
+    $this->copy( 'path/file1' , 'file2' );
+
+To load templateName.php.twig template from flavors/foo/Resource 
+and render the code template with variables to a file:
+
+    $this->render('templateName.php.twig','path/to/file', array(
+        'className' => $className
+    ));
+
+To write a json file
+
+    $this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+
+To write a yaml file
+
+    $this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+
+Once you have done, You can run `new` command to generate your flavor:
+
+    $ genphp new foo argument1 argument2
+
+And your code is generated.
 
 Command Usage
 -------------
