@@ -17,7 +17,7 @@ cp -v genphp ~/bin
 if [[ -e ~/.zshrc && -z $(grep GenPHP ~/.zshrc) ]] ; then
     echo "# GenPHP" >> ~/.zshrc
     echo "export PATH=\$PATH:~/bin" >> ~/.zshrc
-elif [[ -e ~/.bashrc ]] ; then
+elif [[ -e ~/.bashrc && -z $(grep GenPHP ~/.bashrc) ]] ; then
     echo "# GenPHP" >> ~/bashrc
     echo "export PATH=\$PATH:~/bin" >> ~/.bashrc
 fi

@@ -12,17 +12,21 @@ GenPHP is using Twig template engine from Symfony.
 
 Installation
 ------------
-Download the genphp binary, and put it into your path.
+Copy this line to install genphp:
 
-    $ curl -O https://raw.github.com/c9s/GenPHP/master/genphp
-    $ chmod +x genphp
-
-Or install it from PEAR channel
-
-    $ pear install pear.corneltek.com/GenPHP
+    $ curl https://raw.github.com/c9s/GenPHP/master/scripts/install.sh | sh
 
 Usage
 -----
+After installation, you can run `list` command to list your flavors, 
+You can put your flavor (generator) in global flavor path (`~/.genphp/flavors`) or 
+your current project flavor path (`./flavors` or `./.flavors`).
+
+    $ genphp list
+
+
+Command Usage
+-------------
 
 To generate a generic PHP project structure, GenPHP provides a built-in
 template for this:
