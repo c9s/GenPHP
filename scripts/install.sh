@@ -5,10 +5,11 @@ git clone git://github.com/c9s/GenPHP.git
 cd GenPHP
 ./genphp install flavors/flavor
 mkdir ~/bin
+mkdir -p ~/.genphp/flavors
 cp -v genphp ~/bin
 if [[ -e ~/.zshrc ]] ; then
     echo "PATH=\$PATH:~/bin" >> ~/.zshrc
-    source ~/zshrc
+    source ~/.zshrc
 elif [[ -e ~/.bashrc ]] ; then
     echo "PATH=\$PATH:~/bin" >> ~/.bashrc
     source ~/.bashrc
