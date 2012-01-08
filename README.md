@@ -68,7 +68,8 @@ generator actions in the `generate` function.
 ```php
 <?php
 class Generator {
-    public function generate($argument1,$argument2) {
+    function brief() { return 'your generator brief'; }
+    function generate($argument1,$argument2) {
 
     }
 }
