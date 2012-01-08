@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir tmp
 cd tmp
-git clone https://c9s@github.com/c9s/GenPHP.git
+git clone git://github.com/c9s/GenPHP.git
 cd GenPHP
 ./genphp install flavors/flavor
 mkdir ~/bin
