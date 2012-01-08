@@ -79,44 +79,66 @@ Put your favorite files into `flavors/foo/Resource`, then you can write operatio
 
 To copy directory recursively from flavors/foo/Resource/from/path to to/path
 
-    $this->copyDir('from/path','to/path');  
+```php
+$this->copyDir('from/path','to/path');  
+```
 
 To touch a file
 
-    $this->touch('path/to/touch');          
+```php
+$this->touch('path/to/touch');          
+```
 
 To create a new file with content
 
-    $this->create('path/to/file', 'file content' );         
+```php
+$this->create('path/to/file', 'file content' );         
+```
 
 To copy a file, copy path/file1 from Resource dir to file2
 
-    $this->copy( 'path/file1' , 'file2' );
+```php
+$this->copy( 'path/file1' , 'file2' );
+```
 
 To create a directory:
 
-    $this->createDir( 'path/to/directory' );
+```php
+$this->createDir( 'path/to/directory' );
+```
 
 To load templateName.php.twig template from flavors/foo/Resource 
 and render the code template with variables to a file:
 
-    $this->render('templateName.php.twig','path/to/file', array(
-        'className' => $className
-    ));
+```php
+$this->render('templateName.php.twig','path/to/file', array(
+    'className' => $className
+));
+```
 
 To write a json file
 
-    $this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+```php
+$this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+```
 
 To write a yaml file
 
-    $this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+```php
+$this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+```
 
 Once you have done, You can run `new` command to generate your flavor:
 
     $ genphp new foo argument1 argument2
 
 And your code is generated.
+
+If you want your flavor be global (system-wide), you can run install command:
+
+    $ genphp install flavors/foo
+
+This will install flavor to your global flavor path.
 
 Command Usage
 -------------
