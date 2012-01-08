@@ -15,8 +15,8 @@ class CopyDirOperation extends Operation
      */
     public function run($from,$to) 
     {
-        $from = realpath($from);
-        $to   = realpath($to);
+        $from = realpath($from) ?: $from;
+        $to   = realpath($to) ?: $to;
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($from),
             RecursiveIteratorIterator::SELF_FIRST);
 
