@@ -20,7 +20,7 @@ Usage
 -----
 After installation, you can run `list` command to list your flavors, 
 You can put your flavor (generator) in global flavor path (`~/.genphp/flavors`) or 
-your current project flavor path (`./flavors` or `./.flavors`).
+your current project flavor path (`./flavors` or `./.flavors`), for example:
 
     ~GenPHP $ genphp list
 
@@ -35,6 +35,7 @@ your current project flavor path (`./flavors` or `./.flavors`).
 
 To create your flavor from your codebase in your project, type:
 
+    $ cd your_project
     $ mkdir flavors
     $ genphp new flavor foo ~/path/to/codebase
 
@@ -90,6 +91,10 @@ To create a new file with content
 To copy a file, copy path/file1 from Resource dir to file2
 
     $this->copy( 'path/file1' , 'file2' );
+
+To create a directory:
+
+    $this->createDir( 'path/to/directory' );
 
 To load templateName.php.twig template from flavors/foo/Resource 
 and render the code template with variables to a file:
