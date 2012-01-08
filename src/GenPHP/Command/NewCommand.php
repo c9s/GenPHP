@@ -45,6 +45,8 @@ class NewCommand extends Command
         }
 
         /* use GetOptionKit to parse options from $args */
+        $args = func_get_args();
+        array_shift($args);
         $parser = new OptionParser( $specs );
         $result = $parser->parse( $args );
 

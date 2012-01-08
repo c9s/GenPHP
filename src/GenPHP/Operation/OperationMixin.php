@@ -18,7 +18,8 @@ class OperationMixin
     public function __call($method,$args)
     {
         $class = '\\GenPHP\\Operation\\' . ucfirst($method) . 'Operation';
-        spl_autoload_call( $class );
+        if( ! class_exists($class) )
+            spl_autoload_call( $class );
         if( class_exists($class) ) {
             $operation = new $class( $this->self );
             call_user_func_array( array($operation,'run') , $args );

@@ -13,25 +13,25 @@ class Helper
         }
     }
 
+    static function prevent_overwrite($path) 
+    {
+        if( file_exists($path) ) {
+            throw new Exception( "$path is already there" );
+        }
+    }
+
     static function mkdir_for_file($path) {
         $dir = dirname($path);
         self::mktree( $dir );
     }
 
     static function put($path,$content,$force = false) {
-        if( ! $force && file_exists($path) ) {
-            throw new Exception( "$path is already there" );
-        }
 
         self::mkdir_for_file( $path );
         file_put_contents( $path , $content );
     }
 
     static function copy($from,$to,$force = false) {
-        if( ! $force && file_exists($to) ) {
-            throw new Exception( "$to is already there" );
-        }
-
         Helper::mkdir_for_file($to);
         copy($from,$to);
     }
@@ -58,10 +58,13 @@ class Helper
         }
     }
 
-
     static function short_path($path) {
+        $rpath = realpath($path) ?: $path;
         $curpath = getcwd();
-        return substr($path,strlen($curpath) + 1);
+
+        if( 0 === strpos( $rpath,$curpath ) )
+            return substr($rpath,strlen($curpath) + 1);
+        return $path;
     }
 
 }

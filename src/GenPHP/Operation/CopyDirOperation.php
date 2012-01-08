@@ -22,9 +22,8 @@ class CopyDirOperation extends Operation
 
         foreach ($iterator as $path) {
             $target = $to . substr($path,strlen($from));
-
             if ($path->isDir()) {
-                $this->logAction( 'directory' , Helper::short_path($target) );
+                $this->logAction( 'create' , Helper::short_path($target) );
                 Helper::mktree( $target );
             } else {
                 $this->logAction( 'create' , Helper::short_path($target) );

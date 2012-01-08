@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
-require 'vendor/pear/Universal/ClassLoader/BasePathClassLoader.php';
-$loader = new Universal\ClassLoader\BasePathClassLoader(array( 'vendor/pear' , 'src' ));
+define('basedir',dirname(__DIR__));
+require basedir .  '/vendor/pear/Universal/ClassLoader/BasePathClassLoader.php';
+$loader = new Universal\ClassLoader\BasePathClassLoader(array( basedir . '/vendor/pear' , basedir . '/src' ));
 $loader->register();
-
 $app = new GenPHP\Application;
 $app->run( $argv );

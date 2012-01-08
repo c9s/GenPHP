@@ -18,6 +18,8 @@ class InitCommand extends \CLIFramework\Command
         $logger->info( "Creating $path ..." );
         Helper::mktree( $path );
 
+        $logger->info( "Creating flavors/..." );
+        Helper::mktree( 'flavors' );
         $logger->info( "Done" );
     }
 }

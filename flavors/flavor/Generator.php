@@ -1,6 +1,7 @@
 <?php 
 namespace flavor;
 use GenPHP\Flavor\BaseGenerator;
+use GenPHP\Flavor\FlavorDirectory;
 use GenPHP\Path;
 use Exception;
 
@@ -23,8 +24,9 @@ class Generator extends BaseGenerator
         $paths = Path::get_flavor_paths();
         foreach( $paths as $path ) {
             if( file_exists($path) ) {
-                $base = $path . DIRECTORY_SEPARATOR . $name;
-                $resourceDir = $base . DIRECTORY_SEPARATOR . "Resource";
+                $flavor = new FlavorDirectory( $path . DIRECTORY_SEPARATOR . $name );
+                $resourceDir = $flavor->getResourceDir();
+
                 $this->createDir($resourceDir);
 
                 if( $codeBasePath ) {
@@ -34,8 +36,11 @@ class Generator extends BaseGenerator
                 }
 
                 $this->render( 'Generator.php.twig',  
-                    $base . DIRECTORY_SEPARATOR . 'Generator.php', 
+                    $flavor->getGeneratorClassFile(),
                     array( 'name' => $name ) );
+
+                $this->getLogger()->info('Done');
+                exit(0);
             }
         }
     }
