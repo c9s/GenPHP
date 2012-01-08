@@ -24,11 +24,11 @@ class FlavorLoader
             $flavorDir = new FlavorDirectory($dir . DIRECTORY_SEPARATOR . $name);
             if( $flavorDir->exists() ) {
                 return $flavorDir->getGenerator();
-            } else {
-                throw new Exception("Flavor $name not found.");
             }
         }
+        throw new Exception("Flavor $name not found.");
     }
+
 
     function setFlavorDirs($dirs)
     {
