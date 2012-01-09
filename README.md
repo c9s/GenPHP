@@ -195,9 +195,19 @@ for more details.
 Flavors
 --------
 
+## Generator API
 
-Operations
-----------
+```php
+<?php
+public fucntion generate($argument1,$argument2, ... ) 
+{
+    $file = $this->getFlavor('license')->getFile('LICENSE.GPL2');
+    $this->copy($file, 'LICENSE' );
+    $this->copyDir( );
+}
+```
+
+### Operations
 By using built-in operations, you can create your code generator very easily,
 for example, the built-in flavor code generator from GenPHP:
 
@@ -264,7 +274,6 @@ GenPHP supports many operations:
 - WriteJsonOperation
 - WriteYamlOperation
 
-Reference
----------
+## Reference
 * newgem: http://newgem.rubyforge.org/
 * Rails: http://guides.rubyonrails.org/command\_line.html

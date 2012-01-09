@@ -7,8 +7,6 @@ class FlavorDirectory extends SplFileInfo
 {
     private $resourceDir;
 
-
-
     /**
      * set resource directory
      *
