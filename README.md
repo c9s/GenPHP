@@ -192,8 +192,15 @@ $ genphp list
 please check `./flavors` directory of this repository
 for more details.
 
-Flavors
---------
+## Flavor API
+
+```php
+<?php
+$path = $flavor->path( 'license' );
+
+```
+
+
 
 ## Generator API
 

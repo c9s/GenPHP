@@ -3,7 +3,6 @@ namespace GenPHP\Flavor;
 
 class GenericGenerator extends BaseGenerator
 {
-
     public function brief() { return 'generic generator'; }
 
     public function generate()

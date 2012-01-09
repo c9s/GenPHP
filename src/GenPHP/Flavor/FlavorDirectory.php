@@ -7,6 +7,58 @@ class FlavorDirectory extends SplFileInfo
 {
     private $resourceDir;
 
+
+
+    public function getGeneratorClassFile()
+    {
+        return $this->getPathname() . DIRECTORY_SEPARATOR . 'Generator.php';
+    }
+
+    public function hasGeneratorClassFile()
+    {
+        return file_exists($this->getGeneratorClassFile());
+    }
+
+    public function exists()
+    {
+        return file_exists($this->getPathname());
+    }
+
+    public function requireGeneratorClassFile()
+    {
+        require $this->getGeneratorClassFile();
+        return $this->getGeneratorClass();
+    }
+
+    public function getName()
+    {
+        return $this->getBasename();
+    }
+
+    public function getGeneratorClass()
+    {
+        return "\\{$this->getName()}\\Generator";
+    }
+
+    public function createGenericGenerator()
+    {
+        return new GenericGenerator($this);
+    }
+
+    public function getGenerator()
+    {
+        if( $this->hasGeneratorClassFile() ) {
+            $class = $this->requireGeneratorClassFile();
+            return new $class( $this );
+        } elseif( $this->hasResourceDir() ) {
+            return $this->createGenericGenerator();
+        }
+    }
+
+
+
+
+
     /**
      * set resource directory
      *
@@ -73,53 +125,18 @@ class FlavorDirectory extends SplFileInfo
     }
 
 
-
-
-    public function getGeneratorClassFile()
+    /**
+     * helper method for getting resource path
+     *
+     * @param string $path
+     */
+    public function path($path)
     {
-        return $this->getPathname() . DIRECTORY_SEPARATOR . 'Generator.php';
+        return $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
     }
 
-    public function hasGeneratorClassFile()
-    {
-        return file_exists($this->getGeneratorClassFile());
-    }
 
-    public function exists()
-    {
-        return file_exists($this->getPathname());
-    }
 
-    public function requireGeneratorClassFile()
-    {
-        require $this->getGeneratorClassFile();
-        return $this->getGeneratorClass();
-    }
-
-    public function getName()
-    {
-        return $this->getBasename();
-    }
-
-    public function getGeneratorClass()
-    {
-        return "\\{$this->getName()}\\Generator";
-    }
-
-    public function createGenericGenerator()
-    {
-        return new GenericGenerator($this);
-    }
-
-    public function getGenerator()
-    {
-        if( $this->hasGeneratorClassFile() ) {
-            $class = $this->requireGeneratorClassFile();
-            return new $class( $this );
-        } elseif( $this->hasResourceDir() ) {
-            return $this->createGenericGenerator();
-        }
-    }
 
 }
 
