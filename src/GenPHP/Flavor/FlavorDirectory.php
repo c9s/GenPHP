@@ -7,6 +7,8 @@ class FlavorDirectory extends SplFileInfo
 {
     private $resourceDir;
 
+
+
     /**
      * set resource directory
      *
@@ -19,6 +21,8 @@ class FlavorDirectory extends SplFileInfo
 
     /**
      * get Flavor Directory from Generator class
+     *
+     * @return string $path
      */
     public function getResourceDir()
     {
@@ -35,6 +39,9 @@ class FlavorDirectory extends SplFileInfo
 
     /**
      * return resource file path
+     *
+     * @param string $path
+     * @return SplFileInfo
      */
     public function getResourceFile( $path )
     {
@@ -47,6 +54,9 @@ class FlavorDirectory extends SplFileInfo
 
     /**
      * return resource file content 
+     *
+     * @param string $path
+     * @return string content
      */
     public function getResourceContent($path)
     {
@@ -54,11 +64,18 @@ class FlavorDirectory extends SplFileInfo
     }
 
 
-
+    /**
+     * check if resource directory exists
+     *
+     * @return boolean 
+     */
     public function hasResourceDir()
     {
         return file_exists($this->getResourceDir());
     }
+
+
+
 
     public function getGeneratorClassFile()
     {
@@ -93,7 +110,7 @@ class FlavorDirectory extends SplFileInfo
 
     public function createGenericGenerator()
     {
-        return new GenericGenerator( $this, $this->getResourceDir() );
+        return new GenericGenerator($this);
     }
 
     public function getGenerator()
