@@ -45,11 +45,14 @@ class FlavorLoader
         return $flavor->getGenerator();
     }
 
+
+    /**
+     * set flavor directory
+     */
     public function setFlavorDirs($dirs)
     {
         $this->dirs = (array) $dirs;
     }
-
 
     /**
      * load flavor generator

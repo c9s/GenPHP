@@ -26,16 +26,16 @@ use SplFileInfo;
  */
 abstract class BaseGenerator 
 {
-    private $resourceDir;
 
     protected $options;
     protected $logger;
     protected $mixins = array();
+    protected $flavor;
 
-
-    public function __construct()
+    public function __construct( $flavor )
     {
         $this->mixins[] = new OperationMixin( $this );
+        $this->flavor = $flavor;
     }
 
     /* subclass must implements this */
@@ -67,6 +67,9 @@ abstract class BaseGenerator
 
     public function __call($method,$args)
     {
+        if( method_exists( $this->flavor,$method) )
+            return call_user_func_array( array($this->flavor, $method ), $args );
+
         /* call mixins */
         foreach( $this->mixins as $mixin ) {
             return call_user_func_array( array($mixin,$method),$args);
@@ -101,48 +104,6 @@ abstract class BaseGenerator
 
     // abstract function generate();
 
-    /**
-     * set resource directory
-     *
-     * @param string $dir 
-     */
-    public function setResourceDir($dir)
-    {
-        $this->resourceDir = $dir;
-    }
-
-    /**
-     * get Flavor Directory from Generator class
-     */
-    public function getResourceDir()
-    {
-        if( $this->resourceDir )
-            return $this->resourceDir;
-        $refl = new ReflectionObject($this);
-        $flavor = new FlavorDirectory( dirname($refl->getFilename()) );
-        return $flavor->getResourceDir();
-    }
-
-
-    /*
-     * return resource file path
-     */
-    public function getResourceFile( $path )
-    {
-        $file = $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
-        if( file_exists($file) )
-            return new SplFileInfo( $file );
-        throw new Exception( "$file does not exist." );
-    }
-
-
-    /**
-     * return resource file content 
-     */
-    public function getResourceContent($path)
-    {
-        return file_get_contents( $this->getResourceFile( $path ) );
-    }
 
 }
 

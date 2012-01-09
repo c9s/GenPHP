@@ -6,9 +6,9 @@ class GenericGenerator extends BaseGenerator
 
     public function brief() { return 'generic generator'; }
 
-    public function __construct($resourceDir)
+    public function __construct($flavor,$resourceDir)
     {
-        parent::__construct();
+        parent::__construct($flavor);
         $this->setResourceDir( $resourceDir );
     }
 
