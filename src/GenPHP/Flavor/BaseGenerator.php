@@ -3,6 +3,7 @@ namespace GenPHP\Flavor;
 use GenPHP\Operation\OperationMixin;
 use Exception;
 use ReflectionObject;
+use SplFileInfo;
 
 
 /**
@@ -27,9 +28,9 @@ abstract class BaseGenerator
 {
     private $resourceDir;
 
-    public $options;
-    public $logger;
-    public $mixins = array();
+    protected $options;
+    protected $logger;
+    protected $mixins = array();
 
 
     public function __construct()
@@ -85,6 +86,9 @@ abstract class BaseGenerator
         $this->logger = $logger;
     }
 
+    /**
+     * get logger object
+     */
     public function getLogger()
     {
         return $this->logger;
@@ -117,6 +121,27 @@ abstract class BaseGenerator
         $refl = new ReflectionObject($this);
         $flavor = new FlavorDirectory( dirname($refl->getFilename()) );
         return $flavor->getResourceDir();
+    }
+
+
+    /*
+     * return resource file path
+     */
+    public function getResourceFile( $path )
+    {
+        $file = $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
+        if( file_exists($file) )
+            return new SplFileInfo( $file );
+        throw new Exception( "$file does not exist." );
+    }
+
+
+    /**
+     * return resource file content 
+     */
+    public function getResourceContent($path)
+    {
+        return file_get_contents( $this->getResourceFile( $path ) );
     }
 
 }
