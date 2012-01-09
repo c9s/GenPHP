@@ -18,24 +18,43 @@ class FlavorLoader
         $this->dirs = $dirs ? (array) $dirs : Path::get_flavor_paths();
     }
 
-    function loadGeneratorClass($name) 
+
+    /**
+     * load flavor
+     *
+     * @param string $name flavor name
+     * @return FlavirDirectory object.
+     */
+    public function load($name)
     {
         foreach( $this->dirs as $dir ) {
-            $flavorDir = new FlavorDirectory($dir . DIRECTORY_SEPARATOR . $name);
-            if( $flavorDir->exists() ) {
-                return $flavorDir->getGenerator();
-            }
+            $flavor = new FlavorDirectory($dir . DIRECTORY_SEPARATOR . $name);
+            if( $flavor->exists() )
+                return $flavor;
         }
         throw new Exception("Flavor $name not found.");
     }
 
 
-    function setFlavorDirs($dirs)
+    /**
+     * load flavor generator
+     */
+    public function loadGeneratorClass($name) 
+    {
+        $flavor = $this->loadFlavor( $name );
+        return $flavor->getGenerator();
+    }
+
+    public function setFlavorDirs($dirs)
     {
         $this->dirs = (array) $dirs;
     }
 
-    function load($name) 
+
+    /**
+     * load flavor generator
+     */
+    public function loadFlavorGenerator($name) 
     {
         $generator = $this->loadGeneratorClass($name);
         if( ! $generator ) {
