@@ -128,13 +128,17 @@ class FlavorDirectory extends SplFileInfo
     /**
      * helper method for getting resource path
      *
+     * @code
+     *    
+     *    $file = $flavor->path('path/to/file');
+     *
      * @param string $path
+     * @see getResourceFile
      */
     public function path($path)
     {
         return $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
     }
-
 
 
 
