@@ -62,7 +62,23 @@ abstract class BaseGenerator
      */
     public function options($opts)  
     {
+        // $opts->add('v|verbose','show verbose message');
+    }
 
+    /**
+     * xxx: refactor this, put this in a proper class.
+     */
+    public function logAction($action,$path,$indent = 1)
+    {
+        $logger = $this->getLogger();
+        if( ! $logger )
+            return;
+        $formatter = $logger->getFormatter();
+        $msg = sprintf( "%-24s %s" , 
+            $formatter->format( $action , 'strong_white' ),
+            $formatter->format( $path,   'white' )
+        );
+        $logger->info( $msg, $indent );
     }
 
     public function __call($method,$args)

@@ -26,7 +26,7 @@ class OperationMixin
 
     public function unregisterOperation($methodName)
     {
-        unset( $this->registered[ $methodName ];
+        unset( $this->registered[ $methodName ] );
     }
 
     public function registerOperation( $methodName, Operation $operation)

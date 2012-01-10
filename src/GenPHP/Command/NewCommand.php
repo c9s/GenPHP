@@ -3,6 +3,7 @@ namespace GenPHP\Command;
 use CLIFramework\Command;
 use GetOptionKit\GetOptionKit;
 use GetOptionKit\OptionParser;
+use GetOptionKit\OptionResult;
 use GetOptionKit\OptionSpecCollection;
 use GenPHP\Flavor;
 use Exception;
@@ -20,15 +21,16 @@ class NewCommand extends Command
     function execute($flavorName)
     {
         $logger = $this->getLogger();
+        $formatter = $logger->getFormatter();
         $specs = new OptionSpecCollection;
 
         /* load flavor generator */
-        $logger->info("Loading $flavorName...");
+        $logger->info("Loading flavor $flavorName...");
         $loader = new Flavor\FlavorLoader;
         $flavor = $loader->load( $flavorName );
         $generator = $flavor->getGenerator();
 
-        $logger->info("Inializing option specs...");
+        $logger->info2("Inializing option specs...");
         $generator->options( $specs );
         $generator->setLogger( $this->getLogger() );
 
@@ -39,8 +41,9 @@ class NewCommand extends Command
                 $dep = $options;
                 $options = array();
             }
-            $info->info2( "dependency $dep", 1 );
-            $depGenerator = $loader->load( $name );
+            $logger->info( "dependency $dep" , 1 );
+            $depFlavor = $loader->load( $dep );
+            $depGenerator = $depFlavor->getGenerator();
             $this->runDepGenerator( $depGenerator , $options );
         }
 
@@ -60,11 +63,12 @@ class NewCommand extends Command
 
     public function checkGeneratorParameters($generator,$args)
     {
+        $gClass = get_class( $generator );
         $refl = new ReflectionObject($generator);
         $reflMethod = $refl->getMethod('generate');
         $requiredNumber = $reflMethod->getNumberOfRequiredParameters();
         if( count($args) < $requiredNumber ) {
-            $this->getLogger()->error( "Generator requires $requiredNumber arguments." );
+            $this->getLogger()->error( "Generator $gClass requires $requiredNumber arguments." );
             $params = $reflMethod->getParameters();
             foreach( $params as $param ) {
                 $this->getLogger()->error( 
@@ -77,9 +81,13 @@ class NewCommand extends Command
     public function runDepGenerator($depGenerator,$options)
     {
         $depSpecs   = new OptionSpecCollection;
-        $depOptions = $depGenerator->options( $depSpecs );
+        $depGenerator->options( $depSpecs );
+
         $depOptionResult = OptionResult::create( 
-                    $depOptions, @$options['options'] , @$options['arguments'] );
+            $depSpecs, 
+            @$options['options'] ?: array(),
+            @$options['arguments'] ?: array()
+        );
         $depGenerator->setOptionResult( $depOptionResult );
         $depGenerator->setLogger( $this->getLogger() );
         $this->runGenerator( $depGenerator , $depOptionResult->getArguments() );

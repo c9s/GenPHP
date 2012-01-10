@@ -18,16 +18,9 @@ abstract class Operation
 
     public function logAction($action,$path,$indent = 1)
     {
-        $logger = $this->getLogger();
-        if( ! $logger )
-            return;
-        $formatter = $logger->getFormatter();
-        $msg = sprintf( "%-24s %s" , 
-            $formatter->format( $action , 'strong_white' ),
-            $formatter->format( $path,   'white' )
-        );
-        $logger->info( $msg, $indent );
+        $this->generator->logAction( $action,$path,$indent);
     }
+
 
     public function getLogger()
     {

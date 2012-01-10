@@ -16,8 +16,8 @@ class CopyDirOperation extends Operation
     public function run($from,$to) 
     {
         $resDir = $this->getResourceDir();
-        $from = $resDir . DIRECTORY_SEPARATOR . $from;
-        $from = realpath($from) ?: $from;
+        $from = realpath($from) ?: $resDir . DIRECTORY_SEPARATOR . $from;
+        // $from = realpath($from) ?: $from;
         $to   = realpath($to) ?: $to;
 
         $iterator = new RecursiveIteratorIterator(
