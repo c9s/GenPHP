@@ -33,17 +33,24 @@ class NewCommand extends Command
         $logger->info2("Inializing option specs...");
         $generator->options( $specs );
         $generator->setLogger( $this->getLogger() );
-
         $deps = $generator->dependency();
+
+        if( count($deps) ) {
+            $logger->info("Dependencies: " . join(' ',array_keys($deps)) );
+        }
+
         foreach( $deps as $dep => $options ) {
             /* swap for short dependency name */
             if( is_integer($dep) ) {
                 $dep = $options;
                 $options = array();
             }
-            $logger->info( "dependency $dep" , 1 );
             $depFlavor = $loader->load( $dep );
+            if( ! $depFlavor->exists() )
+                throw new Exception( "Dependency flavor $dep not found." );
             $depGenerator = $depFlavor->getGenerator();
+            $depGenerator->setLogger( $logger );
+            $depGenerator->logAction( "dependency", $dep , 1 );
             $this->runDepGenerator( $depGenerator , $options );
         }
 
@@ -56,7 +63,7 @@ class NewCommand extends Command
         /* pass rest arguments for generation */
         $generator->setOptionResult( $result );
 
-        $logger->info("Running generator...");
+        $logger->info("Running main generator...");
         $this->runGenerator( $generator , $result->getArguments() );
         $logger->info("Done");
     }
@@ -89,7 +96,6 @@ class NewCommand extends Command
             @$options['arguments'] ?: array()
         );
         $depGenerator->setOptionResult( $depOptionResult );
-        $depGenerator->setLogger( $this->getLogger() );
         $this->runGenerator( $depGenerator , $depOptionResult->getArguments() );
     }
 

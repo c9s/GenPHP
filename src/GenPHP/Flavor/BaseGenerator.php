@@ -68,7 +68,7 @@ abstract class BaseGenerator
     /**
      * xxx: refactor this, put this in a proper class.
      */
-    public function logAction($action,$path,$indent = 1)
+    public function logAction($action,$data,$indent = 1)
     {
         $logger = $this->getLogger();
         if( ! $logger )
@@ -76,7 +76,7 @@ abstract class BaseGenerator
         $formatter = $logger->getFormatter();
         $msg = sprintf( "%-24s %s" , 
             $formatter->format( $action , 'strong_white' ),
-            $formatter->format( $path,   'white' )
+            $formatter->format( $data,   'white' )
         );
         $logger->info( $msg, $indent );
     }
