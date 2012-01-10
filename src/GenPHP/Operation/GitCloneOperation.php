@@ -7,9 +7,11 @@ class GitCloneOperation extends Operation
     function run( $repoUri , $target )
     {
         if( file_exists($target) ) {
-            $this->logAction('git:update',$repoUri);
-            Helper::system('git','--git-dir',$target . DIRECTORY_SEPARATOR . '.git','remote','update','--prune');
-            Helper::system('git','--git-dir',$target . DIRECTORY_SEPARATOR . '.git','pull');
+            $this->logAction('git:pull',$repoUri);
+            Helper::system('git','--git-dir',$target . DIRECTORY_SEPARATOR . '.git',
+                        'remote','update','--prune');
+            Helper::system('git','--git-dir',$target . DIRECTORY_SEPARATOR . '.git',
+                'pull','--all');
         }
         else {
             $this->logAction('git:clone',$repoUri);
