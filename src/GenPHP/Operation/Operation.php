@@ -11,6 +11,11 @@ abstract class Operation
         $this->generator = $generator;
     }
 
+    public function setGenerator($generator)
+    {
+        $this->generator = $generator;
+    }
+
     public function logAction($action,$path,$indent = 1)
     {
         $logger = $this->getLogger();
