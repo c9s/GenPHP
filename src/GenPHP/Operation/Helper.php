@@ -67,4 +67,14 @@ class Helper
         return $path;
     }
 
+    /**
+     * a system function wrapper, with escapeshellarg
+     */
+    static function system()
+    {
+        $args = func_get_args();
+        $args = array_map( 'escapeshellarg' , $args );
+        system(join( ' ' , $args ));
+    }
+
 }
