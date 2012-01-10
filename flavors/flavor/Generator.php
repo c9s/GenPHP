@@ -32,6 +32,7 @@ class Generator extends BaseGenerator
                 if( $codeBasePath ) {
                     if( ! file_exists($codeBasePath) )
                         throw new Exception("$codeBasePath doesn't exist.");
+                    $codeBasePath = realpath( $codeBasePath ) ?: $codeBasePath;
                     $this->copyDir( $codeBasePath , $resourceDir );
                 }
 
