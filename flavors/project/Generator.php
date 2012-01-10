@@ -7,45 +7,32 @@ class Generator extends BaseGenerator
 
     function brief()
     {
-        return 'project generator';
+        return 'generate generic PHP project';
     }
 
-
-#      function dependency()
-#      {
-#          /* describe dependency here */
-#          return array( 
-#              'flavor2' => array( 
-#                  'options' => array( 'path' => '....' ),
-#                  'arguments' => array( 'arg1' , 'arg2' ),
-#              ),
-#          );
-#      }
-
-
-    function generate($projectName) 
+    function generate($name) 
     {
-        /* 
-            do generate here:
+        $className = str_replace( '_' , '\\', $name );
+        $namespace = strstr( '\\' , $className );
 
-            create dir
-                $this->createDir( 'path/to/dir' );
+        $classFilePath = 'src' . DIRECTORY_SEPARATOR . str_replace( '_' , DIRECTORY_SEPARATOR, $name ) . '.php';
+        $dirname = dirname( $classFilePath );
 
-            render code
-                $this->render( 'templatePath.php.twig', 'path/to/file' , array( 'name' => $name )  );
+        $this->createDir( $dirname );
+        $this->copyDir( 'tests' , 'tests' );
+        $this->copy( 'phpunit.xml' , 'phpunit.xml' );
+        $this->render( 'package.ini' , 'package.ini' , array(
+            'name' => $name,
+            'className' => $className,
+            'classFilePath' => $classFilePath,
+            'namespace' => $namespace,
+        ) );
 
-            copy directory
-                $this->copyDir( 'path/from' , 'path/to' );
-
-            create file
-                $this->create( 'path/to/file' , 'content' );
-
-            touch file
-                $this->touch( 'path/to/touch' );
-         */
-
-
+        $this->render( 'class.php.twig', $classFilePath ,array( 
+            'name' => $name,
+            'className' => $className,
+            'classFilePath' => $classFilePath,
+            'namespace' => $namespace,
+        ));
     }
-
 }
-

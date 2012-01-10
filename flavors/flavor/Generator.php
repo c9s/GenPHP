@@ -21,6 +21,10 @@ class Generator extends BaseGenerator
      */
     public function generate($name,$codeBasePath = null)
     {
+        if( preg_match('/\W/', $name ) ) {
+            throw new Exception( "$name is not a valid flavor name" );
+        }
+
         $paths = Path::get_flavor_paths();
         foreach( $paths as $path ) {
             if( file_exists($path) ) {
