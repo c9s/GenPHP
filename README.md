@@ -298,6 +298,8 @@ GenPHP supports many operations:
 - run `phpunit` to run the test suites.
 - run `scripts/compile.sh` to compile whole library into a executable phar file.
 
+Join us on irc channel: #genphp @ irc.freenode.net
+
 ## Reference
 * newgem: http://newgem.rubyforge.org/
 * Rails: http://guides.rubyonrails.org/command\_line.html
