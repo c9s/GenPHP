@@ -4,6 +4,10 @@ use GenPHP\Operation\OperationMixin;
 use Exception;
 use ReflectionObject;
 use SplFileInfo;
+use GetOptionKit\GetOptionKit;
+use GetOptionKit\OptionParser;
+use GetOptionKit\OptionResult;
+use GetOptionKit\OptionSpecCollection;
 
 
 /**
@@ -95,10 +99,6 @@ abstract class BaseGenerator
         }
     }
 
-    public function setOptionResult($result) 
-    {
-        $this->options = $result;
-    }
 
     public function setLogger($logger)
     {
@@ -113,13 +113,54 @@ abstract class BaseGenerator
         return $this->logger;
     }
 
+
+
     public function getOption()
     {
         return $this->options;
     }
 
+    public function setOption($result) 
+    {
+        $this->options = $result;
+    }
+
     // abstract function generate();
 
+
+    public function getDependencies()
+    {
+        $depGenerators = array();
+
+        $loader = new FlavorLoader;
+        $logger = $this->getLogger();
+        $deps = $this->dependency();
+        foreach( $deps as $depName => $options ) {
+            /* swap for short dependency name */
+            if( is_integer($depName) ) {
+                $depName = $options;
+                $options = array();
+            }
+
+            $depFlavor = $loader->load( $depName );
+            if( ! $depFlavor->exists() )
+                throw new Exception( "Dependency flavor $depName not found." );
+            $depGenerator = $depFlavor->getGenerator();
+            $depGenerator->setLogger( $logger );
+
+            $depSpecs = new OptionSpecCollection;
+            $depGenerator->options( $depSpecs );
+            $depOptionResult = OptionResult::create( 
+                $depSpecs, 
+                @$options['options'] ?: array(),
+                @$options['arguments'] ?: array()
+            );
+            $depGenerator->setOption( $depOptionResult );
+
+            $depGenerators[] = $depGenerator;
+        }
+        return $depGenerators;
+    }
 
 }
 

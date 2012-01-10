@@ -29,25 +29,15 @@ class NewCommand extends Command
         $logger->info2("Inializing option specs...");
         $generator->options( $specs );
         $generator->setLogger( $this->getLogger() );
-        $deps = $generator->dependency();
 
-        if( count($deps) ) {
+        $deps = $generator->getDependencies();
+        if( count($deps) )
             $logger->info("Dependencies: " . join(' ',array_keys($deps)) );
-        }
 
-        foreach( $deps as $dep => $options ) {
-            /* swap for short dependency name */
-            if( is_integer($dep) ) {
-                $dep = $options;
-                $options = array();
-            }
-            $depFlavor = $loader->load( $dep );
-            if( ! $depFlavor->exists() )
-                throw new Exception( "Dependency flavor $dep not found." );
-            $depGenerator = $depFlavor->getGenerator();
-            $depGenerator->setLogger( $logger );
-            $depGenerator->logAction( "dependency", $dep , 1 );
-            $this->runDepGenerator( $depGenerator , $options );
+        foreach( $deps as $depGenerator ) {
+            $depGenerator->logAction( "dependency", get_class($depGenerator) , 1 );
+            $args = $depGenerator->getOption()->getArguments();
+            $this->runGenerator( $depGenerator , $args );
         }
 
         /* use GetOptionKit to parse options from $args */
@@ -57,7 +47,7 @@ class NewCommand extends Command
         $result = $parser->parse( $args );
 
         /* pass rest arguments for generation */
-        $generator->setOptionResult( $result );
+        $generator->setOption( $result );
 
         $logger->info("Running main generator...");
         $this->runGenerator( $generator , $result->getArguments() );
@@ -79,20 +69,6 @@ class NewCommand extends Command
             }
             throw new Exception;
         }
-    }
-
-    public function runDepGenerator($depGenerator,$options)
-    {
-        $depSpecs   = new OptionSpecCollection;
-        $depGenerator->options( $depSpecs );
-
-        $depOptionResult = OptionResult::create( 
-            $depSpecs, 
-            @$options['options'] ?: array(),
-            @$options['arguments'] ?: array()
-        );
-        $depGenerator->setOptionResult( $depOptionResult );
-        $this->runGenerator( $depGenerator , $depOptionResult->getArguments() );
     }
 
     public function runGenerator($generator,$args = array()) 

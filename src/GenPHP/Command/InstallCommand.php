@@ -31,6 +31,10 @@ class InstallCommand extends \CLIFramework\Command
             function($target) use ($logger) {
                 $logger->info( "Installing " . $target,1);
         });
+
+        // get dependencies
+        $generator = $flavor->getGenerator();
+
     }
 
     // xxx: should also install dependency flavors
@@ -43,7 +47,6 @@ class InstallCommand extends \CLIFramework\Command
         else {
             $loader = new FlavorLoader;
             $flavor = $loader->load( $nameOrPath );
-            // $generator = $flavor->getGenerator();
             $this->installFlavor( $flavor );
         }
         $this->getLogger()->info("Done");
