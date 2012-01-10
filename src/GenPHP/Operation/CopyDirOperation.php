@@ -8,7 +8,7 @@ class CopyDirOperation extends Operation
 {
 
     /**
-     * recursive directory copy operation
+     * Recursive directory copy operation
      *
      * @param string $from related path from Resource Dir
      * @param string $to related path of target
