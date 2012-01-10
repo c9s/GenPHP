@@ -12,11 +12,7 @@ use ReflectionObject;
 class NewCommand extends Command
 {
 
-    function brief()
-    {
-        return 'generate from flavor';
-    }
-
+    function brief() { return 'generate from flavor'; }
 
     function execute($flavorName)
     {

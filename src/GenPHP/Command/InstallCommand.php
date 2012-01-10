@@ -1,6 +1,7 @@
 <?php
 namespace GenPHP\Command;
 use GenPHP\Flavor\FlavorDirectory;
+use GenPHP\Flavor\FlavorLoader;
 use GenPHP\Path;
 use GenPHP\Operation\Helper;
 
@@ -15,23 +16,36 @@ class InstallCommand extends \CLIFramework\Command
         $opts->add('f|force','force install');
     }
 
-    function execute($nameOrPath)
+
+    function installFlavor($flavor)
     {
         $logger = $this->getLogger();
         $homePath = Path::get_home_flavor_path();
+
+        Helper::mktree( $homePath );
+
+        $logger->info( "Installing " . $flavor->getName() . "..." );
+        Helper::copy_dir(
+            $flavor->__toString(),
+            $homePath . DIRECTORY_SEPARATOR . $flavor->getName(), 
+            function($target) use ($logger) {
+                $logger->info( "Installing " . $target,1);
+        });
+    }
+
+    // xxx: should also install dependency flavors
+    function execute($nameOrPath)
+    {
         if( file_exists($nameOrPath) ) {
-            Helper::mktree( $homePath );
-
             $flavor = new FlavorDirectory($nameOrPath);
-            $logger->info( "Installing " . $flavor->getName() . "..." );
-            Helper::copy_dir(
-                $flavor->__toString(),
-                $homePath . DIRECTORY_SEPARATOR . $flavor->getName(), 
-                function($target) use ($logger) {
-                    $logger->info( "Installing " . $target,1);
-            });
+            $this->installFlavor( $flavor );
         }
-
-        $logger->info("Done");
+        else {
+            $loader = new FlavorLoader;
+            $flavor = $loader->load( $nameOrPath );
+            // $generator = $flavor->getGenerator();
+            $this->installFlavor( $flavor );
+        }
+        $this->getLogger()->info("Done");
     }
 }
