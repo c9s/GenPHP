@@ -13,7 +13,11 @@ class Generator extends BaseGenerator
     function generate($name) 
     {
         $className = str_replace( '_' , '\\', $name );
-        $namespace = strstr( '\\' , $className );
+        $namespace = null;
+        if( ($p = strrpos( $className , '\\' )) !== false ) {
+            $namespace = substr( $className, 0 , $p );
+            $className = substr( $className, $p + 1 );
+        }
 
         $classFilePath = 'src' . DIRECTORY_SEPARATOR . str_replace( '_' , DIRECTORY_SEPARATOR, $name ) . '.php';
         $dirname = dirname( $classFilePath );
@@ -22,14 +26,14 @@ class Generator extends BaseGenerator
         $this->copyDir( 'tests' , 'tests' );
         $this->copy( 'phpunit.xml' , 'phpunit.xml' );
         $this->render( 'package.ini' , 'package.ini' , array(
-            'name' => $name,
+            'packageName' => $name,
             'className' => $className,
             'classFilePath' => $classFilePath,
             'namespace' => $namespace,
         ) );
 
         $this->render( 'class.php.twig', $classFilePath ,array( 
-            'name' => $name,
+            'packageName' => $name,
             'className' => $className,
             'classFilePath' => $classFilePath,
             'namespace' => $namespace,
