@@ -10,6 +10,10 @@ By using GenPHP, you can also seperate your global generator (`~/.genphp/flavors
 
 GenPHP is using Twig template engine from Symfony.
 
+
+![](https://github.com/c9s/GenPHP/raw/master/screenshots/screenshot01.png)
+
+
 Installation
 ------------
 Copy this line to install genphp:
@@ -192,12 +196,29 @@ $ genphp list
 please check `./flavors` directory of this repository
 for more details.
 
-Flavors
---------
+## Flavor API
+
+```php
+<?php
+$path = $flavor->path( 'license' );
+
+```
 
 
-Operations
-----------
+
+## Generator API
+
+```php
+<?php
+public fucntion generate($argument1,$argument2, ... ) 
+{
+    $file = $this->getFlavor('license')->getFile('LICENSE.GPL2');
+    $this->copy($file, 'LICENSE' );
+    $this->copyDir( );
+}
+```
+
+### Operations
 By using built-in operations, you can create your code generator very easily,
 for example, the built-in flavor code generator from GenPHP:
 
@@ -264,7 +285,21 @@ GenPHP supports many operations:
 - WriteJsonOperation
 - WriteYamlOperation
 
-Reference
----------
+## Development
+
+- Fork this probject on GitHub
+- Git clone it:
+
+    $ git clone git@github.com:{{ your Id }}/GenPHP.git
+
+- Install onion.phar <http://github.com/c9s/Onion>
+- run `onion.phar bundle` to install PEAR dependencies.
+- run `scripts/genphp` to test your genphp script.
+- run `phpunit` to run the test suites.
+- run `scripts/compile.sh` to compile whole library into a executable phar file.
+
+Join us on irc channel: #genphp @ irc.freenode.net
+
+## Reference
 * newgem: http://newgem.rubyforge.org/
 * Rails: http://guides.rubyonrails.org/command\_line.html

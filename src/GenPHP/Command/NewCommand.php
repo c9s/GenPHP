@@ -25,8 +25,8 @@ class NewCommand extends Command
         /* load flavor generator */
         $logger->info("Loading $flavorName...");
         $loader = new Flavor\FlavorLoader;
-        $generator = $loader->load( $flavorName );
-
+        $flavor = $loader->load( $flavorName );
+        $generator = $flavor->getGenerator();
 
         $logger->info("Inializing option specs...");
         $generator->options( $specs );

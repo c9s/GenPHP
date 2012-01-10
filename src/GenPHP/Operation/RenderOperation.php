@@ -8,9 +8,14 @@ class RenderOperation extends Operation
 {
 
     /**
+     * render code template to file
+     *
      * $this->render('template.php.twig','target.php', array( 
      *    ...
      * ));
+     *
+     * @param string $templateFile template file path (related from ResourceDir)
+     * @param string $target       path to target file.
      */
     function run($templateFile,$target,$args = array() )
     {

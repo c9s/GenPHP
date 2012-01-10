@@ -21,6 +21,10 @@ class Generator extends BaseGenerator
      */
     public function generate($name,$codeBasePath = null)
     {
+        if( preg_match('/\W/', $name ) ) {
+            throw new Exception( "$name is not a valid flavor name" );
+        }
+
         $paths = Path::get_flavor_paths();
         foreach( $paths as $path ) {
             if( file_exists($path) ) {
@@ -32,6 +36,7 @@ class Generator extends BaseGenerator
                 if( $codeBasePath ) {
                     if( ! file_exists($codeBasePath) )
                         throw new Exception("$codeBasePath doesn't exist.");
+                    $codeBasePath = realpath( $codeBasePath ) ?: $codeBasePath;
                     $this->copyDir( $codeBasePath , $resourceDir );
                 }
 

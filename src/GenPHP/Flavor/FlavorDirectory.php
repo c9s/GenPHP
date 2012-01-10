@@ -5,15 +5,9 @@ use GenPHP\Flavor\GenericGenerator;
 
 class FlavorDirectory extends SplFileInfo
 {
-    public function getResourceDir()
-    {
-        return $this->getPathname() . DIRECTORY_SEPARATOR . 'Resource';
-    }
+    private $resourceDir;
 
-    public function hasResourceDir()
-    {
-        return file_exists($this->getResourceDir());
-    }
+
 
     public function getGeneratorClassFile()
     {
@@ -48,19 +42,104 @@ class FlavorDirectory extends SplFileInfo
 
     public function createGenericGenerator()
     {
-        return new GenericGenerator( $this->getResourceDir() );
+        return new GenericGenerator($this);
     }
-
 
     public function getGenerator()
     {
         if( $this->hasGeneratorClassFile() ) {
             $class = $this->requireGeneratorClassFile();
-            return new $class;
+            return new $class( $this );
         } elseif( $this->hasResourceDir() ) {
             return $this->createGenericGenerator();
         }
     }
+
+
+
+
+
+    /**
+     * set resource directory
+     *
+     * @param string $dir 
+     */
+    public function setResourceDir($dir)
+    {
+        $this->resourceDir = $dir;
+    }
+
+    /**
+     * get Flavor Directory from Generator class
+     *
+     * @return string $path
+     */
+    public function getResourceDir()
+    {
+        if( $this->resourceDir )
+            return $this->resourceDir;
+
+        return $this->getPathname() . DIRECTORY_SEPARATOR . 'Resource';
+
+# XXX: old path gettter method from generator
+#          $refl = new ReflectionObject($this);
+#          $flavor = new FlavorDirectory( dirname($refl->getFilename()) );
+#          return $flavor->getResourceDir();
+    }
+
+    /**
+     * return resource file path
+     *
+     * @param string $path
+     * @return SplFileInfo
+     */
+    public function getResourceFile( $path )
+    {
+        $file = $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
+        if( file_exists($file) )
+            return new SplFileInfo( $file );
+        throw new Exception( "$file does not exist." );
+    }
+
+
+    /**
+     * return resource file content 
+     *
+     * @param string $path
+     * @return string content
+     */
+    public function getResourceContent($path)
+    {
+        return file_get_contents( $this->getResourceFile( $path ) );
+    }
+
+
+    /**
+     * check if resource directory exists
+     *
+     * @return boolean 
+     */
+    public function hasResourceDir()
+    {
+        return file_exists($this->getResourceDir());
+    }
+
+
+    /**
+     * helper method for getting resource path
+     *
+     * @code
+     *    
+     *    $file = $flavor->path('path/to/file');
+     *
+     * @param string $path
+     * @see getResourceFile
+     */
+    public function path($path)
+    {
+        return $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
+    }
+
 
 
 }

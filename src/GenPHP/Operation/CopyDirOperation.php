@@ -10,14 +10,18 @@ class CopyDirOperation extends Operation
     /**
      * recursive directory copy operation
      *
-     * @param string $from
-     * @param string $to
+     * @param string $from related path from Resource Dir
+     * @param string $to related path of target
      */
     public function run($from,$to) 
     {
+        $resDir = $this->getResourceDir();
+        $from = $resDir . DIRECTORY_SEPARATOR . $from;
         $from = realpath($from) ?: $from;
         $to   = realpath($to) ?: $to;
-        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($from),
+
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($from),
             RecursiveIteratorIterator::SELF_FIRST);
 
         foreach ($iterator as $path) {
@@ -27,7 +31,7 @@ class CopyDirOperation extends Operation
                 Helper::mktree( $target );
             } else {
                 $this->logAction( 'create' , Helper::short_path($target) );
-                copy( $path , $target );
+                Helper::copy( $path , $target );
             }
         }
     }

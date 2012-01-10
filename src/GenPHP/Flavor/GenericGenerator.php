@@ -3,14 +3,7 @@ namespace GenPHP\Flavor;
 
 class GenericGenerator extends BaseGenerator
 {
-
     public function brief() { return 'generic generator'; }
-
-    public function __construct($resourceDir)
-    {
-        parent::__construct();
-        $this->setResourceDir( $resourceDir );
-    }
 
     public function generate()
     {
