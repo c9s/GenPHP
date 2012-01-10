@@ -296,6 +296,7 @@ GenPHP supports many operations:
 - run `onion.phar bundle` to install PEAR dependencies.
 - run `scripts/genphp` to test your genphp script.
 - run `phpunit` to run the test suites.
+- run `scripts/compile.sh` to compile whole library into a executable phar file.
 
 ## Reference
 * newgem: http://newgem.rubyforge.org/
