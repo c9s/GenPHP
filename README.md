@@ -285,6 +285,18 @@ GenPHP supports many operations:
 - WriteJsonOperation
 - WriteYamlOperation
 
+## Development
+
+- Fork this probject on GitHub
+- Git clone it:
+
+    $ git clone git@github.com:{{ your Id }}/GenPHP.git
+
+- Install onion.phar <http://github.com/c9s/Onion>
+- run `onion.phar bundle` to install PEAR dependencies.
+- run `scripts/genphp` to test your genphp script.
+- run `phpunit` to run the test suites.
+
 ## Reference
 * newgem: http://newgem.rubyforge.org/
 * Rails: http://guides.rubyonrails.org/command\_line.html
