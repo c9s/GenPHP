@@ -10,8 +10,8 @@ class CopyDirOperation extends Operation
     /**
      * recursive directory copy operation
      *
-     * @param string $from
-     * @param string $to
+     * @param string $from related path from Resource Dir
+     * @param string $to related path of target
      */
     public function run($from,$to) 
     {

@@ -7,6 +7,13 @@ use GenPHP\Operation\Helper;
  */
 class WriteYamlOperation
 {
+
+    /**
+     * write yaml to file
+     *
+     * @param string $path
+     * @param mixed $data
+     */
     function run($path,$data)
     {
         if( extension_loaded( 'yaml' ) ) {
