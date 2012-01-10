@@ -34,9 +34,10 @@ abstract class BaseGenerator
     protected $options;
     protected $logger;
     protected $mixins = array();
-    protected $flavor;
 
-    public function __construct( $flavor )
+    public $flavor;
+
+    public function __construct( FlavorDirectory $flavor )
     {
         $this->mixins[] = new OperationMixin( $this );
         $this->flavor = $flavor;
@@ -44,6 +45,7 @@ abstract class BaseGenerator
 
     /* subclass must implements this */
     abstract function brief();
+
 
     /**
      * return flavor dependencies
@@ -59,7 +61,6 @@ abstract class BaseGenerator
              */
         );
     }
-
 
     /**
      * initialize options
@@ -83,6 +84,11 @@ abstract class BaseGenerator
             $formatter->format( $data,   'white' )
         );
         $logger->info( $msg, $indent );
+    }
+
+    public function getFlavor()
+    {
+        return $this->flavor;
     }
 
     public function __call($method,$args)

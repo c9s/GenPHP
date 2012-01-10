@@ -7,6 +7,9 @@ use GenPHP\Operation\Helper;
 
 class InstallCommand extends \CLIFramework\Command 
 {
+    public $installed = array();
+
+
     function brief() { 
         return 'install flavor to your global flavor path';
     }
@@ -16,9 +19,11 @@ class InstallCommand extends \CLIFramework\Command
         $opts->add('f|force','force install');
     }
 
-
     function installFlavor($flavor)
     {
+        if( isset( $this->installed[ $flavor->getName() ] ) )
+            return;
+
         $logger = $this->getLogger();
         $homePath = Path::get_home_flavor_path();
 
@@ -34,7 +39,10 @@ class InstallCommand extends \CLIFramework\Command
 
         // get dependencies
         $generator = $flavor->getGenerator();
-
+        $depGenerators = $generator->getDependencies();
+        foreach( $depGenerators as $depGenerator ) {
+            $this->installFlavor( $depGenerator->getFlavor());
+        }
     }
 
     // xxx: should also install dependency flavors

@@ -31,8 +31,12 @@ class NewCommand extends Command
         $generator->setLogger( $this->getLogger() );
 
         $deps = $generator->getDependencies();
+
+        /*
         if( count($deps) )
-            $logger->info("Dependencies: " . join(' ',array_keys($deps)) );
+            $logger->info("Dependencies: " . 
+                    join(' ',array_keys($deps)) );
+        */
 
         foreach( $deps as $depGenerator ) {
             $depGenerator->logAction( "dependency", get_class($depGenerator) , 1 );
