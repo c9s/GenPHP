@@ -24,12 +24,12 @@ class OperationMixin
         $this->self = $self;
     }
 
-    public function unregister($methodName)
+    public function unregisterOperation($methodName)
     {
         unset( $this->registered[ $methodName ];
     }
 
-    public function register( $methodName, Operation $operation)
+    public function registerOperation( $methodName, Operation $operation)
     {
         $operation->setGenerator( $this->self );
         $this->registered[ $methodName ] = $operation;
