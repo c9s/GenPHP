@@ -5,9 +5,13 @@ use GenPHP\Flavor\BaseGenerator;
 class Generator extends BaseGenerator 
 {
 
-    function brief()
+    function brief() { return 'generate generic PHP project'; }
+
+    function dependency()
     {
-        return 'generate generic PHP project';
+        return array(
+            'phpunit' => array( ),
+        );
     }
 
     function generate($name) 
