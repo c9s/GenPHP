@@ -13,6 +13,9 @@ GenPHP is using Twig template engine from Symfony.
 
 ![](https://github.com/c9s/GenPHP/raw/master/screenshots/screenshot01.png)
 
+Requirements
+------------
+- PHP5.3
 
 Installation
 ------------
