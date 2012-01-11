@@ -21,7 +21,7 @@ Installation
 ------------
 Copy this line to install genphp:
 
-    $ curl https://raw.github.com/c9s/GenPHP/master/scripts/install.sh | sh
+    $ curl https://raw.github.com/c9s/GenPHP/master/scripts/install.sh | bash
 
 Usage
 -----
