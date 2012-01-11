@@ -75,8 +75,12 @@ generator actions in the `generate` function.
 ```php
 <?php
 class Generator {
+
     function brief() { return 'your generator brief'; }
-    function generate($argument1,$argument2) {
+
+    function generate($argument1,$argument2) 
+    {
+        // do your operations here
 
     }
 }
@@ -140,8 +144,21 @@ To write a yaml file
 
 ```php
 <?php
-$this->writeYaml('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+$this->writeYaml('file.yaml', array( 'name' => 'John' ) );  // executes WriteJsonOperation
 ```
+
+To clone/pull a git repository:
+```php
+<?php
+$this->gitClone( 'git@github.com:.....git' , 'path/to/repo' );
+```
+
+To clone/pull a hg repository:
+```php
+<?php
+$this->hgClone( 'hg uri' , 'path/to/repo' );
+```
+
 
 Once you have done, You can run `new` command to generate your flavor:
 
@@ -153,7 +170,7 @@ If you want your flavor be global (system-wide), you can run install command:
 
     $ genphp install flavors/foo
 
-This will install flavor to your global flavor path.
+This installs flavor to your global flavor path.
 
 Command Usage
 -------------
@@ -175,7 +192,7 @@ $ genphp new project Foo
     create      tests
 ```
 
-genphp will look for flavor in `./flavors`, `./.flavors`, `~/.genphp/flavors`, you 
+genphp looks for flavor in `./flavors`, `./.flavors`, `~/.genphp/flavors`, you 
 can define your generator in those paths.
 
 to generate a new flavor:
