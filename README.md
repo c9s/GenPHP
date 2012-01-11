@@ -212,7 +212,7 @@ $path = $flavor->path( 'license' );
 <?php
 public fucntion generate($argument1,$argument2, ... ) 
 {
-    $file = $this->getFlavor('license')->getFile('LICENSE.GPL2');
+    $file = $this->flavorLoader->load('license')->path('LICENSE.GPL2');
     $this->copy($file, 'LICENSE' );
     $this->copyDir( );
 }

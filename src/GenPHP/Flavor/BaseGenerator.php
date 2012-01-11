@@ -30,17 +30,18 @@ use GetOptionKit\OptionSpecCollection;
  */
 abstract class BaseGenerator 
 {
-
     protected $options;
     protected $logger;
     protected $mixins = array();
 
     public $flavor;
+    protected $flavorLoader;
 
     public function __construct( FlavorDirectory $flavor )
     {
         $this->mixins[] = new OperationMixin( $this );
         $this->flavor = $flavor;
+        $this->flavorLoader = new FlavorLoader;
     }
 
     /* subclass must implements this */
