@@ -11,6 +11,8 @@ By using GenPHP, you can also seperate your global generator (`~/.genphp/flavors
 GenPHP is using Twig template engine from Symfony.
 
 
+[![Build Status](https://secure.travis-ci.org/c9s/GenPHP.png)](http://travis-ci.org/c9s/GenPHP)
+
 ![](https://github.com/c9s/GenPHP/raw/master/screenshots/screenshot01.png)
 
 Requirements
