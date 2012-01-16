@@ -9,6 +9,9 @@
  *
  */
 
+if( ! defined('DEBUG_BACKTRACE_PROVIDE_OBJECT') )
+    define('DEBUG_BACKTRACE_PROVIDE_OBJECT',1);
+
 function ok( $v , $msg = null )
 {
     $stacks = debug_backtrace( DEBUG_BACKTRACE_PROVIDE_OBJECT ); # XXX: limit is only availabel in PHP5.4
@@ -30,7 +33,7 @@ function is( $expected , $v , $msg = null )
     $testobj->assertEquals( $expected , $v , $msg );
 }
 
-function isa_ok( $expected , $v , $msg = null )
+function isa_ok( $expected , $v , $msg = null ) 
 {
     $stacks = debug_backtrace( DEBUG_BACKTRACE_PROVIDE_OBJECT ); # XXX: limit is only availabel in PHP5.4
     $testobj = $stacks[1]['object'];
