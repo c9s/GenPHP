@@ -21,7 +21,9 @@ class RenderOperation extends Operation
     {
         $rsDir = $this->getResourceDir();
         $loader = new Twig_Loader_Filesystem(array($rsDir));
-        $twig = new Twig_Environment($loader, array(  ));
+        $twig   = new Twig_Environment($loader, array(  ));
+
+        // XXX: register some built-in template for php doc or code.
 
         $template = $twig->loadTemplate($templateFile);
         $output = $template->render($args);
