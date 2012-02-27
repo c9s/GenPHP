@@ -26,28 +26,17 @@ class Generator extends BaseGenerator
             throw new Exception( "$name is not a valid flavor name" );
         }
 
-        $paths = Path::get_flavor_paths();
-        foreach( $paths as $path ) {
-            if( file_exists($path) ) {
-                $flavor = new FlavorDirectory( $path . DIRECTORY_SEPARATOR . $name );
-                $resourceDir = $flavor->getResourceDir();
+        $name = strtolower($name);
+        $args = array(
+            'extname' => $name,
+            'extname_uc' => strtoupper($name),
+        );
+        $this->render( 'config.m4',
+            'config.m4', $args );
 
-                $this->createDir($resourceDir);
-
-                if( $codeBasePath ) {
-                    if( ! file_exists($codeBasePath) )
-                        throw new Exception("$codeBasePath doesn't exist.");
-                    $codeBasePath = realpath( $codeBasePath ) ?: $codeBasePath;
-                    $this->copyDir( $codeBasePath , $resourceDir );
-                }
-
-                $this->render( 'Generator.php.twig',  
-                    $flavor->getGeneratorClassFile(),
-                    array( 'name' => $name ) );
-
-                $this->getLogger()->info('Done');
-                exit(0);
-            }
-        }
+        $this->render( 'php_extname.h' , "php_$name.h" , $args );
+        $this->render( 'php_extname.c' , "php_$name.c" , $args );
+        $this->render( 'test.php' , 'test.php' , $args );
+        $this->render( 'test-extension.sh' , 'test-extension.sh' , $args );
     }
 }
