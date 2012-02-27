@@ -10,8 +10,8 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-01-18</date>
-  <time>01:37:27</time>
+  <date>2012-02-28</date>
+  <time>05:03:11</time>
   <version>
     <release>0.1.3</release>
     <api>0.1.3</api>
@@ -53,7 +53,7 @@
       <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="e68584693a6fe0e275efe4a3589675d0"/>
       <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="7e15d3782d98014072f61d0ebc821589"/>
       <file name="src/GenPHP/Path.php" role="php" md5sum="3f540b80eed5bc46ed5930deea58838e"/>
-      <file name="genphp" role="script" md5sum="de4a174c7ac5599e7cfaa9e01bab6d6d"/>
+      <file name="genphp" role="script" md5sum="dfc511b15d7ba589f832518c5d0caf96"/>
     </dir>
   </contents>
   <dependencies>
