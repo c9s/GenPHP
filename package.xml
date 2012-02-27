@@ -10,8 +10,8 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-01-11</date>
-  <time>22:53:56</time>
+  <date>2012-01-18</date>
+  <time>01:37:27</time>
   <version>
     <release>0.1.3</release>
     <api>0.1.3</api>
@@ -28,7 +28,7 @@
       <file name="tests/GenPHP/Flavor/FlavorDirectoryTest.php" role="test" md5sum="8f1fe41daddd3e6a929a621a59273432"/>
       <file name="tests/GenPHP/Flavor/FlavorLoaderTest.php" role="test" md5sum="c011011a25695972c7cfdfc3d638f82b"/>
       <file name="tests/GenPHP/Operation/OperationMixinTest.php" role="test" md5sum="d1a0311d4a7b926fce03bb0be82a7840"/>
-      <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
+      <file name="tests/helpers.php" role="test" md5sum="4093047805c256a4455777de8b83b976"/>
       <file name="src/GenPHP/Application.php" role="php" md5sum="a990544eaafff7408ce947e536704525"/>
       <file name="src/GenPHP/Command/InitCommand.php" role="php" md5sum="aa86b85b754b48519f6ae79f67057f91"/>
       <file name="src/GenPHP/Command/InstallCommand.php" role="php" md5sum="0652d3eba2b6f168cebb1153c8870259"/>
@@ -48,7 +48,7 @@
       <file name="src/GenPHP/Operation/MoveOperation.php" role="php" md5sum="685f9b794e77a999319b188cebf2fa96"/>
       <file name="src/GenPHP/Operation/Operation.php" role="php" md5sum="cf4a016248f893a68a3c6b900e6155b2"/>
       <file name="src/GenPHP/Operation/OperationMixin.php" role="php" md5sum="4bb7adb10a4479407a9def974eb6d3eb"/>
-      <file name="src/GenPHP/Operation/RenderOperation.php" role="php" md5sum="6d73c5bfd5f0f4f9b1eb311d80b480b4"/>
+      <file name="src/GenPHP/Operation/RenderOperation.php" role="php" md5sum="f2da907c9d90e9a269706d7734473b36"/>
       <file name="src/GenPHP/Operation/TouchOperation.php" role="php" md5sum="5b7608b910aca72c04f41418b631cc53"/>
       <file name="src/GenPHP/Operation/WriteJsonOperation.php" role="php" md5sum="e68584693a6fe0e275efe4a3589675d0"/>
       <file name="src/GenPHP/Operation/WriteYamlOperation.php" role="php" md5sum="7e15d3782d98014072f61d0ebc821589"/>
