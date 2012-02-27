@@ -314,8 +314,8 @@ GenPHP supports many operations:
 
     $ git clone git@github.com:{{ your Id }}/GenPHP.git
 
-- Install onion.phar <http://github.com/c9s/Onion>
-- run `onion.phar bundle` to install PEAR dependencies.
+- Install onion <http://github.com/c9s/Onion>
+- run `onion bundle` to install PEAR dependencies.
 - run `scripts/genphp` to test your genphp script.
 - run `phpunit` to run the test suites.
 - run `scripts/compile.sh` to compile whole library into a executable phar file.
