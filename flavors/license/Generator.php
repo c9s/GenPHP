@@ -1,5 +1,5 @@
 <?php
-namespace licenses;
+namespace license;
 use GenPHP\Flavor\BaseGenerator;
 use GenPHP\Config;
 
