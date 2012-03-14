@@ -5,25 +5,23 @@ use GenPHP\Flavor\BaseGenerator;
 class Generator extends BaseGenerator 
 {
 
-    function brief()
-    {
-        return 'brief for your generator';
-    }
+    function brief() { return 'license flavor';  }
 
-    function dependency()
+    function generate($licenseType = null) 
     {
-        /* describe dependency here */
-        return array( 
-            'flavor2' => array( 
-                'options' => array( 'path' => '....' ),
-                'arguments' => array( 'arg1' , 'arg2' ),
-            ),
-        );
-    }
+        if( null == $licenseType ) {
+            $chooser = new \CLIFramework\Chooser;
+            $licenseType = $chooser->choose("Please select license type",array( 
+                'MIT License' => 'MIT',
+                'PHP License' => 'PHP',
+                'Zend License' => 'ZEND',
+                'GPL2 License' => 'GPL2',
+            ));
+        }
 
+        $licenseFile = 'LICENSE.' . $licenseType;
+        $this->render( $licenseFile , 'LICENSE.txt' , array( ));
 
-    function generate(/* $arg1, $arg2,  */) 
-    {
         /* 
             do generate here:
 
