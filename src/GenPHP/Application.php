@@ -3,6 +3,8 @@ namespace GenPHP;
 use CLIFramework\Application as CLIApp;
 class Application extends CLIApp
 {
+    const name = 'GenPHP';
+    const version = '1.0.1';
 
     function brief()
     {
