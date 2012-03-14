@@ -6,10 +6,10 @@ php:
 
 before_script:
   - pyrus install pear.php.net/PEAR
-  - "curl -O https://raw.github.com/c9s/Onion/master/onion.phar"
+  - "curl -O https://raw.github.com/c9s/Onion/master/onion"
   - phpenv rehash
-  - php onion.phar -d bundle
+  - php onion bundle
   - ./scripts/compile.sh
-  - php onion.phar -d build --pear
+  - php onion build --pear
 
 script: phpunit
