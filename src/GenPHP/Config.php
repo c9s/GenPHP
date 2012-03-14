@@ -9,8 +9,22 @@ if( ! defined('DS') ) {
 class Config
     implements ArrayAccess
 {
+
+
     public $home;
-    public $config;
+
+    /**
+     * author.name
+     * author.email
+     * author.copyright
+     */
+    public $config = array( 
+        'author' => array( 
+            'name' => 'Unknown',
+            'email' => '<unknown@email>',
+            'copyright' => '<copyright string>',
+        )
+    );
 
     function __construct()
     {
@@ -19,8 +33,9 @@ class Config
         if( ! file_exists($this->home) ) 
             mkdir( $this->home, 0755, true ); // recursive mkdir
 
-        if( $file = $this->getConfigFile() ) 
-            $this->config = $this->_parseConfigFile( $file );
+        if( $file = $this->getConfigFile() )  {
+            $this->config = array_merge( $this->config , $this->_parseConfigFile( $file ) );
+        }
     }
 
     function getHomeDir()
