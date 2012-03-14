@@ -6,7 +6,6 @@ class ConfigTest extends PHPUnit_Framework_TestCase
     {
         $config = new GenPHP\Config;
         ok( $config );
-        
     }
 }
 

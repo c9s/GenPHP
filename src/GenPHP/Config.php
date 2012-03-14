@@ -33,8 +33,11 @@ class Config
         if( ! file_exists($this->home) ) 
             mkdir( $this->home, 0755, true ); // recursive mkdir
 
-        if( $file = $this->getConfigFile() )  {
-            $this->config = array_merge( $this->config , $this->_parseConfigFile( $file ) );
+        $file = null;
+        if( $file = $this->getConfigFile() ) {
+            if( file_exists( $file ) )  {
+                $this->config = array_merge( $this->config , $this->_parseConfigFile( $file ) );
+            }
         }
     }
 
@@ -45,9 +48,7 @@ class Config
 
     function getConfigFile()
     {
-        $file = $this->home . DS . 'config';
-        if( file_exists( $file ) )
-            return $file;
+        return $this->home . DS . 'config';
     }
 
     function _parseConfigFile($configFile)
