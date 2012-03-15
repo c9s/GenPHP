@@ -1,6 +1,7 @@
 <?php
-namespace licenses;
+namespace license;
 use GenPHP\Flavor\BaseGenerator;
+use GenPHP\Config;
 
 class Generator extends BaseGenerator 
 {
@@ -20,26 +21,9 @@ class Generator extends BaseGenerator
         }
 
         $licenseFile = 'LICENSE.' . $licenseType;
-        $this->render( $licenseFile , 'LICENSE.txt' , array( ));
 
-        /* 
-            do generate here:
-
-            create dir
-                $this->createDir( 'path/to/dir' );
-
-            render code
-                $this->render( 'templatePath.php.twig', 'path/to/file' , array( 'name' => $name )  );
-
-            copy directory
-                $this->copyDir( 'path/from' , 'path/to' );
-
-            create file
-                $this->create( 'path/to/file' , 'content' );
-
-            touch file
-                $this->touch( 'path/to/touch' );
-         */
+        $config = new Config;
+        $this->render( $licenseFile , 'LICENSE' , array( 'config' => $config ) );
     }
 
 }

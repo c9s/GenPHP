@@ -12,7 +12,7 @@ class FlavorLoaderTest extends PHPUnit_Framework_TestCase
         $loader = new FlavorLoader();
         ok( $loader );
 
-        $flavor = $loader->load('licenses');
+        $flavor = $loader->load('license');
         ok( $flavor );
 
         $generator = $flavor->getGenerator();
