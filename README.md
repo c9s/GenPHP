@@ -25,6 +25,11 @@ Copy this line to install genphp:
 
     $ curl https://raw.github.com/c9s/GenPHP/master/scripts/install.sh | bash
 
+Install built-in flavors
+------------------------
+
+    $ git clone https://github.com/c9s/GenPHP-Flavors ~/.genphp/flavors
+
 Usage
 -----
 After installation, you can run `list` command to list your flavors, 
