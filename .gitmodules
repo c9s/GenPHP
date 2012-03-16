@@ -1,0 +1,3 @@
+[submodule "flavors"]
+	path = flavors
+	url = git@github.com:c9s/GenPHP-Flavors.git
