@@ -35,9 +35,16 @@ class FlavorDirectory extends SplFileInfo
         return $this->getBasename();
     }
 
+
+    public function getNamespace()
+    {
+        $name = $this->getName();
+        return preg_replace( '#-*#', '_' , $name );
+    }
+
     public function getGeneratorClass()
     {
-        return "\\{$this->getName()}\\Generator";
+        return $this->getNamespace() . '\Generator';
     }
 
     public function createGenericGenerator()
