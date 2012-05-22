@@ -39,7 +39,7 @@ class FlavorDirectory extends SplFileInfo
     public function getNamespace()
     {
         $name = $this->getName();
-        return preg_replace( '#-*#', '_' , $name );
+        return preg_replace( '#[-]+#', '_' , $name );
     }
 
     public function getGeneratorClass()
