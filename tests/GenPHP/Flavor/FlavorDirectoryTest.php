@@ -15,7 +15,7 @@ class FlavorDirectoryTest extends PHPUnit_Framework_TestCase
         ok( $fl->getGeneratorClassFile() );
         ok( $fl->exists() );
         is( 'command', $fl->getName());
-        is('\command\Generator', $fl->getGeneratorClass() );
+        is('command\Generator', $fl->getGeneratorClass() );
 
         ok( $fl->createGenericGenerator() );
     }
