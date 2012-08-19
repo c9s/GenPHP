@@ -6,6 +6,7 @@ $loader = new Universal\ClassLoader\BasePathClassLoader(array(
     basedir . '/vendor/pear' , 
     basedir . '/src' 
 ));
+$loader->useIncludePath(true);
 $loader->register();
 $app = new GenPHP\Application;
 $app->run( $argv );

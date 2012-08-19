@@ -21,12 +21,14 @@ class NewCommand extends Command
         $formatter = $logger->getFormatter();
         $specs = new OptionSpecCollection;
 
-        /* load flavor generator */
+        // load flavor and get generator
         $logger->info("Loading flavor $flavorName...");
         $loader = new Flavor\FlavorLoader;
         $flavor = $loader->load( $flavorName );
         $generator = $flavor->getGenerator();
 
+        // initialize option spec for generator command
+        // generator command can have its options for generating code.
         $logger->info2("Inializing option specs...");
         $generator->options( $specs );
         $generator->setLogger( $this->getLogger() );
