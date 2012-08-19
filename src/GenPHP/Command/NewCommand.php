@@ -6,6 +6,7 @@ use GetOptionKit\OptionParser;
 use GetOptionKit\OptionResult;
 use GetOptionKit\OptionSpecCollection;
 use GenPHP\Flavor;
+use GenPHP\GeneratorRunner;
 use Exception;
 use ReflectionObject;
 
@@ -30,55 +31,14 @@ class NewCommand extends Command
         $generator->options( $specs );
         $generator->setLogger( $this->getLogger() );
 
-        $deps = $generator->getDependencies();
-
-        /*
-        if( count($deps) )
-            $logger->info("Dependencies: " . 
-                    join(' ',array_keys($deps)) );
-        */
-
-        foreach( $deps as $depGenerator ) {
-            $depGenerator->logAction( "dependency", get_class($depGenerator) , 1 );
-            $args = $depGenerator->getOption()->getArguments();
-            $this->runGenerator( $depGenerator , $args );
-        }
-
         /* use GetOptionKit to parse options from $args */
         $args = func_get_args();
         array_shift($args);
-        $parser = new OptionParser( $specs );
-        $result = $parser->parse( $args );
 
-        /* pass rest arguments for generation */
-        $generator->setOption( $result );
+        $runner = new \GenPHP\GeneratorRunner;
+        $runner->logger = $logger;
+        $runner->run($generator,$args);
 
-        $logger->info("Running main generator...");
-        $this->runGenerator( $generator , $result->getArguments() );
         $logger->info("Done");
     }
-
-    public function checkGeneratorParameters($generator,$args)
-    {
-        $gClass = get_class( $generator );
-        $refl = new ReflectionObject($generator);
-        $reflMethod = $refl->getMethod('generate');
-        $requiredNumber = $reflMethod->getNumberOfRequiredParameters();
-        if( count($args) < $requiredNumber ) {
-            $this->getLogger()->error( "Generator $gClass requires $requiredNumber arguments." );
-            $params = $reflMethod->getParameters();
-            foreach( $params as $param ) {
-                $this->getLogger()->error( 
-                    $param->getPosition() . ' => $' . $param->getName() , 1 );
-            }
-            throw new Exception;
-        }
-    }
-
-    public function runGenerator($generator,$args = array()) 
-    {
-        $this->checkGeneratorParameters($generator,$args);
-        return call_user_func_array( array($generator,'generate'),$args);
-    }
-
 }
