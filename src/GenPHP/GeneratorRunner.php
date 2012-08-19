@@ -5,6 +5,7 @@ use GetOptionKit\OptionParser;
 use GetOptionKit\OptionResult;
 use GetOptionKit\OptionSpecCollection;
 use GenPHP\Flavor;
+use ReflectionObject;
 
 class GeneratorRunner
 {

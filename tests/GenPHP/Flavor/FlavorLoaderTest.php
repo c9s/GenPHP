@@ -1,15 +1,11 @@
 <?php
 
-namespace GenPHP\Flavor;
-use PHPUnit_Framework_TestCase;
-use Exception;
-
 class FlavorLoaderTest extends PHPUnit_Framework_TestCase
 {
     function testLoader()
     {
         /* use default flavor dirs */
-        $loader = new FlavorLoader(array( 'tests/flavors' ));
+        $loader = new GenPHP\Flavor\FlavorLoader(array( ROOT_DIR . '/tests/flavors' ));
         ok( $loader );
 
         $flavor = $loader->load('license');
@@ -29,7 +25,19 @@ class FlavorLoaderTest extends PHPUnit_Framework_TestCase
 
         is( 'license', $flavor->getName() );
         is( 'license', $flavor->getNamespace() );
-        is( 'tests/flavors/license/Resource', $flavor->getResourceDir() );
+        $dir = $flavor->getResourceDir();
+        ok( file_exists($dir) );
+
+        $pwd = getcwd();
+        $root = "tests/root";
+        if( ! file_exists($root) )
+            mkdir($root,0755,true);
+        chdir($root);
+
+        $runner = new \GenPHP\GeneratorRunner;
+        $runner->run($generator,array('MIT'));
+
+        chdir($pwd);
     }
 }
 

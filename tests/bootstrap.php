@@ -1,5 +1,9 @@
 <?php
 require 'tests/helpers.php';
 require 'vendor/pear/Universal/ClassLoader/BasePathClassLoader.php';
-$loader = new \Universal\ClassLoader\BasePathClassLoader( array('src','vendor/pear'));
+define('ROOT_DIR' , dirname(__DIR__) );
+$loader = new \Universal\ClassLoader\BasePathClassLoader( array( 
+    ROOT_DIR . '/src', 
+    ROOT_DIR . '/vendor/pear'
+));
 $loader->register();
