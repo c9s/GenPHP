@@ -26,7 +26,7 @@ class FlavorLoaderTest extends PHPUnit_Framework_TestCase
         is( 'license', $flavor->getName() );
         is( 'license', $flavor->getNamespace() );
         $dir = $flavor->getResourceDir();
-        ok( file_exists($dir) );
+        path_ok( $dir );
 
         $pwd = getcwd();
         $root = "tests/root";
@@ -36,6 +36,7 @@ class FlavorLoaderTest extends PHPUnit_Framework_TestCase
 
         $runner = new \GenPHP\GeneratorRunner;
         $runner->run($generator,array('MIT'));
+        path_ok('LICENSE');
 
         chdir($pwd);
     }
