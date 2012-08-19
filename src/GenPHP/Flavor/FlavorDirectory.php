@@ -67,7 +67,7 @@ class FlavorDirectory extends SplFileInfo
 
 
     /**
-     * set resource directory
+     * Set resource directory
      *
      * @param string $dir 
      */
@@ -77,7 +77,7 @@ class FlavorDirectory extends SplFileInfo
     }
 
     /**
-     * get Flavor Directory from Generator class
+     * Get Flavor Directory from Generator class
      *
      * @return string $path
      */
@@ -85,7 +85,6 @@ class FlavorDirectory extends SplFileInfo
     {
         if( $this->resourceDir )
             return $this->resourceDir;
-
         return $this->getPathname() . DIRECTORY_SEPARATOR . 'Resource';
 
 # XXX: old path gettter method from generator
@@ -146,8 +145,6 @@ class FlavorDirectory extends SplFileInfo
     {
         return $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
     }
-
-
 
 }
 
