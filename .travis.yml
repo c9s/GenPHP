@@ -4,6 +4,7 @@ php:
   - 5.4
 
 before_script:
+  - pyrus.phar channel-discover pear.corneltek.com
   - pyrus install pear.php.net/PEAR
   - pyrus install pear.corneltek.com/PHPUnit_TestMore
   - "curl -O https://raw.github.com/c9s/Onion/master/onion"
