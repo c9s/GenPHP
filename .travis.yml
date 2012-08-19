@@ -8,6 +8,6 @@ before_script:
   - pyrus install pear.php.net/PEAR
   - "curl -O https://raw.github.com/c9s/Onion/master/onion"
   - phpenv rehash
-  - php onion bundle
+  - php onion install
 
 script: phpunit
