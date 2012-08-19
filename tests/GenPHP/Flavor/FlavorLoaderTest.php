@@ -6,7 +6,7 @@ use Exception;
 
 class FlavorLoaderTest extends PHPUnit_Framework_TestCase
 {
-    function test()
+    function testLoader()
     {
         /* use default flavor dirs */
         $loader = new FlavorLoader();
