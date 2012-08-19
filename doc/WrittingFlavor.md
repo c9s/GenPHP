@@ -42,5 +42,3 @@ To get flavor object from generator, simple get from `flavor` class member.
         $content    = $this->flavor->getResourceContent( 'some_files/bar1' );
     }
 
-
-
