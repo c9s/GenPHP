@@ -19,7 +19,6 @@ class NewCommand extends Command
     {
         $logger = $this->getLogger();
         $formatter = $logger->getFormatter();
-        $specs = new OptionSpecCollection;
 
         // load flavor and get generator
         $logger->info("Loading flavor $flavorName...");
@@ -30,7 +29,6 @@ class NewCommand extends Command
         // initialize option spec for generator command
         // generator command can have its options for generating code.
         $logger->info2("Inializing option specs...");
-        $generator->options( $specs );
         $generator->setLogger( $this->getLogger() );
 
         /* use GetOptionKit to parse options from $args */

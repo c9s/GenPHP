@@ -19,6 +19,8 @@ class GeneratorRunner
             $this->runGenerator( $depGenerator , $subargs );
         }
 
+        $specs = new OptionSpecCollection;
+        $generator->options( $specs );
         $parser = new OptionParser( $specs );
         $result = $parser->parse( $args );
 
