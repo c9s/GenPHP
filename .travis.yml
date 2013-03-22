@@ -10,7 +10,7 @@ before_script:
   - "curl -O https://raw.github.com/c9s/Onion/master/onion"
   - phpenv rehash
   - php onion install
-  - composer install
+  - composer install --dev
   - git clone https://github.com/c9s/GenPHP-Flavors.git flavors
 
 script: phpunit
