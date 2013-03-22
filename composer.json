@@ -5,5 +5,8 @@
         "corneltek/cliframework": "1.*",
         "twig/twig": "1.*"
     },
-    "autoload": { "psr-0": { "CLIFramework": "src" } }
+    "require-dev": {
+        "corneltek/phpunit-testmore": "dev-master"
+    },
+    "autoload": { "psr-0": { "GenPHP": "src" } }
 }
