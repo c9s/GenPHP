@@ -5,7 +5,7 @@ php:
 
 before_script:
   - phpenv rehash
-  - composer install --dev
   - git clone https://github.com/c9s/GenPHP-Flavors.git flavors
+  - composer install --dev
 
 script: phpunit
