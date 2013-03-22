@@ -6,7 +6,7 @@ use Exception;
 
 class FlavorDirectoryTest extends PHPUnit_Framework_TestCase
 {
-    function testFunc()
+    public function testFunc()
     {
         $fl = new FlavorDirectory( 'flavors/command' );
         ok( $fl->getResourceDir() );
