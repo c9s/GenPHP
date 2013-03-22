@@ -4,12 +4,7 @@ php:
   - 5.4
 
 before_script:
-  - pear channel-discover pear.corneltek.com
-  - pear install pear.corneltek.com/PHPUnit_TestMore
-  - pear install pear.corneltek.com/Universal
-  - "curl -O https://raw.github.com/c9s/Onion/master/onion"
   - phpenv rehash
-  - php onion install
   - composer install --dev
   - git clone https://github.com/c9s/GenPHP-Flavors.git flavors
 
