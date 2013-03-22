@@ -8,5 +8,7 @@
     "require-dev": {
         "corneltek/phpunit-testmore": "dev-master"
     },
-    "autoload": { "psr-0": { "GenPHP": "src" } }
+    "autoload": { "psr-0": { 
+        "GenPHP": "src" 
+    } }
 }
