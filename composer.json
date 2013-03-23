@@ -1,14 +1,17 @@
 {
-    "name": "corneltek/genphp",
+    "name": "corneltek\/genphp",
     "require": {
         "php": ">=5.3.0",
-        "corneltek/cliframework": "1.*",
-        "twig/twig": "1.*"
+        "corneltek\/cliframework": "1.*",
+        "twig\/twig": "1.12.*"
     },
     "require-dev": {
-        "corneltek/phpunit-testmore": "dev-master"
+        "corneltek\/phpunit-testmore": "dev-master"
     },
-    "autoload": { "psr-0": { 
-        "GenPHP": "src" 
-    } }
+    "autoload": {
+        "psr-0": {
+            "GenPHP": "src"
+        }
+    },
+    "version": "1.2.4"
 }
