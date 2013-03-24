@@ -9,9 +9,7 @@
         "corneltek\/phpunit-testmore": "dev-master"
     },
     "autoload": {
-        "psr-0": {
-            "GenPHP": "src"
-        }
+        "psr-0": { "GenPHP": "src" }
     },
     "version": "1.2.4"
 }

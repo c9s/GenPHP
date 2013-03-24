@@ -1,3 +1,2 @@
 <?php
-require 'vendor/autoload.php';
-define( 'ROOT_DIR' , dirname(__DIR__) );
+$loader = require 'vendor/autoload.php';
