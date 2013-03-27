@@ -6,7 +6,8 @@
         "twig\/twig": "~1.12"
     },
     "require-dev": {
-        "corneltek\/phpunit-testmore": "dev-master"
+        "corneltek\/phpunit-testmore": "dev-master",
+        "corneltek\/universal": "dev-master"
     },
     "autoload": {
         "psr-0": {
