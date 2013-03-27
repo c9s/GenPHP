@@ -5,6 +5,8 @@ use GetOptionKit\OptionParser;
 use GetOptionKit\OptionResult;
 use GetOptionKit\OptionSpecCollection;
 use GenPHP\Flavor;
+use Exception;
+use RuntimeException;
 use ReflectionObject;
 
 class GeneratorRunner
@@ -44,7 +46,7 @@ class GeneratorRunner
                 $this->getLogger()->error( 
                     $param->getPosition() . ' => $' . $param->getName() , 1 );
             }
-            throw new Exception;
+            throw new RuntimeException;
         }
     }
 
