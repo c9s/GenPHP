@@ -80,7 +80,6 @@ Create new flavor without codebase path, then open the `Generator.php` file, wri
 generator actions in the `generate` function.
 
 ```php
-<?php
 class Generator {
 
     function brief() { return 'your generator brief'; }
@@ -98,35 +97,30 @@ Put your favorite files into `flavors/foo/Resource`, then you can write operatio
 To copy directory recursively from flavors/foo/Resource/from/path to to/path
 
 ```php
-<?php
 $this->copyDir('from/path','to/path');  
 ```
 
 To touch a file
 
 ```php
-<?php
 $this->touch('path/to/touch');          
 ```
 
 To create a new file with content
 
 ```php
-<?php
 $this->create('path/to/file', 'file content' );         
 ```
 
 To copy a file, copy path/file1 from Resource dir to file2
 
 ```php
-<?php
 $this->copy( 'path/file1' , 'file2' );
 ```
 
 To create a directory:
 
 ```php
-<?php
 $this->createDir( 'path/to/directory' );
 ```
 
@@ -134,7 +128,6 @@ To load templateName.php.twig template from flavors/foo/Resource
 and render the code template with variables to a file:
 
 ```php
-<?php
 $this->render('templateName.php.twig','path/to/file', array(
     'className' => $className
 ));
@@ -143,26 +136,22 @@ $this->render('templateName.php.twig','path/to/file', array(
 To write a json file
 
 ```php
-<?php
 $this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
 ```
 
 To write a yaml file
 
 ```php
-<?php
 $this->writeYaml('file.yaml', array( 'name' => 'John' ) );  // executes WriteJsonOperation
 ```
 
 To clone/pull a git repository:
 ```php
-<?php
 $this->gitClone( 'git@github.com:.....git' , 'path/to/repo' );
 ```
 
 To clone/pull a hg repository:
 ```php
-<?php
 $this->hgClone( 'hg uri' , 'path/to/repo' );
 ```
 
@@ -226,7 +215,6 @@ for more details.
 ## Flavor API
 
 ```php
-<?php
 $path = $flavor->path( 'license' );
 
 ```
@@ -236,7 +224,6 @@ $path = $flavor->path( 'license' );
 ## Generator API
 
 ```php
-<?php
 public fucntion generate($argument1,$argument2, ... ) 
 {
     $file = $this->flavorLoader->load('license')->path('LICENSE.GPL2');
@@ -250,7 +237,6 @@ By using built-in operations, you can create your code generator very easily,
 for example, the built-in flavor code generator from GenPHP:
 
 ```php
-<?php 
 namespace flavor;
 use GenPHP\Flavor\BaseGenerator;
 use GenPHP\Path;
@@ -281,8 +267,6 @@ class Generator extends BaseGenerator
 Operation name magic:
 
 ```php
-<?php
-
 // executes CopyDirOperation
 $this->copyDir('from/path','to/path');  
 
