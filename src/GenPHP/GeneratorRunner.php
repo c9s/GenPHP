@@ -54,6 +54,11 @@ class GeneratorRunner
         return call_user_func_array( array($generator,'generate'),$args);
     }
 
+    public function getLogger()
+    {
+        return $this->logger;
+    }
+
 }
 
 
