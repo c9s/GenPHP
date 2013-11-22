@@ -1,12 +1,6 @@
 #!/usr/bin/env php
 <?php
 define('basedir',dirname(__DIR__));
-require 'Universal/ClassLoader/BasePathClassLoader.php';
-$loader = new Universal\ClassLoader\BasePathClassLoader(array( 
-    basedir . '/vendor/pear' , 
-    basedir . '/src' 
-));
-$loader->useIncludePath(true);
-$loader->register();
+require 'vendor/autoload.php';
 $app = new GenPHP\Application;
 $app->run( $argv );
