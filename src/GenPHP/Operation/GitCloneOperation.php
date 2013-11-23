@@ -4,7 +4,7 @@ use GenPHP\Operation\Helper;
 
 class GitCloneOperation extends Operation
 {
-    function run( $repoUri , $target )
+    public function run( $repoUri , $target )
     {
         if( file_exists($target) ) {
             $this->logAction('git:pull',$repoUri);
