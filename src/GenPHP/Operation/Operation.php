@@ -2,6 +2,16 @@
 namespace GenPHP\Operation;
 use ReflectionObject;
 
+
+/**
+ * To create an operation object:
+ *
+ *   $operation = new $class( $generator it self );
+ *
+ * An operation class MUST implements a run method to take arguments:
+ *
+ *   $operation->run( ... );
+ */
 abstract class Operation 
 {
     protected $generator;
