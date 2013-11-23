@@ -35,6 +35,9 @@ class OperationMixin
         $this->registered[ $methodName ] = $operation;
     }
 
+    /**
+     * Here does the magic to convert method name into operation class.
+     */
     public function __call($method,$args)
     {
         /* check registered operations */
@@ -44,9 +47,10 @@ class OperationMixin
         }
 
         $class = '\\GenPHP\\Operation\\' . ucfirst($method) . 'Operation';
-        if( ! class_exists($class) )
+        if ( ! class_exists($class) ) {
             spl_autoload_call( $class );
-        if( class_exists($class) ) {
+        }
+        if ( class_exists($class) ) { 
             $operation = new $class( $this->self );
             return call_user_func_array( array($operation,'run') , $args );
         } else {

@@ -94,8 +94,9 @@ abstract class BaseGenerator
 
     public function __call($method,$args)
     {
-        if( method_exists( $this->flavor,$method) )
+        if ( method_exists( $this->flavor,$method) ) {
             return call_user_func_array( array($this->flavor, $method ), $args );
+        }
 
         /* call mixins */
         foreach( $this->mixins as $mixin ) {
