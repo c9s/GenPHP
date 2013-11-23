@@ -19,9 +19,24 @@ class OperationMixin
      */
     public $registered = array();
 
+    static $namespaces = array(
+        '\\GenPHP\\Operation',
+    );
+
     public function __construct($self)
     {
         $this->self = $self;
+    }
+
+
+    /**
+     * push user-specified namespace to the lookup namespace array.
+     *
+     * @param string $ns namespace name
+     */
+    static function insertNamespace($ns) {
+        // insert namespace at first place.
+        array_splice(static::$namespaces,0, 0 ,$ns);
     }
 
     public function unregisterOperation($methodName)
@@ -46,15 +61,18 @@ class OperationMixin
             return call_user_func_array( array($operation,'run') , $args );
         }
 
-        $class = '\\GenPHP\\Operation\\' . ucfirst($method) . 'Operation';
-        if ( ! class_exists($class) ) {
-            spl_autoload_call( $class );
-        }
-        if ( class_exists($class) ) { 
-            $operation = new $class( $this->self );
-            return call_user_func_array( array($operation,'run') , $args );
-        } else {
-            throw new Exception("Operation class not found: $class");
+        // look up for built-in operations
+        foreach ( static::$namespaces as $ns ) {
+            $class = $ns . '\\' . ucfirst($method) . 'Operation';
+            if ( ! class_exists($class) ) {
+                spl_autoload_call( $class );
+            }
+            if ( class_exists($class) ) { 
+                $operation = new $class( $this->self );
+                return call_user_func_array( array($operation,'run') , $args );
+            } else {
+                throw new Exception("Operation class not found: $class");
+            }
         }
     }
 
