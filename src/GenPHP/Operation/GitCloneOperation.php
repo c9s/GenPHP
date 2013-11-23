@@ -4,6 +4,9 @@ use GenPHP\Operation\Helper;
 
 class GitCloneOperation extends Operation
 {
+    /**
+     * Git clone to target path
+     */
     public function run( $repoUri , $target )
     {
         if( file_exists($target) ) {
