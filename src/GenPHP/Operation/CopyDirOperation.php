@@ -30,8 +30,12 @@ class CopyDirOperation extends Operation
                 $this->logAction( 'copy' , Helper::short_path($target) );
                 Helper::mktree( $target );
             } else {
-                $this->logAction( 'copy' , Helper::short_path($target) );
-                Helper::copy( $path , $target );
+                if ( file_exists($target) ) {
+                    $this->logAction( 'skip' , Helper::short_path($target) );
+                } else {
+                    $this->logAction( 'copy' , Helper::short_path($target) );
+                    Helper::copy( $path , $target );
+                }
             }
         }
     }
