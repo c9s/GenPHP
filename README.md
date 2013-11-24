@@ -102,9 +102,9 @@ generator actions in the `generate` function.
 ```php
 class Generator {
 
-    function brief() { return 'your generator brief'; }
+    public function brief() { return 'your generator brief'; }
 
-    function generate($argument1,$argument2) 
+    public function generate($argument1,$argument2) 
     {
         // do your operations here
         $this->copyDir('etc','etc');  
@@ -114,67 +114,7 @@ class Generator {
 
 Put your favorite files into `flavors/foo/Resource`, then you can write operation code in PHP.
 
-To copy directory recursively from flavors/foo/Resource/from/path to to/path
-
-```php
-$this->copyDir('from/path','to/path');  
-```
-
-To touch a file
-
-```php
-$this->touch('path/to/touch');          
-```
-
-To create a new file with content
-
-```php
-$this->create('path/to/file', 'file content' );         
-```
-
-To copy a file, copy path/file1 from Resource dir to file2
-
-```php
-$this->copy( 'path/file1' , 'file2' );
-```
-
-To create a directory:
-
-```php
-$this->createDir( 'path/to/directory' );
-```
-
-To load templateName.php.twig template from flavors/foo/Resource 
-and render the code template with variables to a file:
-
-```php
-$this->render('templateName.php.twig','path/to/file', array(
-    'className' => $className
-));
-```
-
-To write a json file
-
-```php
-$this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
-```
-
-To write a yaml file
-
-```php
-$this->writeYaml('file.yaml', array( 'name' => 'John' ) );  // executes WriteJsonOperation
-```
-
-To clone/pull a git repository:
-```php
-$this->gitClone( 'git@github.com:.....git' , 'path/to/repo' );
-```
-
-To clone/pull a hg repository:
-```php
-$this->hgClone( 'hg uri' , 'path/to/repo' );
-```
-
+#### Testing Your Flavor
 
 Once you have done, You can run `new` command to generate your flavor:
 
@@ -187,6 +127,93 @@ If you want your flavor be global (system-wide), you can run install command:
     $ genphp install flavors/foo
 
 This installs flavor to your global flavor path.
+
+
+### Using Operation
+
+GenPHP provides a lot of useful operations for you to write generation tasks very easily.
+
+#### CopyOperation
+
+To copy directory recursively from flavors/foo/Resource/from/path to to/path
+
+```php
+$this->copyDir('from/path','to/path');  
+```
+
+#### TouchOperation
+
+To touch a file
+
+```php
+$this->touch('path/to/touch');          
+```
+
+#### CreateOperation
+
+To create a new file with content
+
+```php
+$this->create('path/to/file', 'file content' );         
+```
+
+#### CopyOperation
+
+To copy a file, copy path/file1 from Resource dir to file2
+
+```php
+$this->copy( 'path/file1' , 'file2' );
+```
+
+#### CreateDirOperation
+
+To create a directory:
+
+```php
+$this->createDir( 'path/to/directory' );
+```
+
+#### RenderOperation
+
+To load templateName.php.twig template from flavors/foo/Resource 
+and render the code template with variables to a file:
+
+```php
+$this->render('templateName.php.twig','path/to/file', array(
+    'className' => $className
+));
+```
+
+#### WriteJsonOperation
+
+To write a json file
+
+```php
+$this->writeJson('file.json', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+```
+
+#### WriteYamlOperation
+
+To write a yaml file
+
+```php
+$this->writeYaml('file.yaml', array( 'name' => 'John' ) );  // executes WriteJsonOperation
+```
+
+#### GitCloneOperation
+
+To clone/pull a git repository:
+```php
+$this->gitClone( 'git@github.com:.....git' , 'path/to/repo' );
+```
+
+#### HgCloneOperation
+
+To clone/pull a hg repository:
+```php
+$this->hgClone( 'hg uri' , 'path/to/repo' );
+```
+
 
 Command Usage
 -------------
