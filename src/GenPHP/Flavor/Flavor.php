@@ -110,6 +110,12 @@ class Flavor extends SplFileInfo
 #          return $flavor->getResourceDir();
     }
 
+    public function getResourcePath($path)
+    {
+        return $this->getResourceDir() . DIRECTORY_SEPARATOR . $path;
+    }
+
+
     /**
      * return resource file path
      *

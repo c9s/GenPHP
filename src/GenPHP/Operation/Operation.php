@@ -37,6 +37,11 @@ abstract class Operation
         return $this->generator->getLogger();
     }
 
+    public function getResourcePath($path)
+    {
+        return $this->generator->getResourcePath($path);
+    }
+
     public function getResourceDir()
     {
         return $this->generator->getResourceDir();

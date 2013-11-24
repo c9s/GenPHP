@@ -48,12 +48,14 @@ class Helper
             $target = $to . substr($path,strlen($from));
             if ($path->isDir()) {
                 self::mktree( $target );
-                if( $cb )
+                if ( $cb ) {
                     $cb($target);
+                }
             } else {
                 self::copy( $path , $target );
-                if( $cb )
+                if ( $cb ) {
                     $cb($target);
+                }
             }
         }
     }
