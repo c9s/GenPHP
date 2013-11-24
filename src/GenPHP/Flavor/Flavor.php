@@ -33,8 +33,12 @@ class Flavor extends SplFileInfo
 
     public function requireGeneratorClassFile()
     {
+        $class = $this->getGeneratorClass();
+        if ( class_exists($class) ) {
+            return $class;
+        }
         require $this->getGeneratorClassFile();
-        return $this->getGeneratorClass();
+        return $class;
     }
 
     public function getName()

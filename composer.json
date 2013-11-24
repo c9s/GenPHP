@@ -5,6 +5,7 @@
         "corneltek\/cliframework": "~1.5",
         "corneltek\/phptask": "~1",
         "corneltek\/lightlogger": "~1",
+        "corneltek\/fileutil": "~1",
         "twig\/twig": "~1.12"
     },
     "require-dev": {
