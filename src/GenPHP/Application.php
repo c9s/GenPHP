@@ -5,7 +5,7 @@ use CLIFramework\Application as CLIApp;
 class Application extends CLIApp
 {
     const NAME = 'GenPHP';
-    const VERSION = "1.2.5";
+    const VERSION = "1.3.0";
 
     function brief()
     {
