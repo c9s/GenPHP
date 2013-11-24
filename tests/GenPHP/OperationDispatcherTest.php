@@ -1,16 +1,16 @@
 <?php 
-namespace GenPHP\Operation;
+namespace GenPHP;
 use PHPUnit_Framework_TestCase;
 use Exception;
 
-class OperationMixinTest extends PHPUnit_Framework_TestCase
+class OperationDispatcherTest extends PHPUnit_Framework_TestCase
 {
     function testFunc()
     {
         // XXX: use testing flavors to test
         return;
 
-        $mixin = new OperationMixin($this);
+        $mixin = new OperationDispatcher($this);
         ok( $mixin );
         if( ! file_exists('/var/tmp') )
             mkdir('/var/tmp',0755,true);

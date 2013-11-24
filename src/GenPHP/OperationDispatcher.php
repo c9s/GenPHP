@@ -1,12 +1,12 @@
 <?php 
-namespace GenPHP\Operation;
+namespace GenPHP;
 use Exception;
 use GenPHP\Operation\Helper;
 
 /**
  * Deletator for operations 
  */
-class OperationMixin 
+class OperationDispatcher
 {
 
     /**
