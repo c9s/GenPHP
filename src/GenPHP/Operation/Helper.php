@@ -45,7 +45,7 @@ class Helper
             RecursiveIteratorIterator::SELF_FIRST);
 
         foreach ($iterator as $path) {
-            $target = $to . substr($path,strlen($from));
+            $target = $to . DIRECTORY_SEPARATOR . $iterator->getSubPathname();
             if ($path->isDir()) {
                 self::mktree( $target );
                 if ( $cb ) {
