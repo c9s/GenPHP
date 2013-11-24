@@ -31,7 +31,7 @@ class CopyDirOperation extends Operation
             $target = $to . DIRECTORY_SEPARATOR . $iterator->getSubPathname();
             if ($path->isDir()) {
                 $this->logAction( 'copy' , Helper::short_path($target) );
-                Helper::mktree( $target );
+                futil_mkdir_if_not_exists($target, 0755, true);
             } else {
                 if ( file_exists($target) ) {
                     $this->logAction( 'skip' , Helper::short_path($target) );

@@ -1,6 +1,5 @@
 <?php 
 namespace GenPHP\Flavor;
-use GenPHP\OperationDispatcher;
 use Exception;
 use ReflectionObject;
 use SplFileInfo;
@@ -8,6 +7,7 @@ use GetOptionKit\GetOptionKit;
 use GetOptionKit\OptionParser;
 use GetOptionKit\OptionResult;
 use GetOptionKit\OptionSpecCollection;
+use GenPHP\OperationDispatcher;
 
 
 /**
