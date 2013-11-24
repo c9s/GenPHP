@@ -4,7 +4,7 @@ GenPHP is a powerful, flexible PHP code/project generator,
 which helps you avoid repeating jobs.
 
 GenPHP can generate anything you defined in the flavor, 
-In generator class, you can use the simple generator API to generate your code.
+In the generator class, you can use the simple generator API to generate your code.
 
 By using GenPHP, you can also seperate your global generator (`~/.genphp/flavors`), project-scope generator (`./flavors`).
 
@@ -30,8 +30,8 @@ Install built-in flavors
 
     $ git clone https://github.com/c9s/GenPHP-Flavors ~/.genphp/flavors
 
-Usage
------
+## Usage
+
 After installation, you can run `list` command to list your flavors, 
 You can put your flavor (generator) in global flavor path (`~/.genphp/flavors`) or 
 your current project flavor path (`./flavors` or `./.flavors`), for example:
@@ -46,6 +46,21 @@ your current project flavor path (`./flavors` or `./.flavors`), for example:
         project     flavors
         flavor      /Users/c9s/.genphp/flavors
         phpunit     /Users/c9s/.genphp/flavors
+
+
+
+### Creating New Flavors
+
+The concept of GenPHP is pretty simple, when you run `genphp new`, it first initialize a flavor loader,
+then use the flavor loader to look up matched flavor from several locations.
+
+The loaded flavor instance initializes a generator (which can be GenericGenerator, or BaseGenerator) to generate the stuff
+from the flavor resource directory to the destination directory. your
+generator class works between the flavor resource directory and the destination
+directory.
+
+
+#### Creating Flavor
 
 To create your flavor from your codebase in your project, type:
 
@@ -62,8 +77,13 @@ To create your flavor from your codebase in your project, type:
         create        flavors/foo/Resource/file3
     Done
 
-Then you can see those created files files, it's using GenericGenerator to copy
+You can see those created files files here, it's using GenericGenerator to copy
 `flavors/foo/Resource` to current directory.
+
+Now you can put your own files (used by generator) into the `Resource` directory.
+
+
+#### Customizing Your Flavor and Generator
 
 For more complex usage, to create your own generator, just run:
 
@@ -87,7 +107,7 @@ class Generator {
     function generate($argument1,$argument2) 
     {
         // do your operations here
-
+        $this->copyDir('etc','etc');  
     }
 }
 ```
