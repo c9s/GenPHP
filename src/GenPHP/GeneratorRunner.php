@@ -33,6 +33,12 @@ class GeneratorRunner
         $this->runGenerator( $generator , $result->getArguments() );
     }
 
+    /**
+     * Use ReflectionObject to check the generator parameters.
+     *
+     * @param Generator $generator
+     * @param array $args
+     */
     public function checkGeneratorParameters($generator,$args)
     {
         $gClass = get_class( $generator );
