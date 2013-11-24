@@ -1,6 +1,6 @@
 <?php 
 namespace GenPHP\Flavor;
-use GenPHP\Operation\OperationMixin;
+use GenPHP\OperationDispatcher;
 use Exception;
 use ReflectionObject;
 use SplFileInfo;
@@ -39,7 +39,7 @@ abstract class BaseGenerator
 
     public function __construct( FlavorDirectory $flavor )
     {
-        $this->mixins[] = new OperationMixin( $this );
+        $this->mixins[] = new OperationDispatcher( $this );
         $this->flavor = $flavor;
         $this->flavorLoader = new FlavorLoader;
     }
