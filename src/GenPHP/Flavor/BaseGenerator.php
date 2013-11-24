@@ -94,6 +94,10 @@ abstract class BaseGenerator
         return $this->flavor;
     }
 
+
+    /**
+     * Generator provides the methods from Flavor instance.
+     */
     public function __call($method,$args)
     {
         if ( method_exists( $this->flavor,$method) ) {

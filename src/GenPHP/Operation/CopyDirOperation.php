@@ -4,6 +4,9 @@ use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 use GenPHP\Operation\Helper;
 
+/**
+ * The CopyDirOperation uses (source path, destination path) to copy your dir
+ */
 class CopyDirOperation extends Operation
 {
 
