@@ -4,11 +4,11 @@ namespace GenPHP\Flavor;
 use PHPUnit_Framework_TestCase;
 use Exception;
 
-class FlavorDirectoryTest extends PHPUnit_Framework_TestCase
+class FlavorTest extends PHPUnit_Framework_TestCase
 {
     public function testFunc()
     {
-        $fl = new FlavorDirectory( 'flavors/command' );
+        $fl = new Flavor( 'flavors/command' );
         ok( $fl->getResourceDir() );
         ok( $fl->hasResourceDir() );
         ok( $fl->hasGeneratorClassFile() );

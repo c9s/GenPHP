@@ -3,11 +3,11 @@ namespace GenPHP\Flavor;
 use SplFileInfo;
 use GenPHP\Flavor\GenericGenerator;
 
-class FlavorDirectory extends SplFileInfo
+class Flavor extends SplFileInfo
 {
     private $resourceDir;
 
-
+    private $flavorLoader;
 
     public function getGeneratorClassFile()
     {
@@ -89,7 +89,7 @@ class FlavorDirectory extends SplFileInfo
 
 # XXX: old path gettter method from generator
 #          $refl = new ReflectionObject($this);
-#          $flavor = new FlavorDirectory( dirname($refl->getFilename()) );
+#          $flavor = new Flavor( dirname($refl->getFilename()) );
 #          return $flavor->getResourceDir();
     }
 

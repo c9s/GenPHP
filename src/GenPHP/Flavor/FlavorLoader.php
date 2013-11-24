@@ -1,7 +1,7 @@
 <?php 
 namespace GenPHP\Flavor;
 use GenPHP\Flavor\GenericGenerator;
-use GenPHP\Flavor\FlavorDirectory;
+use GenPHP\Flavor\Flavor;
 use GenPHP\Path;
 use Exception;
 
@@ -12,7 +12,7 @@ class FlavorLoader
      */
     private $dirs;
 
-    function __construct($dirs = null)
+    public function __construct($dirs = null)
     {
         /* get default flavor paths */
         $this->dirs = $dirs ? (array) $dirs : Path::get_flavor_paths();
@@ -28,9 +28,14 @@ class FlavorLoader
     public function load($name)
     {
         foreach( $this->dirs as $dir ) {
-            $flavor = new FlavorDirectory($dir . DIRECTORY_SEPARATOR . $name);
-            if( $flavor->exists() )
+            if ( ! file_exists($dir . DIRECTORY_SEPARATOR . $name) ) {
+                continue;
+            }
+
+            $flavor = new Flavor($dir . DIRECTORY_SEPARATOR . $name);
+            if ( $flavor->exists() ) {
                 return $flavor;
+            }
         }
         throw new Exception("Flavor $name not found.");
     }

@@ -37,10 +37,12 @@ abstract class BaseGenerator
     public $flavor;
     protected $flavorLoader;
 
-    public function __construct( FlavorDirectory $flavor )
+    public function __construct( Flavor $flavor )
     {
         $this->mixins[] = new OperationDispatcher( $this );
         $this->flavor = $flavor;
+
+        // XXX: should be assigned from outside.
         $this->flavorLoader = new FlavorLoader;
     }
 

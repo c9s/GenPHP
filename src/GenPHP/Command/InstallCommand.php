@@ -1,6 +1,6 @@
 <?php
 namespace GenPHP\Command;
-use GenPHP\Flavor\FlavorDirectory;
+use GenPHP\Flavor\Flavor;
 use GenPHP\Flavor\FlavorLoader;
 use GenPHP\Path;
 use GenPHP\Operation\Helper;
@@ -49,7 +49,7 @@ class InstallCommand extends \CLIFramework\Command
     function execute($nameOrPath)
     {
         if( file_exists($nameOrPath) ) {
-            $flavor = new FlavorDirectory($nameOrPath);
+            $flavor = new Flavor($nameOrPath);
             $this->installFlavor( $flavor );
         }
         else {
