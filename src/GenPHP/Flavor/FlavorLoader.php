@@ -32,7 +32,7 @@ class FlavorLoader
                 continue;
             }
 
-            $flavor = new Flavor($dir . DIRECTORY_SEPARATOR . $name);
+            $flavor = new Flavor($dir . DIRECTORY_SEPARATOR . $name, $this);
             if ( $flavor->exists() ) {
                 return $flavor;
             }
