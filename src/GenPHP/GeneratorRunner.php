@@ -45,14 +45,14 @@ class GeneratorRunner
         $refl = new ReflectionObject($generator);
         $reflMethod = $refl->getMethod('generate');
         $requiredNumber = $reflMethod->getNumberOfRequiredParameters();
-        if( count($args) < $requiredNumber ) {
+        if ( count($args) < $requiredNumber ) {
             $this->getLogger()->error( "Generator $gClass requires $requiredNumber arguments." );
             $params = $reflMethod->getParameters();
             foreach ( $params as $param ) {
                 $this->getLogger()->error( 
                     $param->getPosition() . ' => $' . $param->getName() , 1 );
             }
-            throw new RuntimeException;
+            throw new RuntimeException("Invalid Generator Arguments.");
         }
     }
 
