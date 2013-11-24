@@ -21,7 +21,7 @@ class ListCommand extends \CLIFramework\Command
                     continue;
                 }
                 if ( file_exists($path . DIRECTORY_SEPARATOR . $entry . DIRECTORY_SEPARATOR . 'Resource') ) {
-                    $this->getLogger()->info( sprintf("%-20s  %s", $parentPath ? $parentPath . '/' . $entry : $entry, $path), 1 );
+                    $this->getLogger()->info( sprintf("%-20s", $parentPath ? $parentPath . '/' . $entry : $entry), 1 );
                 } else {
                     if ( is_dir($path . DIRECTORY_SEPARATOR . $entry) ) {
                         $this->traverseDir(
@@ -38,14 +38,12 @@ class ListCommand extends \CLIFramework\Command
     public function execute()
     {
         $logger = $this->getLogger();
-
-        $logger->info( 'Available flavors:' );
-
         $paths = Path::get_flavor_paths();
         foreach( $paths as $path ) {
             if ( ! file_exists($path) ) {
                 continue;
             }
+            $logger->info("flavors in '$path':");
             $this->traverseDir($path);
         }
     }
