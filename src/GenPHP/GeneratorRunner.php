@@ -42,7 +42,7 @@ class GeneratorRunner
         if( count($args) < $requiredNumber ) {
             $this->getLogger()->error( "Generator $gClass requires $requiredNumber arguments." );
             $params = $reflMethod->getParameters();
-            foreach( $params as $param ) {
+            foreach ( $params as $param ) {
                 $this->getLogger()->error( 
                     $param->getPosition() . ' => $' . $param->getName() , 1 );
             }
