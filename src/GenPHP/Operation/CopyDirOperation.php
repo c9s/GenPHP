@@ -28,7 +28,7 @@ class CopyDirOperation extends Operation
             RecursiveIteratorIterator::SELF_FIRST);
 
         foreach ($iterator as $path) {
-            $target = $to . substr($path,strlen($from));
+            $target = $to . DIRECTORY_SEPARATOR . $iterator->getSubPathname();
             if ($path->isDir()) {
                 $this->logAction( 'copy' , Helper::short_path($target) );
                 Helper::mktree( $target );
