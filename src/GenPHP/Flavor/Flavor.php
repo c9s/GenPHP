@@ -7,11 +7,13 @@ class Flavor extends SplFileInfo
 {
     private $resourceDir;
 
-    private $flavorLoader;
+    private $loader;
 
     public function __construct($fileInfo, $loader = null) {
         parent::__construct($fileInfo);
-        $this->flavorLoader = $loader;
+        if ( $loader ) {
+            $this->loader = $loader;
+        }
     }
 
     public function getGeneratorClassFile()
@@ -81,14 +83,14 @@ class Flavor extends SplFileInfo
         $this->resourceDir = $dir;
     }
 
-    public function setFlavorLoader($loader)
+    public function setLoader($loader)
     {
-        $this->flavorLoader = $loader;
+        $this->loader = $loader;
     }
 
-    public function getFlavorLoader()
+    public function getLoader()
     {
-        return $this->flavorLoader;
+        return $this->loader;
     }
 
     /**
