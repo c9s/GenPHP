@@ -33,7 +33,7 @@
       <file name="tests/flavors/license/Resource/LICENSE.PHP" role="test" md5sum="cb564efdf78cce8ea6e4b5a4f7c05d97"/>
       <file name="tests/flavors/license/Resource/LICENSE.ZEND" role="test" md5sum="69e7a9c51846dd6692f1b946f95f6c60"/>
       <file name="tests/GenPHP/ConfigTest.php" role="test" md5sum="875d4ab87e4f9820ffa6b413ad8f8658"/>
-      <file name="tests/GenPHP/Flavor/FlavorDirectoryTest.php" role="test" md5sum="2a7e596b5de67eeaa72a12a0e72be872"/>
+      <file name="tests/GenPHP/Flavor/FlavorTest.php" role="test" md5sum="2a7e596b5de67eeaa72a12a0e72be872"/>
       <file name="tests/GenPHP/Flavor/FlavorLoaderTest.php" role="test" md5sum="2615fe52810e89863b7f6815bda9d825"/>
       <file name="tests/GenPHP/Operation/OperationMixinTest.php" role="test" md5sum="d1a0311d4a7b926fce03bb0be82a7840"/>
       <file name="tests/helpers.php" role="test" md5sum="4093047805c256a4455777de8b83b976"/>
@@ -45,7 +45,7 @@
       <file name="src/GenPHP/Command/NewCommand.php" role="php" md5sum="7e63bab83e4057e23fefe2346d119067"/>
       <file name="src/GenPHP/Config.php" role="php" md5sum="034b6e192c255236ab52454807b792d0"/>
       <file name="src/GenPHP/Flavor/BaseGenerator.php" role="php" md5sum="92d2e40c460b9e352a71ed685ba5a2db"/>
-      <file name="src/GenPHP/Flavor/FlavorDirectory.php" role="php" md5sum="18c17c35672a6a86d4edfcd9015ac5c9"/>
+      <file name="src/GenPHP/Flavor/Flavor.php" role="php" md5sum="18c17c35672a6a86d4edfcd9015ac5c9"/>
       <file name="src/GenPHP/Flavor/FlavorLoader.php" role="php" md5sum="f482ad779ba27fc7c11d3ef39b35faf4"/>
       <file name="src/GenPHP/Flavor/GenericGenerator.php" role="php" md5sum="8f1f1601b70bb21e7c4621b93db3c906"/>
       <file name="src/GenPHP/GeneratorRunner.php" role="php" md5sum="cbffe3f6eec7dd3094b41e43e0690f42"/>
@@ -103,7 +103,7 @@
       <install name="tests/flavors/license/Resource/LICENSE.PHP" as="flavors/license/Resource/LICENSE.PHP"/>
       <install name="tests/flavors/license/Resource/LICENSE.ZEND" as="flavors/license/Resource/LICENSE.ZEND"/>
       <install name="tests/GenPHP/ConfigTest.php" as="GenPHP/ConfigTest.php"/>
-      <install name="tests/GenPHP/Flavor/FlavorDirectoryTest.php" as="GenPHP/Flavor/FlavorDirectoryTest.php"/>
+      <install name="tests/GenPHP/Flavor/FlavorTest.php" as="GenPHP/Flavor/FlavorTest.php"/>
       <install name="tests/GenPHP/Flavor/FlavorLoaderTest.php" as="GenPHP/Flavor/FlavorLoaderTest.php"/>
       <install name="tests/GenPHP/Operation/OperationMixinTest.php" as="GenPHP/Operation/OperationMixinTest.php"/>
       <install name="tests/helpers.php" as="helpers.php"/>
@@ -115,7 +115,7 @@
       <install name="src/GenPHP/Command/NewCommand.php" as="GenPHP/Command/NewCommand.php"/>
       <install name="src/GenPHP/Config.php" as="GenPHP/Config.php"/>
       <install name="src/GenPHP/Flavor/BaseGenerator.php" as="GenPHP/Flavor/BaseGenerator.php"/>
-      <install name="src/GenPHP/Flavor/FlavorDirectory.php" as="GenPHP/Flavor/FlavorDirectory.php"/>
+      <install name="src/GenPHP/Flavor/Flavor.php" as="GenPHP/Flavor/Flavor.php"/>
       <install name="src/GenPHP/Flavor/FlavorLoader.php" as="GenPHP/Flavor/FlavorLoader.php"/>
       <install name="src/GenPHP/Flavor/GenericGenerator.php" as="GenPHP/Flavor/GenericGenerator.php"/>
       <install name="src/GenPHP/GeneratorRunner.php" as="GenPHP/GeneratorRunner.php"/>
