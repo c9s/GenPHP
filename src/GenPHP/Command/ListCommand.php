@@ -7,12 +7,35 @@ class ListCommand extends \CLIFramework\Command
         return 'list flavors';
     }
 
-    function options($opts) 
+    public function options($opts) 
     {
         // $opts->add('s|string:','description ....');
     }
 
-    function execute()
+
+    public function traverseDir($path, $parentPath = null)
+    {
+        if ( $handle = opendir( $path ) ) {
+            while (false !== ($entry = readdir($handle))) {
+                if ( $entry[0] == '.' || $entry == '..' )  {
+                    continue;
+                }
+                if ( file_exists($path . DIRECTORY_SEPARATOR . $entry . DIRECTORY_SEPARATOR . 'Resource') ) {
+                    $this->getLogger()->info( sprintf("%-20s  %s", $parentPath ? $parentPath . '/' . $entry : $entry, $path), 1 );
+                } else {
+                    if ( is_dir($path . DIRECTORY_SEPARATOR . $entry) ) {
+                        $this->traverseDir(
+                            $path . DIRECTORY_SEPARATOR . $entry,
+                            $entry 
+                        );
+                    }
+                }
+            }
+            closedir($handle);
+        }
+    }
+
+    public function execute()
     {
         $logger = $this->getLogger();
 
@@ -23,16 +46,7 @@ class ListCommand extends \CLIFramework\Command
             if ( ! file_exists($path) ) {
                 continue;
             }
-
-            if ( $handle = opendir( $path ) ) {
-                while (false !== ($entry = readdir($handle))) {
-                    if ( $entry[0] == '.' || $entry == '..' )  {
-                        continue;
-                    }
-                    $logger->info( sprintf("%-10s  %s",$entry, $path), 1 );
-                }
-                closedir($handle);
-            }
+            $this->traverseDir($path);
         }
     }
 }
