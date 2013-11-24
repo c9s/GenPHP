@@ -24,12 +24,12 @@ class CopyDirOperation extends Operation
         $to   = realpath($to) ?: $to;
 
         $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($from),
+            new RecursiveDirectoryIterator($from, RecursiveDirectoryIterator::SKIP_DOTS),
             RecursiveIteratorIterator::SELF_FIRST);
 
         foreach ($iterator as $path) {
             $target = $to . DIRECTORY_SEPARATOR . $iterator->getSubPathname();
-            if ($path->isDir()) {
+            if ( $path->isDir() ) {
                 $this->logAction( 'copy' , Helper::short_path($target) );
                 futil_mkdir_if_not_exists($target, 0755, true);
             } else {
