@@ -20,7 +20,6 @@ class CopyDirOperation extends Operation
     {
         $resDir = $this->getResourceDir();
         $from = realpath($from) ?: $resDir . DIRECTORY_SEPARATOR . $from;
-        // $from = realpath($from) ?: $from;
         $to   = realpath($to) ?: $to;
 
         $iterator = new RecursiveIteratorIterator(
