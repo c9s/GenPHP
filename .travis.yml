@@ -5,6 +5,7 @@ php:
 
 before_script:
   - phpenv rehash
+  - curl http://install.onionphp.org/ | bash
   - git clone https://github.com/c9s/GenPHP-Flavors.git flavors
   - composer install --dev
   - ./scripts/compile
