@@ -37,6 +37,11 @@ abstract class BaseGenerator
     public $flavor;
     protected $flavorLoader;
 
+    /**
+     * @var array global arguments
+     **/
+    public $globalArguments = array();
+
     public function __construct( Flavor $flavor )
     {
         $this->mixins[] = new OperationDispatcher( $this );
@@ -140,6 +145,22 @@ abstract class BaseGenerator
     }
 
     // abstract function generate();
+
+
+    /**
+     * Set global arguments
+     */
+    public function setGlobalArguments(array $args) {
+        $this->globalArguments = $args;
+    }
+
+    public function getGlobalArguments() {
+        return $this->globalArguments;
+    }
+
+    public function getGlobalArgument($name) {
+        return $this->globalArguments[ $name ];
+    }
 
 
     public function getDependencies()
