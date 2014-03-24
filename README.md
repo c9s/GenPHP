@@ -267,6 +267,22 @@ $path = $flavor->path( 'license' );
 ```
 
 
+## Generator Runner
+
+```php
+$loader = new \Flavor\FlavorLoader;
+$flavor = $loader->load( $flavorName );
+$generator = $flavor->getGenerator();
+$generator->setLogger( $this->getLogger() );
+
+$args = func_get_args();
+array_shift($args);
+
+$runner = new \GenPHP\GeneratorRunner;
+$runner->logger = $logger;
+$runner->run($generator,$args);
+```
+
 
 ## Generator API
 
