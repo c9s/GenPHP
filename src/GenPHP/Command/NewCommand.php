@@ -13,9 +13,9 @@ use ReflectionObject;
 class NewCommand extends Command
 {
 
-    function brief() { return 'generate from flavor'; }
+    public function brief() { return 'generate from flavor'; }
 
-    function execute($flavorName)
+    public function execute($flavorName)
     {
         $logger = $this->getLogger();
         $formatter = $logger->getFormatter();

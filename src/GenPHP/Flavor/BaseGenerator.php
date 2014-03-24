@@ -162,6 +162,13 @@ abstract class BaseGenerator
         return $this->globalArguments[ $name ];
     }
 
+    /**
+     * Let subclass to define global arguments
+     */
+    public function prepareGlobalArguments() {
+        return array();
+    }
+
 
     public function getDependencies()
     {
