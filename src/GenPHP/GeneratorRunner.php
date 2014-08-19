@@ -3,7 +3,7 @@ namespace GenPHP;
 use GetOptionKit\GetOptionKit;
 use GetOptionKit\OptionParser;
 use GetOptionKit\OptionResult;
-use GetOptionKit\OptionSpecCollection;
+use GetOptionKit\OptionCollection;
 use GenPHP\Flavor;
 use Exception;
 use RuntimeException;
@@ -22,7 +22,7 @@ class GeneratorRunner
             $this->runGenerator( $depGenerator , $subargs );
         }
 
-        $specs = new OptionSpecCollection;
+        $specs = new OptionCollection;
         $generator->options( $specs );
         $parser = new OptionParser( $specs );
         $result = $parser->parse( $args );
