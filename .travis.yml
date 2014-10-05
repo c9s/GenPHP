@@ -4,7 +4,7 @@ php:
   - 5.4
 
 before_script:
-  - eval `curl http://install.onionphp.org/`
+  - cd /usr/local/bin && sudo curl -LO https://github.com/phpbrew/Onion/raw/master/onion && sudo chmod +x onion && cd -
   - phpenv rehash
   - git clone https://github.com/c9s/GenPHP-Flavors.git flavors
   - composer install --dev
