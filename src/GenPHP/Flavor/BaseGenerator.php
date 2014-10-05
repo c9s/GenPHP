@@ -6,7 +6,7 @@ use SplFileInfo;
 use GetOptionKit\GetOptionKit;
 use GetOptionKit\OptionParser;
 use GetOptionKit\OptionResult;
-use GetOptionKit\OptionSpecCollection;
+use GetOptionKit\OptionCollection;
 use GenPHP\OperationDispatcher;
 
 
@@ -190,7 +190,7 @@ abstract class BaseGenerator
             $depGenerator = $depFlavor->getGenerator();
             $depGenerator->setLogger( $logger );
 
-            $depSpecs = new OptionSpecCollection;
+            $depSpecs = new OptionCollection;
             $depGenerator->options( $depSpecs );
             $depOptionResult = OptionResult::create( 
                 $depSpecs, 
