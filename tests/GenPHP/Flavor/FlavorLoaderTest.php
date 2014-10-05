@@ -17,9 +17,9 @@ class FlavorLoaderTest extends PHPUnit_Framework_TestCase
 
     public function flavorProvider()
     {
-        return [
-            ['license', ['MIT'] ]
-        ];
+        return array(
+            array('license', array('MIT'))
+        );
     }
 
 
