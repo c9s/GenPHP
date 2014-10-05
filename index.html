@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Genphp : A Powerful,Flexible Code Generator for PHP5.3, can generate anything what you want for your project.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Genphp</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/c9s/GenPHP">View on GitHub</a>
+
+          <h1 id="project_title">Genphp</h1>
+          <h2 id="project_tagline">A Powerful,Flexible Code Generator for PHP5.3, can generate anything what you want for your project.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/c9s/GenPHP/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/c9s/GenPHP/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="genphp" class="anchor" href="#genphp"><span class="octicon octicon-link"></span></a>GenPHP</h1>
+
+<p>GenPHP is a powerful, flexible PHP code/project generator,
+which helps you avoid repeating jobs.</p>
+
+<p>GenPHP can generate anything you defined in the flavor, 
+In the generator class, you can use the simple generator API to generate your code.</p>
+
+<p>By using GenPHP, you can also seperate your global generator (<code>~/.genphp/flavors</code>), project-scope generator (<code>./flavors</code>).</p>
+
+<p>GenPHP is using Twig template engine from Symfony.</p>
+
+<p><a href="http://travis-ci.org/c9s/GenPHP"><img src="https://secure.travis-ci.org/c9s/GenPHP.png" alt="Build Status"></a></p>
+
+<p><img src="https://github.com/c9s/GenPHP/raw/master/screenshots/screenshot01.png" alt=""></p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>PHP5.3</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Copy this line to install genphp:</p>
+
+<pre><code>$ curl https://raw.github.com/c9s/GenPHP/master/scripts/install.sh | bash
+</code></pre>
+
+<h2>
+<a name="install-built-in-flavors" class="anchor" href="#install-built-in-flavors"><span class="octicon octicon-link"></span></a>Install built-in flavors</h2>
+
+<pre><code>$ git clone https://github.com/c9s/GenPHP-Flavors ~/.genphp/flavors
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>After installation, you can run <code>list</code> command to list your flavors, 
+You can put your flavor (generator) in global flavor path (<code>~/.genphp/flavors</code>) or 
+your current project flavor path (<code>./flavors</code> or <code>./.flavors</code>), for example:</p>
+
+<pre><code>~GenPHP $ genphp list
+
+Available flavors:
+    command     flavors
+    flavor      flavors
+    operation   flavors
+    phpunit     flavors
+    project     flavors
+    flavor      /Users/c9s/.genphp/flavors
+    phpunit     /Users/c9s/.genphp/flavors
+</code></pre>
+
+<h3>
+<a name="creating-new-flavors" class="anchor" href="#creating-new-flavors"><span class="octicon octicon-link"></span></a>Creating New Flavors</h3>
+
+<p>The concept of GenPHP is pretty simple, when you run <code>genphp new</code>, it first initialize a flavor loader,
+then use the flavor loader to look up matched flavor from several locations.</p>
+
+<p>The loaded flavor instance initializes a generator (which can be GenericGenerator, or BaseGenerator) to generate the stuff
+from the flavor resource directory to the destination directory. your
+generator class works between the flavor resource directory and the destination
+directory.</p>
+
+<h4>
+<a name="creating-flavor" class="anchor" href="#creating-flavor"><span class="octicon octicon-link"></span></a>Creating Flavor</h4>
+
+<p>To create your flavor from your codebase in your project, type:</p>
+
+<pre><code>$ cd your_project
+$ mkdir flavors
+$ genphp new flavor foo ~/path/to/codebase
+
+Loading flavor...
+Inializing option specs...
+Running generator...
+    create        flavors/foo/Resource
+    create        flavors/foo/Resource/file1
+    create        flavors/foo/Resource/file2
+    create        flavors/foo/Resource/file3
+Done
+</code></pre>
+
+<p>You can see those created files files here, it's using GenericGenerator to copy
+<code>flavors/foo/Resource</code> to current directory.</p>
+
+<p>Now you can put your own files (used by generator) into the <code>Resource</code> directory.</p>
+
+<h4>
+<a name="customizing-your-flavor-and-generator" class="anchor" href="#customizing-your-flavor-and-generator"><span class="octicon octicon-link"></span></a>Customizing Your Flavor and Generator</h4>
+
+<p>For more complex usage, to create your own generator, just run:</p>
+
+<pre><code>$ genphp new flavor foo
+
+Loading flavor...
+Inializing option specs...
+Running generator...
+    create        flavors/foo/Resource
+    render        flavors/foo/Generator.php
+Done
+</code></pre>
+
+<p>Create new flavor without codebase path, then open the <code>Generator.php</code> file, write your
+generator actions in the <code>generate</code> function.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">class</span> <span class="nc">Generator</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">brief</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'your generator brief'</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">generate</span><span class="p">(</span><span class="nv">$argument1</span><span class="p">,</span><span class="nv">$argument2</span><span class="p">)</span> 
+    <span class="p">{</span>
+        <span class="c1">// do your operations here</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">copyDir</span><span class="p">(</span><span class="s1">'etc'</span><span class="p">,</span><span class="s1">'etc'</span><span class="p">);</span>  
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Put your favorite files into <code>flavors/foo/Resource</code>, then you can write operation code in PHP.</p>
+
+<h4>
+<a name="testing-your-flavor" class="anchor" href="#testing-your-flavor"><span class="octicon octicon-link"></span></a>Testing Your Flavor</h4>
+
+<p>Once you have done, You can run <code>new</code> command to generate your flavor:</p>
+
+<pre><code>$ genphp new foo argument1 argument2
+</code></pre>
+
+<p>And your code is generated.</p>
+
+<p>If you want your flavor be global (system-wide), you can run install command:</p>
+
+<pre><code>$ genphp install flavors/foo
+</code></pre>
+
+<p>This installs flavor to your global flavor path.</p>
+
+<h3>
+<a name="using-operation" class="anchor" href="#using-operation"><span class="octicon octicon-link"></span></a>Using Operation</h3>
+
+<p>GenPHP provides a lot of useful operations for you to write generation tasks very easily.</p>
+
+<h4>
+<a name="copyoperation" class="anchor" href="#copyoperation"><span class="octicon octicon-link"></span></a>CopyOperation</h4>
+
+<p>To copy directory recursively from flavors/foo/Resource/from/path to to/path</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">copyDir</span><span class="p">(</span><span class="s1">'from/path'</span><span class="p">,</span><span class="s1">'to/path'</span><span class="p">);</span>  
+</pre></div>
+
+<h4>
+<a name="touchoperation" class="anchor" href="#touchoperation"><span class="octicon octicon-link"></span></a>TouchOperation</h4>
+
+<p>To touch a file</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">touch</span><span class="p">(</span><span class="s1">'path/to/touch'</span><span class="p">);</span>          
+</pre></div>
+
+<h4>
+<a name="createoperation" class="anchor" href="#createoperation"><span class="octicon octicon-link"></span></a>CreateOperation</h4>
+
+<p>To create a new file with content</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="s1">'file content'</span> <span class="p">);</span>         
+</pre></div>
+
+<h4>
+<a name="copyoperation-1" class="anchor" href="#copyoperation-1"><span class="octicon octicon-link"></span></a>CopyOperation</h4>
+
+<p>To copy a file, copy path/file1 from Resource dir to file2</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">copy</span><span class="p">(</span> <span class="s1">'path/file1'</span> <span class="p">,</span> <span class="s1">'file2'</span> <span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="creatediroperation" class="anchor" href="#creatediroperation"><span class="octicon octicon-link"></span></a>CreateDirOperation</h4>
+
+<p>To create a directory:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDir</span><span class="p">(</span> <span class="s1">'path/to/directory'</span> <span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="renderoperation" class="anchor" href="#renderoperation"><span class="octicon octicon-link"></span></a>RenderOperation</h4>
+
+<p>To load templateName.php.twig template from flavors/foo/Resource 
+and render the code template with variables to a file:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'templateName.php.twig'</span><span class="p">,</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="nv">$className</span>
+<span class="p">));</span>
+</pre></div>
+
+<h4>
+<a name="writejsonoperation" class="anchor" href="#writejsonoperation"><span class="octicon octicon-link"></span></a>WriteJsonOperation</h4>
+
+<p>To write a json file</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">writeJson</span><span class="p">(</span><span class="s1">'file.json'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John'</span> <span class="p">)</span> <span class="p">);</span>  <span class="c1">// executes WriteJsonOperation</span>
+</pre></div>
+
+<h4>
+<a name="writeyamloperation" class="anchor" href="#writeyamloperation"><span class="octicon octicon-link"></span></a>WriteYamlOperation</h4>
+
+<p>To write a yaml file</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">writeYaml</span><span class="p">(</span><span class="s1">'file.yaml'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John'</span> <span class="p">)</span> <span class="p">);</span>  <span class="c1">// executes WriteJsonOperation</span>
+</pre></div>
+
+<h4>
+<a name="gitcloneoperation" class="anchor" href="#gitcloneoperation"><span class="octicon octicon-link"></span></a>GitCloneOperation</h4>
+
+<p>To clone/pull a git repository:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gitClone</span><span class="p">(</span> <span class="s1">'git@github.com:.....git'</span> <span class="p">,</span> <span class="s1">'path/to/repo'</span> <span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="hgcloneoperation" class="anchor" href="#hgcloneoperation"><span class="octicon octicon-link"></span></a>HgCloneOperation</h4>
+
+<p>To clone/pull a hg repository:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hgClone</span><span class="p">(</span> <span class="s1">'hg uri'</span> <span class="p">,</span> <span class="s1">'path/to/repo'</span> <span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="command-usage" class="anchor" href="#command-usage"><span class="octicon octicon-link"></span></a>Command Usage</h2>
+
+<p>To generate a generic PHP project structure, GenPHP provides a built-in
+template for this:</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>genphp new project Foo
+
+    create
+    create      src
+    create      src/Foo.php
+    create      src/Foo
+    dependency ant
+    create      build.xml
+    dependency phpunit
+    create      phpunit.xml.dist
+    create      tests
+</pre></div>
+
+<p>genphp looks for flavor in <code>./flavors</code>, <code>./.flavors</code>, <code>~/.genphp/flavors</code>, you 
+can define your generator in those paths.</p>
+
+<p>to generate a new flavor:</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>genphp new flavor flavorName
+</pre></div>
+
+<p>To generate a new flavor from current existing code base:</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>genphp new flavor ProjectA ~/path/to/OneProject
+</pre></div>
+
+<p>To list schemas</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>genphp list
+</pre></div>
+
+<p>please check <code>./flavors</code> directory of this repository
+for more details.</p>
+
+<h2>
+<a name="flavor-api" class="anchor" href="#flavor-api"><span class="octicon octicon-link"></span></a>Flavor API</h2>
+
+<div class="highlight highlight-php"><pre><span class="nv">$path</span> <span class="o">=</span> <span class="nv">$flavor</span><span class="o">-&gt;</span><span class="na">path</span><span class="p">(</span> <span class="s1">'license'</span> <span class="p">);</span>
+
+</pre></div>
+
+<h2>
+<a name="generator-runner" class="anchor" href="#generator-runner"><span class="octicon octicon-link"></span></a>Generator Runner</h2>
+
+<div class="highlight highlight-php"><pre><span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Flavor\FlavorLoader</span><span class="p">;</span>
+<span class="nv">$flavor</span> <span class="o">=</span> <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span> <span class="nv">$flavorName</span> <span class="p">);</span>
+<span class="nv">$generator</span> <span class="o">=</span> <span class="nv">$flavor</span><span class="o">-&gt;</span><span class="na">getGenerator</span><span class="p">();</span>
+<span class="nv">$generator</span><span class="o">-&gt;</span><span class="na">setLogger</span><span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getLogger</span><span class="p">()</span> <span class="p">);</span>
+
+<span class="nv">$args</span> <span class="o">=</span> <span class="nb">func_get_args</span><span class="p">();</span>
+<span class="nb">array_shift</span><span class="p">(</span><span class="nv">$args</span><span class="p">);</span>
+
+<span class="nv">$runner</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GenPHP\GeneratorRunner</span><span class="p">;</span>
+<span class="nv">$runner</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
+<span class="nv">$runner</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span><span class="nv">$generator</span><span class="p">,</span><span class="nv">$args</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="generator-api" class="anchor" href="#generator-api"><span class="octicon octicon-link"></span></a>Generator API</h2>
+
+<div class="highlight highlight-php"><pre><span class="k">public</span> <span class="nx">fucntion</span> <span class="nx">generate</span><span class="p">(</span><span class="nv">$argument1</span><span class="p">,</span><span class="nv">$argument2</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span> 
+<span class="p">{</span>
+    <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flavorLoader</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="s1">'license'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">path</span><span class="p">(</span><span class="s1">'LICENSE.GPL2'</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">copy</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="s1">'LICENSE'</span> <span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">copyDir</span><span class="p">(</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="operations" class="anchor" href="#operations"><span class="octicon octicon-link"></span></a>Operations</h3>
+
+<p>By using built-in operations, you can create your code generator very easily,
+for example, the built-in flavor code generator from GenPHP:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">namespace</span> <span class="nx">flavor</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">GenPHP\Flavor\BaseGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">GenPHP\Path</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Generator</span> <span class="k">extends</span> <span class="nx">BaseGenerator</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">brief</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="k">return</span> <span class="s2">"Default Flavor"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">generate</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$paths</span> <span class="o">=</span> <span class="nx">Path</span><span class="o">::</span><span class="na">get_flavor_paths</span><span class="p">();</span>
+        <span class="k">foreach</span><span class="p">(</span> <span class="nv">$paths</span> <span class="k">as</span> <span class="nv">$path</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span> <span class="nb">file_exists</span><span class="p">(</span><span class="nv">$path</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$base</span> <span class="o">=</span> <span class="nv">$path</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="nv">$name</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDir</span><span class="p">(</span> <span class="nv">$base</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s2">"Resource"</span><span class="p">);</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span> <span class="s1">'Generator.php.twig'</span><span class="p">,</span>  
+                    <span class="nv">$base</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s1">'Generator.php'</span><span class="p">,</span> 
+                    <span class="k">array</span><span class="p">(</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$name</span> <span class="p">)</span> <span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Operation name magic:</p>
+
+<div class="highlight highlight-php"><pre><span class="c1">// executes CopyDirOperation</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">copyDir</span><span class="p">(</span><span class="s1">'from/path'</span><span class="p">,</span><span class="s1">'to/path'</span><span class="p">);</span>  
+
+<span class="c1">// executes TouchOperation</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">touch</span><span class="p">(</span><span class="s1">'path/to/touch'</span><span class="p">);</span>          
+
+<span class="c1">// executes TouchOperation</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="s1">'file content'</span> <span class="p">);</span>         
+
+<span class="c1">// executes RenderOperation</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'templateName.php.twig'</span><span class="p">,</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="nv">$className</span>
+<span class="p">));</span>
+
+<span class="c1">// executes WriteJsonOperation</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">writeJson</span><span class="p">(</span><span class="s1">'file.json'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span> <span class="p">);</span>  <span class="c1">// executes WriteJsonOperation</span>
+</pre></div>
+
+<p>GenPHP supports many operations:</p>
+
+<ul>
+<li>CopyDirOperation</li>
+<li>CopyOperation</li>
+<li>CreateDirOperation</li>
+<li>CreateOperation</li>
+<li>RenderOperation</li>
+<li>TouchOperation</li>
+<li>WriteJsonOperation</li>
+<li>WriteYamlOperation</li>
+</ul><h2>
+<a name="development" class="anchor" href="#development"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<ul>
+<li>Fork this probject on GitHub</li>
+<li>
+<p>Git clone it:</p>
+
+<p>$ git clone <a href="mailto:git@github.com">git@github.com</a>:{{ your Id }}/GenPHP.git</p>
+</li>
+<li><p>Install onion <a href="http://github.com/c9s/Onion">http://github.com/c9s/Onion</a></p></li>
+<li>run <code>onion bundle</code> to install PEAR dependencies.</li>
+<li>run <code>scripts/genphp</code> to test your genphp script.</li>
+<li>run <code>phpunit</code> to run the test suites.</li>
+<li>run <code>scripts/compile.sh</code> to compile whole library into a executable phar file.</li>
+</ul><h3>
+<a name="create-new-opeartion" class="anchor" href="#create-new-opeartion"><span class="octicon octicon-link"></span></a>Create New Opeartion</h3>
+
+<p>There is a flavor for creating new opeartion already, just run:</p>
+
+<pre><code>$ ./scripts/genphp new operation DoSomething
+</code></pre>
+
+<h3>
+<a name="create-new-flavor" class="anchor" href="#create-new-flavor"><span class="octicon octicon-link"></span></a>Create New Flavor</h3>
+
+<pre><code>$ ./scripts/genphp new flavor flavor_name
+</code></pre>
+
+<h3>
+<a name="irc" class="anchor" href="#irc"><span class="octicon octicon-link"></span></a>IRC</h3>
+
+<p>Join us on irc channel: #genphp on irc.freenode.net</p>
+
+<h2>
+<a name="reference" class="anchor" href="#reference"><span class="octicon octicon-link"></span></a>Reference</h2>
+
+<ul>
+<li>newgem: <a href="http://newgem.rubyforge.org/">http://newgem.rubyforge.org/</a>
+</li>
+<li>Rails: <a href="http://guides.rubyonrails.org/command%5C_line.html">http://guides.rubyonrails.org/command\_line.html</a>
+</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Genphp maintained by <a href="https://github.com/c9s">c9s</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
