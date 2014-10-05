@@ -4,7 +4,7 @@ use CLIFramework\Command;
 use GetOptionKit\GetOptionKit;
 use GetOptionKit\OptionParser;
 use GetOptionKit\OptionResult;
-use GetOptionKit\OptionSpecCollection;
+use GetOptionKit\OptionCollection;
 use GenPHP\Flavor;
 use GenPHP\GeneratorRunner;
 use Exception;
