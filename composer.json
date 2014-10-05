@@ -2,10 +2,10 @@
     "name": "corneltek\/genphp",
     "require": {
         "php": ">=5.3.0",
-        "corneltek\/cliframework": "~1.5",
-        "corneltek\/phptask": "~1",
-        "corneltek\/lightlogger": "~1",
-        "corneltek\/fileutil": "~1",
+        "corneltek/cliframework": "~2.0",
+        "corneltek/phptask": "~1",
+        "corneltek/lightlogger": "~1",
+        "corneltek/fileutil": "~1",
         "twig\/twig": "~1.12"
     },
     "require-dev": {
