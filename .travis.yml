@@ -1,10 +1,10 @@
 language: php
 php:
-  - 5.3
-  - 5.4
+- 5.6
+- 7.0
+- 7.1
 
 before_script:
-  - cd /usr/local/bin && sudo curl -LO https://github.com/phpbrew/Onion/raw/master/onion && sudo chmod +x onion && cd -
   - phpenv rehash
   - git clone https://github.com/c9s/GenPHP-Flavors.git flavors
   - composer install --dev
