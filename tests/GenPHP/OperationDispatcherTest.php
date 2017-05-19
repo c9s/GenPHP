@@ -1,9 +1,9 @@
 <?php 
 namespace GenPHP;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Exception;
 
-class OperationDispatcherTest extends PHPUnit_Framework_TestCase
+class OperationDispatcherTest extends \PHPUnit\Framework\TestCase
 {
     function testFunc()
     {

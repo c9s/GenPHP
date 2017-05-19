@@ -1,10 +1,10 @@
 <?php
 
 namespace GenPHP\Flavor;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Exception;
 
-class FlavorTest extends PHPUnit_Framework_TestCase
+class FlavorTest extends \PHPUnit\Framework\TestCase
 {
     public function testFunc()
     {

@@ -13,24 +13,28 @@ class GeneratorRunner
 {
     public $logger;
 
-    public function run($generator,$args = array() ) {
-
+    public function run($generator, array $args = array())
+    {
         $deps = $generator->getDependencies();
-        foreach( $deps as $depGenerator ) {
-            $depGenerator->logAction( "dependency", get_class($depGenerator) , 1 );
+
+        foreach ($deps as $depGenerator) {
+            $depGenerator->logAction("dependency", get_class($depGenerator) , 1);
             $subargs = $depGenerator->getOption()->getArguments();
-            $this->runGenerator( $depGenerator , $subargs );
+            $this->runGenerator($depGenerator , $subargs);
         }
 
         $specs = new OptionCollection;
-        $generator->options( $specs );
-        $parser = new OptionParser( $specs );
-        $result = $parser->parse( $args );
+        $generator->options($specs);
+
+        $parser = new OptionParser($specs);
+
+        array_unshift($args, 'genphp'); // option parser doesn't parse the first argument (program name)
+        $result = $parser->parse($args);
 
         /* pass rest arguments for generation */
-        $generator->setOption( $result );
+        $generator->setOption($result);
 
-        $this->runGenerator( $generator , $result->getArguments() );
+        $this->runGenerator($generator, $result->getArguments());
     }
 
     /**
@@ -56,10 +60,10 @@ class GeneratorRunner
         }
     }
 
-    public function runGenerator($generator,$args = array()) 
+    public function runGenerator($generator, array $args = array()) 
     {
-        $this->checkGeneratorParameters($generator,$args);
-        return call_user_func_array( array($generator,'generate'),$args);
+        $this->checkGeneratorParameters($generator, $args);
+        return call_user_func_array([$generator,'generate'],$args);
     }
 
     public function getLogger()

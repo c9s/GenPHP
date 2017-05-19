@@ -8,13 +8,13 @@
     },
     "require-dev": {
         "corneltek/phpunit-testmore": "dev-master",
-        "corneltek/cliframework": "*",
-        "corneltek/universal": "dev-master"
+        "corneltek/cliframework": "4.0.x-dev",
+        "corneltek/codegen": "@dev",
+        "corneltek/universal": "^1"
     },
     "autoload": {
         "psr-4": {
             "GenPHP\\": "src/"
         }
-    },
-    "extra": { "branch-alias": { "dev-master": "4.0.x-dev" } }
+    }
 }

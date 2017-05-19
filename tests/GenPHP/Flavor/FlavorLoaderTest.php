@@ -1,6 +1,6 @@
 <?php
 
-class FlavorLoaderTest extends PHPUnit_Framework_TestCase
+class FlavorLoaderTest extends \PHPUnit\Framework\TestCase
 {
     const CHDIR = "tests/root";
 
@@ -28,25 +28,23 @@ class FlavorLoaderTest extends PHPUnit_Framework_TestCase
      */
     public function testFlavors($flavorName, $args)
     {
-        $loader = new GenPHP\Flavor\FlavorLoader(array( ROOT_DIR . '/tests/flavors', 'flavors' ));
-        ok($loader);
-
+        $loader = new \GenPHP\Flavor\FlavorLoader(array( ROOT_DIR . '/tests/flavors', 'flavors' ));
         $flavor = $loader->load($flavorName);
-        ok( $flavor );
+        $this->assertNotEmpty($flavor);
+
         ok( $flavor->exists() );
         is( $flavorName, $flavor->getName() );
 
         $dir = $flavor->getResourceDir();
         path_ok( $dir , 'Found resource directory' );
 
-        $generator = $flavor->getGenerator();
-        ok( $generator );
 
+        $generator = $flavor->getGenerator();
         $pwd = getcwd();
         $this->prepareChdir();
         chdir(self::CHDIR);
         $runner = new \GenPHP\GeneratorRunner;
-        $runner->run($generator,$args);
+        $runner->run($generator, $args);
         chdir($pwd);
     }
 
