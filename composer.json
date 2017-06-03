@@ -10,7 +10,7 @@
         "corneltek/phpunit-testmore": "dev-master",
         "corneltek/cliframework": "4.0.x-dev",
         "corneltek/codegen": "@dev",
-        "corneltek/universal": "^1"
+        "universal/universal": "*"
     },
     "autoload": {
         "psr-4": {
